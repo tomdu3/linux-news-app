@@ -37,7 +37,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = [
-    'books-4-life-2d26bdf04dec.herokuapp.com/',
+    'books-4-life-2d26bdf04dec.herokuapp.com',
     '8000-tomdu3-booksforlife-faydvwtuct5.ws-eu104.gitpod.io'
     ]
 
@@ -98,11 +98,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # }
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+   'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 
