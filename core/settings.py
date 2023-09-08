@@ -14,9 +14,10 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+TEJMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # load environment variables file
 
+import dj_database_url
 from dotenv import load_dotenv
 import os
 
@@ -31,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = ['8000-tomdu3-booksforlife-faydvwtuct5.ws-eu104.gitpod.io']
+ALLOWED_HOSTS = ['https://books-4-life-2d26bdf04dec.herokuapp.com/','8000-tomdu3-booksforlife-faydvwtuct5.ws-eu104.gitpod.io']
 
 
 # Application definition
@@ -61,7 +62,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEJMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,10 +82,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 
@@ -128,4 +130,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Needed for admin for django4.+
 CSRF_TRUSTED_ORIGINS=['https://8000-tomdu3-booksforlife-faydvwtuct5.ws-eu104.gitpod.io/*']
