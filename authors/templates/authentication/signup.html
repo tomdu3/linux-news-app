@@ -19,14 +19,15 @@
 
     <div id="loginForm" class="form-container mt-3">
         <h2>Login</h2>
-        <form>
+        <form action="" method="POST" name="login_form">
+            {% csrf_token %}
             <div class="mb-3">
-                <label for="loginEmail" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="loginEmail" required>
+                <label for="loginUsername" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="loginUsername" placeholder="Enter Username" name="username" required>
             </div>
             <div class="mb-3">
                 <label for="loginPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="loginPassword" required>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
@@ -34,18 +35,19 @@
 
     <div id="registerForm" class="form-container mt-3" style="display: none;">
         <h2>Register</h2>
-        <form>
+        <form action="" method="POST">
+            {% csrf_token %}
             <div class="mb-3">
                 <label for="registerName" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="registerName" required>
+                <input type="text" class="form-control" id="registerName" placeholder="Enter Username" name="username" required>
             </div>
-            <div class="mb-3">
+            {% comment %} <div class="mb-3">
                 <label for="registerEmail" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="registerEmail" required>
-            </div>
+            </div> {% endcomment %}
             <div class="mb-3">
                 <label for="registerPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="registerPassword" required>
+                <input type="password" class="form-control" id="registerPassword" placeholder="Password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
