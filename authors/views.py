@@ -31,3 +31,7 @@ def login_user(request):
     else:
         return render(request, 'authentication/signup.html', {})
 
+def logout_user(request):
+    logout(request)
+    messages.success(request, ('You have been logged out!', ), extra_tags='info')
+    return redirect('/')
