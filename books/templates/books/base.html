@@ -50,9 +50,11 @@
     <!-- main -->
     {% if messages %}
       {% for message in messages %}
-          <div class="alert alert-{{ message.tags }} fade show" role="alert">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            {{ message }}
+          <div class="alert alert-{{ message.extra_tags }} fade show" role="alert">
+            <p>{{ message }}
+              <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </p>
+            
           </div>
       {% endfor %}
     {% endif %}
@@ -130,26 +132,29 @@
       </footer>
       
       <script>
-        // Function to fade out and remove the alert after 5 seconds
-        function fadeOutAlert() {
-            const alert = document.getElementById('alert-message');
-            if (alert) {
-                setTimeout(function() {
-                    alert.style.transition = 'opacity 1s';
-                    alert.style.opacity = '0';
-                    setTimeout(function() {
-                        alert.remove();
-                    }, 1000); // Remove the alert after fade out
-                }, 5000); // Delay for 5 seconds before starting to fade out
-            }
-        }
-    
-        // Call the function when the page loads
-        window.onload = fadeOutAlert;
+      {% block script %}
 
-    {% block script %}
+      {% endblock %}
+      </script>
+      <script>
+      // Function to fade out and remove the alert after 5 seconds
+      function fadeOutAlert() {
+        const alerts = document.querySelectorAll('.alert');
 
-    {% endblock %}
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 1s';
+                alert.style.opacity = '0';
+
+                setTimeout(() => {
+                    alert.remove();
+                }, 1000); // Remove the alert after fade out
+            }, 5000); // Delay for 5 seconds before starting to fade out
+        });
+    }
+
+    // Call the function when the page loads
+    window.addEventListener('load', fadeOutAlert);
   </script>
 </body>
 

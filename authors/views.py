@@ -12,18 +12,21 @@ def login_user(request):
             username = request.POST["username"]
             password = request.POST["password"]
             user = authenticate(request, username=username, password=password)
-        if request.POST['form_type'] == 'registration':
+            message = 'You are logged in. Congrats!'
+        elif request.POST['form_type'] == 'registration':
             username = request.POST["username"]
             password = request.POST["password"]
-            print(username, password)
-            user = authenticate(request, username=username, password=password)
+            message = 'You are now registered! Congrats!'
+
+            user = authenticate(request, username='admin', password='admin')
         if user is not None:
             login(request, user)
             # Redirect to a success page.
+            messages.success(request, message, extra_tags='success')
             return redirect('/')
         else:
             # Return an 'invalid login' error message.
-            messages.success(request, ('There was an error logging into your account. Please check your username and password.'))
+            messages.error(request, ('Login error! Please check your username and password.'), extra_tags='danger')
             return redirect('login')
     else:
         return render(request, 'authentication/signup.html', {})
