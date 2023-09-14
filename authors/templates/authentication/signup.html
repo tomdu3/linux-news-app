@@ -1,71 +1,23 @@
 {% extends 'books/base.html' %}
 
 {% block style %}
-<style>
-    /* Add custom CSS for styling */
-    .form-container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-</style>
 {% endblock %}
 {% block content %}
-<div class="container mt-5">
+  
+<div class="container mt-5 col-9 col-md-6 col-lg-4">
     <div class="text-center">
-        <button id="showLogin" class="btn btn-primary">Login</button>
-        <button id="showRegister" class="btn btn-secondary">Register</button>
-    </div>
-
-    <div id="loginForm" class="form-container mt-3">
-        <h2>Login</h2>
-        <form action="" method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="form_type" value="login">
-            <div class="mb-3">
-                <label for="loginUsername" class="form-label">User Name</label>
-                <input type="text" class="form-control" id="loginUsername" placeholder="Enter Username" name="username" required>
-            </div>
-            <div class="mb-3">
-                <label for="loginPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="loginPassword" placeholder="Password" name="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-    </div>
-
-    <div id="registerForm" class="form-container mt-3" style="display: none;">
         <h2>Register</h2>
-        <form action="" method="POST">
+    </div>
+    <div id="registerForm" class="form-container mt-3">
+        <form action="" method="POST" action={% url 'register' %}>
             {% csrf_token %}
-            <input type="hidden" name="form_type" value="registration">
-            <div class="mb-3">
-                <label for="registerName" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="registerName" placeholder="Enter Username" name="username" required>
-            </div>
-            {% comment %} <div class="mb-3">
-                <label for="registerEmail" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="registerEmail" required>
-            </div> {% endcomment %}
-            <div class="mb-3">
-                <label for="registerPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="registerPassword" placeholder="Password" name="password" required>
-            </div>
+
+            {{ form.as_p }}
+
             <button type="submit" class="btn btn-primary">Register</button>
+            Already registered? Click <a class ="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'login' %}">here</a>.</p>
         </form>
     </div>
 </div>
 {% endblock %}
-{% block script %}
-// JavaScript to toggle between login and register forms
-    document.getElementById('showLogin').addEventListener('click', function () {
-        document.getElementById('loginForm').style.display = 'block';
-        document.getElementById('registerForm').style.display = 'none';
-    });
 
-    document.getElementById('showRegister').addEventListener('click', function () {
-        document.getElementById('loginForm').style.display = 'none';
-        document.getElementById('registerForm').style.display = 'block';
-    });
-</script>
-{% endblock %}
