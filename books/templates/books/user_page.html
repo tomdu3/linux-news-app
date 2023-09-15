@@ -3,10 +3,10 @@
 {% block style %}
 {% endblock %}
 {% block content %}
-
 <div class="title text-center">
-    <h1>Books for Life</h1>
-</div>{% if user.is_authenticated %}
+    <h1>{{user.username}}'s Page</h1>
+</div>
+{% if user.is_authenticated %}
     <p>Username: {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>
     <p>First Name: {{ user.first_name }}</p>
