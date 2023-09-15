@@ -6,11 +6,16 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return f'Category: {self.name}'
+    
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = 'Categories'
 
 
 class Book(models.Model):
