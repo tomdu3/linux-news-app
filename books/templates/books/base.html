@@ -60,8 +60,14 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
           </ul>
-          <ul class="navbar-nav flex flex-column flex-md-row ">
+          <ul class="navbar-nav flex flex-column flex-lg-row ">
             {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'user_page' %}">My Books</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Favourites</a>
+            </li>
             <li class="nav-item mx-md-auto">
               <a
                 class="nav-link btn btn-primary text-light px-md-3"
