@@ -1,0 +1,48 @@
+{% extends "books/base.html" %} {% load static %} {% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        {% if 'default' in book.image_url.url %}
+        <img
+          src="{% static 'images/default_book.webp' %}"
+          class="card-img-top mx-auto"  style="width: 10rem;"
+          alt="{{ book.title }} image"
+        />
+        {% else %}
+        <img
+          src="{{ book.image_url.url }}"
+          class="card-img-top mx-auto"  style="width: 10rem;"
+          alt="{{ book.title }} image"
+        />
+        {% endif %}
+        <div class="card-body">
+          <h2 class="card-title">{{ book.title }}</h2>
+          <p class="card-text">Author: {{ book.author }}</p>
+          <div class="card-text">{{ book.full_description|safe }}</p>
+          <p class="card-text">{{ book.category }}</p>
+          <p class="card-text">
+            Published Date: {{ book.created_on|date:"F d, Y" }}
+          </p>
+          <p class="card-text">Status: {{ book.get_status_display }}</p>
+          <p class="card-text">Likes: {{ book.likes_counter }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          {% if liked_by_user %}
+          <p class="text-success">Liked by You!</p>
+          {% else %}
+          <form method="post" action="{% url 'like_book' book.slug %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Like</button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -24,7 +24,7 @@ class Book(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     short_description = models.TextField(blank=True)
     full_description = models.TextField()
-    image_url = CloudinaryField('image', default='book_image')
+    image_url = CloudinaryField('image', default='default')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     user_id = models.ForeignKey(
         User,
