@@ -33,3 +33,13 @@ class BookDetail(View):
             'book': book,
             'liked_by_user': liked_by_user, }
         return render(request, 'books/book_detail.html', context=context)
+
+def user_favourites(request):
+    user = request.user
+
+    liked_books = Book.objects.filter(likes=user)
+    context = {
+        'user': user,
+        'books': liked_books,
+    }
+    return render(request, 'books/user_favourites.html', context=context)
