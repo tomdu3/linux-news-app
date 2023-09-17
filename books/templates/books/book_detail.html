@@ -1,7 +1,7 @@
 {% extends "books/base.html" %} {% load static %} {% block content %}
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <div class="card">
         {% if 'default' in book.image_url.url %}
         <img
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <div class="card">
         <div class="card-body">
           {% if liked_by_user %}
@@ -43,6 +43,7 @@
         </div>
       </div>
     </div>
+    <a href="javascript:history.go(-1)"><input type="button" value="Back" class="btn btn-primary" /></a>
   </div>
 </div>
 {% endblock %}
