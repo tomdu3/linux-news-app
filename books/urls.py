@@ -8,4 +8,5 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('details/<slug:slug>/', views.BookDetail.as_view(), name='book_detail'),
     path('edit/<slug:slug>', views.BookUpdateView.as_view(), name='book_edit'),
+    path('add/', views.AddBookView.as_view(), name='book_add'),
     ]

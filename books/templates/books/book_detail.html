@@ -32,7 +32,9 @@
                     {% if liked_by_user %}
                     <p class="text-success">Liked by You!</p>
                     {% else %}
-                    <form
+                    <p class="text-danger">NOT Liked by You!</p>
+
+                    {% comment %} <form
                       method="post"
                       action="{% url 'like_book' book.slug %}"
                     >
@@ -40,7 +42,7 @@
                       <button type="submit" class="btn btn-primary">
                         Like
                       </button>
-                    </form>
+                    </form> {% endcomment %}
                     {% endif %}
                   </div>
                   <!-- This column takes half width on all screens -->

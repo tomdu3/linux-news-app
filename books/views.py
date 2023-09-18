@@ -1,9 +1,9 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic, View
 from django.http import HttpResponse
 from cloudinary import CloudinaryImage
+from django.utils.text import slugify
 from .models import Book, Category
 from .forms import BookForm
 # Create your views here.
@@ -78,3 +78,66 @@ class BookUpdateView(LoginRequiredMixin, View):
             'form': form,
         }
         return render(request, 'books/book_edit.html', context)
+
+
+
+class AddBookView(View):
+    def get(self, request):
+        form = BookForm()
+        categories = Category.objects.all()
+
+        context = {
+            'form': form,
+            'categories': categories,
+        }
+        return render(request, 'books/book_add.html', context)
+
+    def post(self, request):
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = request.user  # Get the current user
+
+            # Extract cleaned data from the form
+            title = form.cleaned_data['title']
+            author = form.cleaned_data['author']
+            short_description = form.cleaned_data['short_description']
+            full_description = form.cleaned_data['full_description']
+            image_url = form.cleaned_data['image_url']
+            category_name = form.cleaned_data['category']
+            # Get the category instance based on the category name
+            category = Category.objects.get(name=category_name)
+
+            # Generate a slug based on the title
+            base_slug = slugify(title)
+            slug = base_slug
+            counter = 1
+            # Check if a record with the same slug already exists
+            while Book.objects.filter(slug=slug).exists():
+                slug = f'{base_slug}-{counter}'
+                counter += 1
+
+            # Create and save the Book instance
+            book = Book(
+                title=title,
+                author=author,
+                short_description=short_description,
+                full_description=full_description,
+                image_url=image_url,
+                category=category,
+                slug=slug,
+                user_id=user,
+                status=1,
+            )
+            print(book.title, book.author, book.short_description, book.full_description, book.image_url, book.category, book.slug, book.user_id)
+
+            book.save()
+
+            return redirect('user_page')
+
+        categories = Category.objects.all()
+
+        context = {
+            'form': form,
+            'categories': categories,
+        }
+        return render(request, 'books/book_add.html', context)

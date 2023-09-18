@@ -11,7 +11,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'Category: {self.name}'
+        return f'{self.name}'
     
     class Meta:
         ordering = ['name']
@@ -31,7 +31,7 @@ class Book(models.Model):
         on_delete=models.CASCADE,
         related_name='book_details'
     )
-    likes = models.ManyToManyField(User, related_name='liked_books')
+    likes = models.ManyToManyField(User, related_name='liked_books', blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -43,4 +43,4 @@ class Book(models.Model):
         return self.likes.count()
 
     def __str__(self):
-        return f'Book: {self.title}'
+        return f'{self.title}'
