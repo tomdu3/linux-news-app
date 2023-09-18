@@ -150,6 +150,7 @@ class BookDeleteView(LoginRequiredMixin, View):
         return redirect('user_page')
 
 def find_book(request):
+
     query = request.GET.get('q')
     if query:
         # Search for books that match the query in title or author
@@ -157,14 +158,15 @@ def find_book(request):
     else:
         # If no query is provided, display all books
         books = Book.objects.all()
+    
+    for book in books:
+        if book.likes.filter(id=request.user.id).exists():
+            book.liked_by_user = True
 
     context = {
         'books': books,
     }
     return render(request, 'books/find_book.html', context=context)
-
-def book_liked_by_user(book, user):
-    return book.likes.filter(id=user.id).exists()
 
 
 def like_book(request, slug):
@@ -181,5 +183,11 @@ def like_book(request, slug):
             # User hasn't liked the book, add the like
             book.likes.add(request.user)
             
-    # Redirect to the book detail page
-    return redirect('book_detail', slug=slug)
+    # Retrieve the query parameter from the request (if it exists)
+    query_param = request.GET.get('q')
+
+    # Redirect back to the 'find_book' view with the previous query parameter
+    if query_param:
+        return redirect(f'find_book?q={query_param}')
+    else:
+        return redirect('find_book')

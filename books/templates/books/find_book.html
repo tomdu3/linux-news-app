@@ -37,13 +37,14 @@
                 <td><a href="{% url 'book_detail' slug=book.slug %}">{{ book.title }}</a></td>
     
                 <td>
-                    <form method="POST" action="{% url 'like_book' slug=book.slug %}"> 
+                    <form method="post" action="{% url 'like_book' book.slug %}">
                         {% csrf_token %}
-                        {% if liked_by_user %}
-                            <button type="submit" class="btn btn-danger btn-sm">Unlike</button>
-                        {% else %}
-                            <button type="submit" class="btn btn-success btn-sm">Like</button>
-                        {% endif %}
+                            {% if request.user in book.likes.all %}
+                                <button type="submit" class="btn btn-danger btn-sm">Unlike</button>
+                            {% else %}
+                                <button type="submit" class="btn btn-success btn-sm">Like</button<
+                            {% endif %}
+                        </button>
                     </form>
                 </td>
             </tr>

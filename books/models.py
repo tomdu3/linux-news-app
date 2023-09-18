@@ -32,6 +32,7 @@ class Book(models.Model):
         related_name='book_details'
     )
     likes = models.ManyToManyField(User, related_name='liked_books', blank=True)
+    liked_by_user = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
