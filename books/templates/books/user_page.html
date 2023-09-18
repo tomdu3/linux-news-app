@@ -15,7 +15,7 @@
             <th>Author</th>
             <th>Title</th>
             <th></th>
-            {% comment %} <th></th> {% endcomment %}
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -26,7 +26,10 @@
                 <td><a href="{% url 'book_detail' slug=book.slug %}">{{ book.title }}</a></td>
                 <td>
                     <a href="{% url 'book_edit' slug=book.slug %}" class="btn btn-primary btn-sm">Edit</a>
-                    {% comment %} <a href="{% url 'book_delete' slug=book.slug %}" class="btn btn-danger btn-sm">Delete</a> {% endcomment %}
+                </td>
+                <td>
+                    <a href="{% url 'book_delete' slug=book.slug %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
             </tr>
         {% endfor %}
     </tbody>

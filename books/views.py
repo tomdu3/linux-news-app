@@ -141,3 +141,9 @@ class AddBookView(View):
             'categories': categories,
         }
         return render(request, 'books/book_add.html', context)
+
+class BookDeleteView(LoginRequiredMixin, View):
+    def get(self, request, slug):
+        book = get_object_or_404(Book, slug=slug)
+        book.delete()
+        return redirect('user_page')
