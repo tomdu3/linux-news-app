@@ -6,6 +6,7 @@ from cloudinary import CloudinaryImage
 from django.utils.text import slugify
 from .models import Book, Category
 from .forms import BookForm
+from django.db.models import Q 
 # Create your views here.
 
 
@@ -147,3 +148,38 @@ class BookDeleteView(LoginRequiredMixin, View):
         book = get_object_or_404(Book, slug=slug)
         book.delete()
         return redirect('user_page')
+
+def find_book(request):
+    query = request.GET.get('q')
+    if query:
+        # Search for books that match the query in title or author
+        books = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
+    else:
+        # If no query is provided, display all books
+        books = Book.objects.all()
+
+    context = {
+        'books': books,
+    }
+    return render(request, 'books/find_book.html', context=context)
+
+def book_liked_by_user(book, user):
+    return book.likes.filter(id=user.id).exists()
+
+
+def like_book(request, slug):
+    if request.method == 'POST' and request.user.is_authenticated:
+        book = get_object_or_404(Book, slug=slug)
+        
+        # Check if the user has already liked the book
+        liked_by_user = book.likes.filter(id=request.user.id).exists()
+        
+        if liked_by_user:
+            # User has already liked the book, remove the like
+            book.likes.remove(request.user)
+        else:
+            # User hasn't liked the book, add the like
+            book.likes.add(request.user)
+            
+    # Redirect to the book detail page
+    return redirect('book_detail', slug=slug)

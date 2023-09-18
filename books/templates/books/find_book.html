@@ -1,0 +1,61 @@
+{% extends 'books/base.html' %}
+
+{% block style %}
+{% endblock %}
+
+{% block content %}
+<div class="title text-center">
+    <h1>Search Results</h1>
+</div>
+
+<div class="text-center">
+    <form method="GET" action="{% url 'find_book' %}">
+        <input type="text" name="q" placeholder="Search books">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+{% if books %}
+<div class="text-info">
+    <p>Found {{ books|length }} records</p>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Author</th>
+            <th>Title</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ book.author }}</td>
+                <td><a href="{% url 'book_detail' slug=book.slug %}">{{ book.title }}</a></td>
+    
+                <td>
+                    <form method="POST" action="{% url 'like_book' slug=book.slug %}"> 
+                        {% csrf_token %}
+                        {% if liked_by_user %}
+                            <button type="submit" class="btn btn-danger btn-sm">Unlike</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success btn-sm">Like</button>
+                        {% endif %}
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="text-center">
+    <h3>No books found</h3>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block script %}
+{% endblock %}
