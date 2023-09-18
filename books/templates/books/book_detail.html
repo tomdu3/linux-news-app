@@ -9,7 +9,7 @@
             <p class="card-text">Author: {{ book.author }}</p>
             {% if 'default' in book.image_url.url %}
             <img
-              src="{% static 'images/default_book.webp' %}"
+              src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
               class="card-img-top mx-auto"
               style="width: 10rem"
               alt="{{ book.title }} image"
