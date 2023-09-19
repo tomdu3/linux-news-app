@@ -153,8 +153,9 @@ def find_book(request):
 
     query = request.GET.get('q')
     if query:
-        # Search for books that match the query in title or author
-        books = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
+        # Search for books that match the query in title, author or category
+        books = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query) |
+            Q(category__name__icontains=query))
     else:
         # If no query is provided, display all books
         books = Book.objects.all()
