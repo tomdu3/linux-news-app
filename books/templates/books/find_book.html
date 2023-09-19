@@ -39,12 +39,12 @@
                 <td>
                     <form method="post" action="{% url 'like_book' book.slug %}">
                         {% csrf_token %}
-                            {% if request.user in book.likes.all %}
-                                <button type="submit" class="btn btn-danger btn-sm">Unlike</button>
-                            {% else %}
-                                <button type="submit" class="btn btn-success btn-sm">Like</button<
-                            {% endif %}
-                        </button>
+                        <input type="hidden" name="q" value="{{ request.GET.q }}">
+                        {% if request.user in book.likes.all %}
+                            <button type="submit" class="btn btn-danger btn-sm">Unlike</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success btn-sm">Like</button>
+                        {% endif %}
                     </form>
                 </td>
             </tr>

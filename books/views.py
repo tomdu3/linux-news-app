@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.views import generic, View
 from django.http import HttpResponse
 from cloudinary import CloudinaryImage
@@ -171,6 +172,9 @@ def find_book(request):
 
 
 def like_book(request, slug):
+    query_param = request.POST.get('q')
+    print(query_param)
+
     if request.method == 'POST' and request.user.is_authenticated:
         book = get_object_or_404(Book, slug=slug)
         
@@ -183,12 +187,9 @@ def like_book(request, slug):
         else:
             # User hasn't liked the book, add the like
             book.likes.add(request.user)
-            
-    # Retrieve the query parameter from the request (if it exists)
-    query_param = request.GET.get('q')
 
     # Redirect back to the 'find_book' view with the previous query parameter
     if query_param:
-        return redirect(f'find_book?q={query_param}')
+        return redirect(reverse('find_book') + f'?q={query_param}')
     else:
         return redirect('find_book')
