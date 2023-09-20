@@ -68,17 +68,20 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
           </ul>
-          <ul class="navbar-nav flex flex-column flex-lg-row ">
+          <ul class="navbar-nav flex flex-column flex-lg-row mb-2 mb-lg-0">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'user_page' %}">My Books</a>
+              <a class="nav-link align-self-lg-center" href="{% url 'user_page' %}">My Books</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'user_favourites' %}">My Favourites</a>
+              <a class="nav-link align-self-lg-center" href="{% url 'user_favourites' %}">My Favourites</a>
+            </li>
+            <li class="nav-item align-self-lg-center">
+              <p class="text-info nav-link"><i class="fa-solid fa-user-plus"></i> {{ user.username }}</p>
             </li>
             <li class="nav-item mx-md-auto">
               <a
-                class="nav-link btn btn-primary text-light px-md-3"
+                class="nav-link btn btn-primary text-light px-md-1 align-self-lg-center"
                 href="{% url 'logout' %}"
                 >Logout</a
               >
@@ -86,14 +89,14 @@
             {% else %}
             <li class="nav-item mx-md-auto">
               <a
-                class="nav-link btn btn-primary text-light px-md-3"
+                class="nav-link btn btn-primary text-light px-md-1 align-self-lg-center"
                 href="{% url 'login' %}"
                 >Login</a
               >
             </li>
             <li class="nav-item mx-md-auto">
               <a
-                class="nav-link btn btn-outline-secondary text-light px-md-3"
+                class="nav-link btn btn-outline-secondary text-light px-md-1 align-self-lg-center"
                 href="{% url 'register' %}"
                 >Register</a
               >

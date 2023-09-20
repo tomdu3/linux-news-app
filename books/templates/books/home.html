@@ -4,15 +4,16 @@
 {% endblock %}
 {% block content %}
 
-<div class="title text-center">
-    <h1>Books for Life</h1>
-</div>{% if user.is_authenticated %}
-    <p>Username: {{ user.username }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>First Name: {{ user.first_name }}</p>
-    <p>Last Name: {{ user.last_name }}</p>
-    <p>Password: {{ user.password }}</p>
-{% endif %}
+
+<div class="text-center mb-4">
+    <h1 class="display-4">Books for Life</h1>
+</div>
+<div class="container">
+    <h2 class="fs-4 fw-bold text-center">Welcome to Books for Life</h2>
+    <p>
+        At Books for Life, we believe in the transformative power of books. Our mission is to inspire and guide you on a lifelong journey of learning, growth, and self-discovery through the magic of literature.
+    </p>
+</div>
 {% endblock %}
 {% block script %}
 {% endblock %}
