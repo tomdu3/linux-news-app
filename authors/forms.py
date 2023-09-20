@@ -38,4 +38,3 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].help_text = ''
         self.fields['password2'].error_messages['password_mismatch'] = 'The two password fields didn\'t match.'
         
-        

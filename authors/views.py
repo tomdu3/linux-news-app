@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SignUpForm
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 
@@ -46,3 +49,28 @@ def register_user(request):
 
     context = {'form': form} 
     return render(request, 'authentication/signup.html', context)
+
+
+@login_required
+def user_profile(request):
+    user = request.user
+    return render(request, 'user_profile.html', {'user': user})
+
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        # TODO: Form submission control and validation - redirection to the profile page
+        pass
+    else:
+        # TODO: Display the profile update form
+        pass
+
+    return render(request, 'update_profile.html', {'user': request.user})
+
+@login_required
+def delete_profile(request):
+    if request.method == 'POST':
+        # TODO: Form deletion  control and validation - redirection to the profile page
+        pass
+
+    return render(request, 'delete_profile.html', {'user': request.user})

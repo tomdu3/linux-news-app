@@ -77,7 +77,7 @@
               <a class="nav-link align-self-lg-center" href="{% url 'user_favourites' %}">My Favourites</a>
             </li>
             <li class="nav-item align-self-lg-center">
-              <p class="text-info nav-link"><i class="fa-solid fa-user-plus"></i> {{ user.username }}</p>
+              <a href="{% url 'user_profile' %}" class="text-info nav-link"><i class="fa-solid fa-user-plus"></i> {{ user.username }}</a>
             </li>
             <li class="nav-item mx-md-auto">
               <a
