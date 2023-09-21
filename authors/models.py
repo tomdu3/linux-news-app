@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_image = CloudinaryField('p_image', default='profile_image')
+    profile_image = CloudinaryField('Profile Image', default='profile_image')
 
     def __str__(self):
         return f'Profile: {self.user.username}'

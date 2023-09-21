@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, UserProfileForm
 from django.contrib.auth.models import User
+from .models import UserProfile
 
 
 # Create your views here.
@@ -74,3 +75,30 @@ def delete_profile(request):
         pass
 
     return render(request, 'delete_profile.html', {'user': request.user})
+
+
+@login_required
+def update_profile(request):
+    template_name = 'user_profile_update.html'
+
+    # Get the user's profile instance
+    user_profile = UserProfile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        # Create a form instance with the user's profile data and the data from the POST request
+        form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
+
+        if form.is_valid():
+            # Save the updated profile data
+            form.save()
+            messages.success(request, 'Profile updated successfully.')
+            return redirect('user_profile')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'Error in {field}: {error}')
+    else:
+        # If the request is GET, create a form instance with the user's profile data
+        form = UserProfileForm(instance=user_profile)
+
+    return render(request, template_name, {'form': form})

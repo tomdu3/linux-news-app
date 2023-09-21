@@ -1,0 +1,63 @@
+{% extends "books/base.html" %} 
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h2>Update Profile</h2>
+        </div>
+        <div class="card-body">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-md-6">
+                  <!-- Display the current profile image here -->
+                  {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url %}
+                  <img
+                    src="{{ user.userprofile.profile_image.url }}"
+                    alt="Profile Image"
+                    class="img-thumbnail"
+                    style="max-width: 200px"
+                  />
+                  {% else %}
+                  <img
+                    src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp"
+                    alt="Profile Image Default"
+                    class="img-thumbnail"
+                    style="max-width: 200px"
+                  />
+                  {% endif %}
+                </div>
+                <div class="col-md-6">
+                  <!-- Display the form for changing the profile image here -->
+                  {{ form.profile_image.label_tag }}
+                  {{ form.profile_image }}
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <!-- Add an input field for changing the email address -->
+              <label for="{{ form.email.id }}" class="form-label">Email</label>
+              {{ form.email }}
+            </div>
+            <div class="mb-3">
+              {{ form.password.label_tag }}
+              {{ form.password }}
+            </div>
+            <div class="mb-3">
+              {{ form.confirm_password.label_tag }}
+              {{ form.confirm_password }}
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Update Profile
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

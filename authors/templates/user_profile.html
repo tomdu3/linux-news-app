@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
           <div class="text-center">
-            {% if user.userprofile.profile_image %}
+            {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url%}
             <img src="{{ user.userprofile.profile_image.url }}" alt="Profile Image" class="img-thumbnail" style="max-width: 200px;">
             {% else %}
             <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp" alt="Profile Image Default" class="img-thumbnail" style="max-width: 200px;">

@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import UserProfile
 from django import forms
 
 class SignUpForm(UserCreationForm):
@@ -37,4 +38,34 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = ''
         self.fields['password2'].error_messages['password_mismatch'] = 'The two password fields didn\'t match.'
-        
+
+
+class UserProfileForm(forms.ModelForm):
+    password = forms.CharField(
+        label='Password',
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        required=False  # Password is optional in the profile form
+    )
+
+    confirm_password = forms.CharField(
+        label='Confirm Password',
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        required=False  # Confirm password is optional in the profile form
+    )
+
+    class Meta:
+        model = UserProfile
+        fields = ['password', 'confirm_password', 'profile_image']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get("password")
+        confirm_password = cleaned_data.get("confirm_password")
+
+        if password and confirm_password and password != confirm_password:
+            raise forms.ValidationError("Passwords do not match. Please try again.")
+
+        return cleaned_data
+

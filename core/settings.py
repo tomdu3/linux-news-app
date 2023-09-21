@@ -156,3 +156,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Needed for admin for django4.+
 CSRF_TRUSTED_ORIGINS=['https://8000-tomdu3-booksforlife-faydvwtuct5.ws-eu104.gitpod.io/*']
+
+# Add custom User model
+AUTH_USER_MODEL = 'auth.User'
