@@ -69,20 +69,16 @@ def update_profile(request):
     return render(request, 'update_profile.html', {'user': request.user})
 
 @login_required
-def delete_profile(request):
-    if request.method == 'POST':
-        # TODO: Form deletion  control and validation - redirection to the profile page
-        pass
-
-    return render(request, 'delete_profile.html', {'user': request.user})
-
-
-@login_required
 def update_profile(request):
     template_name = 'user_profile_update.html'
 
     # Get the user's profile instance
-    user_profile = UserProfile.objects.get(user=request.user)
+    try:
+        user_profile = UserProfile.objects.get(user=request.user)
+    except UserProfile.DoesNotExist:
+        # If the user's profile doesn't exist, create a new one
+        user_profile = UserProfile(user=request.user)
+        user_profile.save()
 
     if request.method == 'POST':
         # Create a form instance with the user's profile data and the data from the POST request
@@ -102,3 +98,12 @@ def update_profile(request):
         form = UserProfileForm(instance=user_profile)
 
     return render(request, template_name, {'form': form})
+
+@login_required
+def delete_profile(request):
+    if request.method == 'POST':
+        # delete user  and log out
+        request.user.delete()
+        return redirect('home')  # after deletion redirect to home page
+
+    return render(request, 'profile.html', {'user': request.user})

@@ -1,6 +1,7 @@
 {% extends "books/base.html" %}
 
 {% block content %}
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -11,22 +12,98 @@
         <div class="card-body">
           <div class="text-center">
             {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url%}
-            <img src="{{ user.userprofile.profile_image.url }}" alt="Profile Image" class="img-thumbnail" style="max-width: 200px;">
+            <img
+              src="{{ user.userprofile.profile_image.url }}"
+              alt="Profile Image"
+              class="img-thumbnail"
+              style="max-width: 200px"
+            />
             {% else %}
-            <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp" alt="Profile Image Default" class="img-thumbnail" style="max-width: 200px;">
+            <img
+              src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp"
+              alt="Profile Image Default"
+              class="img-thumbnail"
+              style="max-width: 200px"
+            />
             {% endif %}
           </div>
           <p>First Name: {{ user.first_name }}</p>
           <p>Last Name: {{ user.last_name }}</p>
           <p>Email: {{ user.email }}</p>
-          
         </div>
         <div class="card-footer">
-          <a href="{% url 'update_profile' %}" class="btn btn-primary">Update Profile</a>
-          <a href="{% url 'delete_profile' %}" class="btn btn-danger">Delete Profile</a>
+          <a href="{% url 'update_profile' %}" class="btn btn-primary"
+            >Update Profile</a
+          >
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteProfileModal">
+            Delete Profile
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Delete Profile Modal -->
+<div
+  class="modal fade"
+  id="deleteProfileModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteProfileModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteProfileModalLabel">
+          Confirm Profile Deletion
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete your profile?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">  <!-- Correct Bootstrap 5 attribute -->
+          Cancel
+        </button>
+
+        <!-- Button profile deletion trigger  -->
+        <form method="post" action="{% url 'delete_profile' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Get a reference to the "Delete Profile" button
+  const deleteButton = document.getElementById('deleteProfileButton');
+
+  // Add a click event listener to the button
+  deleteButton.addEventListener('click', function () {
+    // Show the modal when the button is clicked
+    const deleteProfileModal = new bootstrap.Modal(document.getElementById('deleteProfileModal'));
+    deleteProfileModal.show();
+  });
+});
+
 {% endblock %}
