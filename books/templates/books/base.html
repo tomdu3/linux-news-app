@@ -74,8 +74,24 @@
             <li class="nav-item">
               <a class="nav-link align-self-lg-center" href="{% url 'user_favourites' %}">My Favourites</a>
             </li>
-            <li class="nav-item align-self-lg-center">
-              <a href="{% url 'user_profile' %}" class="text-info nav-link"><i class="fa-solid fa-user-plus"></i> {{ user.username }}</a>
+            <li class="nav-item align-self-lg-center d-inline-flex">
+              <a href="{% url 'user_profile' %}" class="text-info nav-link">
+                {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url%}
+                <img
+                  src="{{ user.userprofile.profile_image.url }}"
+                  alt="Profile Image"
+                  class="rounded-circle mx-auto img-fluid d-inline me-2"
+                  style="width: 30px; height: 30px"
+                />
+                {% else %}
+                <img
+                  src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp"
+                  alt="Profile Image Default"
+                  class="rounded-circle mx-auto img-fluid d-inline me-2"
+                  style="width: 30px; height: 30px"
+                />
+                {% endif %}
+              {{ user.username | capfirst }}</a>
             </li>
             <li class="nav-item mx-md-auto">
               <a
