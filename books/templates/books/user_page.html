@@ -14,6 +14,7 @@
             <th>#</th>
             <th>Author</th>
             <th>Title</th>
+            <th>Category</th>
             <th></th>
             <th></th>
         </tr>
@@ -24,6 +25,7 @@
                 <td>{{ forloop.counter }}</td>
                 <td>{{ book.author }}</td>
                 <td><a href="{% url 'book_detail' slug=book.slug %}">{{ book.title }}</a></td>
+                <td>{{ book.category }}</td>
                 <td>
                     <a href="{% url 'book_edit' slug=book.slug %}" class="btn btn-primary btn-sm">Edit</a>
                 </td>
