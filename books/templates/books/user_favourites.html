@@ -8,12 +8,15 @@
 </div>
 {% if user.is_authenticated %}
 {% if books|length != 0 %}
+<p>You liked {{ books|length}} books.</p>
 <table class="table table-striped">
     <thead>
         <tr>
             <th>#</th>
             <th>Author</th>
             <th>Title</th>
+            <th>Category</th>
+            <th>Likes</th>
         </tr>
     </thead>
     <tbody>
@@ -22,13 +25,15 @@
                 <td>{{ forloop.counter }}</td>
                 <td>{{ book.author }}</td>
                 <td><a href="{% url 'book_detail' slug=book.slug %}">{{ book.title }}</a></td>
+                <td>{{ book.category }}</td>
+                <td >{{ book.likes_counter }}</td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
 {% else %}
-<div class="text-center">
-    <h3>No favourite books yet</h3>
+<div >
+    <p>No favourite books yet</p>
 </div>
 {% endif %}
 {% endif %}

@@ -1,8 +1,36 @@
 {% extends 'books/base.html' %}
 
-{% block style %}
-{% endblock %}
+{% block head %}
+<style>
+    /* Add custom CSS for padding and margins */
+    @media (min-width: 992px) {
+        .custom-container {
+            padding-left: 100px;
+            padding-right: 100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
 
+    @media (max-width: 991px) {
+        .custom-container {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .custom-container {
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
+{% endblock %}
 {% block content %}
 <div class="title text-center">
     <h1>Search Results</h1>
@@ -10,22 +38,24 @@
 
 <div class="text-center">
     <form method="GET" action="{% url 'find_book' %}">
-        <input type="text" name="q" placeholder="Search books">
+        <input type="text" name="q" placeholder="Search books" value="{{ request.GET.q|default:'' }}">
         <button type="submit" class="btn btn-primary">Search</button>
+        <button type="button" class="btn btn-secondary" id="clearSearch">Clear</button>
     </form>
 </div>
 
+<div class="container-fluid custom-container">
 {% if books %}
 <div class="text-info">
     <p>Found {{ books|length }} records</p>
 </div>
-
 <table class="table table-striped">
     <thead>
         <tr>
             <th>#</th>
             <th>Author</th>
             <th>Title</th>
+            <th>Category</th>
             <th></th>
         </tr>
     </thead>
@@ -35,15 +65,15 @@
                 <td>{{ forloop.counter }}</td>
                 <td>{{ book.author }}</td>
                 <td><a href="{% url 'book_detail' slug=book.slug %}">{{ book.title }}</a></td>
-    
+                <td>{{ book.category }}</td>
                 <td>
                     <form method="post" action="{% url 'like_book' book.slug %}">
                         {% csrf_token %}
                         <input type="hidden" name="q" value="{{ request.GET.q }}">
                         {% if request.user in book.likes.all %}
-                            <button type="submit" class="btn btn-danger btn-sm">Unlike</button>
+                            <button type="submit" class="btn text-danger shadow-none"><i class="fa-regular fa-heart fa-beat"></i></button>
                         {% else %}
-                            <button type="submit" class="btn btn-success btn-sm">Like</button>
+                        <button type="submit" class="btn text-primary shadow-none"><i class="fa-regular fa-thumbs-up fa-bounce"></i></button>
                         {% endif %}
                     </form>
                 </td>
@@ -51,6 +81,8 @@
         {% endfor %}
     </tbody>
 </table>
+</div>
+
 {% else %}
 <div class="text-center">
     <h3>No books found</h3>
@@ -59,4 +91,10 @@
 {% endblock %}
 
 {% block script %}
+
+    // function to clear the search field
+    document.getElementById('clearSearch').addEventListener('click', function() {
+        document.querySelector('input[name="q"]').value = '';
+    });
+
 {% endblock %}
