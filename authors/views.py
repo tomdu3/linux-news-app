@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 from django.contrib import messages
-from .forms import SignUpForm, UserProfileForm
+from .forms import SignUpForm, UpdateProfileForm
 from django.contrib.auth.models import User
 from .models import UserProfile
 
@@ -11,7 +14,6 @@ from .models import UserProfile
 
 
 def login_user(request):
-    message = ''
     if request.method == 'POST':
         username = request.POST["username"]
         password = request.POST["password"]
@@ -55,22 +57,13 @@ def register_user(request):
 @login_required
 def user_profile(request):
     user = request.user
-    return render(request, 'user_profile.html', {'user': user})
+    context = {
+        'user': user
+        }
+    return render(request, 'user_profile.html', context)
 
 @login_required
 def update_profile(request):
-    if request.method == 'POST':
-        # TODO: Form submission control and validation - redirection to the profile page
-        pass
-    else:
-        # TODO: Display the profile update form
-        pass
-
-    return render(request, 'update_profile.html', {'user': request.user})
-
-@login_required
-def update_profile(request):
-    template_name = 'user_profile_update.html'
 
     # Get the user's profile instance
     try:
@@ -81,23 +74,139 @@ def update_profile(request):
         user_profile.save()
 
     if request.method == 'POST':
-        # Create a form instance with the user's profile data and the data from the POST request
-        form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
+        form = UpdateProfileForm(request.POST, instance=request.user)
 
         if form.is_valid():
-            # Save the updated profile data
-            form.save()
-            messages.success(request, 'Profile updated successfully.')
+            user = form.save()
+
+            # Check if the user entered a new password
+            new_password = form.cleaned_data.get('new_password1')
+            new_password_confirm = form.cleaned_data.get('new_password2')
+
+            if new_password != new_password_confirm:
+                messages.error(request, 'The two password fields didn\'t match.')
+                return redirect('update_profile')
+
+            if new_password:
+                # Validate the new password
+                try:
+                    validate_password(new_password)
+                except ValidationError as e:
+                    for error in e.error_list:
+                        messages.error(request, error)
+                    return redirect('update_profile')
+
+                # Update the user's password and keep them logged in
+                user.set_password(new_password)
+                user.save()
+                update_session_auth_hash(request, user)
+
+            messages.success(request, 'Your profile was successfully updated!')
             return redirect('user_profile')
         else:
+            # Add error messages for form validation errors
             for field, errors in form.errors.items():
                 for error in errors:
-                    messages.error(request, f'Error in {field}: {error}')
-    else:
-        # If the request is GET, create a form instance with the user's profile data
-        form = UserProfileForm(instance=user_profile)
+                    messages.error(request, f"Error in {field}: {error}")
 
-    return render(request, template_name, {'form': form})
+    else:
+        form = UpdateProfileForm(instance=request.user)
+
+    return render(request, 'user_profile_update.html', {'form': form})
+
+@login_required
+def update_profile(request):
+    # Get the user's profile instance
+    try:
+        user_profile = UserProfile.objects.get(user=request.user)
+    except UserProfile.DoesNotExist:
+        # If the user's profile doesn't exist, create a new one
+        user_profile = UserProfile(user=request.user)
+        user_profile.save()
+
+    if request.method == 'POST':
+        form = UpdateProfileForm(request.POST, request.FILES, instance=request.user)
+
+        if form.is_valid():
+            user = form.save(commit=False)  # Use commit=False to prevent saving the User model for now
+
+            # Check if the user entered a new password
+            new_password = form.cleaned_data.get('new_password1')
+            new_password_confirm = form.cleaned_data.get('new_password2')
+
+            if new_password != new_password_confirm:
+                form.add_error('new_password1', 'The two password fields didn\'t match.')
+                return render(request, 'user_profile_update.html', {'form': form})
+
+            if new_password:
+                # Validate the new password
+                try:
+                    validate_password(new_password)
+                except ValidationError as e:
+                    for error in e.error_list:
+                        form.add_error('new_password1', error)
+                    return render(request, 'user_profile_update.html', {'form': form})
+
+                # Update the user's password and keep them logged in
+                user.set_password(new_password)
+                user.save()
+                update_session_auth_hash(request, user)
+
+            # Check if the user is changing the email address
+            new_email = form.cleaned_data.get('email')
+            if new_email and new_email != user.email:
+                # Perform email validation or checks here if needed
+                # Example: Check if the new email address is unique
+                if User.objects.filter(email=new_email).exclude(username=user.username).exists():
+                    form.add_error('email', 'This email address is already in use.')
+                    return render(request, 'user_profile_update.html', {'form': form})
+
+                # Update the email address
+                user.email = new_email
+
+            # Check if the user is updating the profile image
+            if form.cleaned_data.get('profile_image'):
+                # Update the profile image
+                user_profile.profile_image = form.cleaned_data['profile_image']
+
+            user.save()  # Save the updated User model
+            user_profile.save()  # Save the updated UserProfile model
+
+            messages.success(request, 'Your profile was successfully updated!')
+            return redirect('user_profile')
+        else:
+            # Add error messages for form validation errors
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"Error in {field}: {error}")
+
+            messages.error(request, 'There was an error in the form. Please correct the errors.')
+
+    else:
+        form = UpdateProfileForm(instance=request.user)
+
+    return render(request, 'user_profile_update.html', {'form': form})
+
+
+
+def validate_password(password):
+    errors = []
+
+    if len(password) < 8:
+        errors.append(ValidationError("Password must be at least 8 characters long."))
+
+    if not any(c.isupper() for c in password):
+        errors.append(ValidationError("Password must contain at least one uppercase letter."))
+
+    if not any(c.islower() for c in password):
+        errors.append(ValidationError("Password must contain at least one lowercase letter."))
+
+    if not any(c.isdigit() for c in password):
+        errors.append(ValidationError("Password must contain at least one digit."))
+
+    if errors:
+        raise ValidationError(errors)
+
 
 @login_required
 def delete_profile(request):

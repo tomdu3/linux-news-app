@@ -1,7 +1,9 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 from .models import UserProfile
 from django import forms
+from cloudinary.forms import CloudinaryFileField
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(
@@ -40,32 +42,51 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].error_messages['password_mismatch'] = 'The two password fields didn\'t match.'
 
 
-class UserProfileForm(forms.ModelForm):
-    password = forms.CharField(
-        label='Password',
-        strip=False,
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        required=False  # Password is optional in the profile form
+class UpdateProfileForm(UserChangeForm):
+    email = forms.EmailField(
+        max_length=100,
+        label='',
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Email address'},),
+        required=False,
+        help_text='',)
+
+    profile_image = CloudinaryFileField(
+        label='Profile Image',
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control-file',
+        })
     )
 
-    confirm_password = forms.CharField(
-        label='Confirm Password',
-        strip=False,
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        required=False  # Confirm password is optional in the profile form
+    new_password1 = forms.CharField(
+        label='New Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'New Password (leave blank to keep current password)'
+        }),
+        required=False
+    )
+
+    new_password2 = forms.CharField(
+        label='Confirm New Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Confirm New Password'
+        }),
+        required=False
     )
 
     class Meta:
-        model = UserProfile
-        fields = ['password', 'confirm_password', 'profile_image']
+        model = User
+        fields = ('email', 'profile_image',)
 
-    def clean(self):
-        cleaned_data = super().clean()
-        password = cleaned_data.get("password")
-        confirm_password = cleaned_data.get("confirm_password")
+    def __init__(self, *args, **kwargs):
+        super(UpdateProfileForm, self).__init__(*args, **kwargs)
 
-        if password and confirm_password and password != confirm_password:
-            raise forms.ValidationError("Passwords do not match. Please try again.")
-
-        return cleaned_data
-
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['placeholder'] = 'Email address'
+        self.fields['email'].label = ''
+        self.fields['email'].required = False
+        self.fields['email'].help_text = ''
