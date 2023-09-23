@@ -6,9 +6,10 @@
     <div class="col-md-6 offset-md-3">
       <div class="card">
         <div class="card-header">
-          <h2>Update Profile</h2>
+          <h2>Update {{user.username | capfirst }}'s Profile</h2>
         </div>
         <div class="card-body">
+
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.non_field_errors }}
@@ -27,15 +28,10 @@
                 id="profileImagePreview"
                 src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp"
                 alt="Profile Image Default"
-                class="img-thumbnail"
-                style="max-width: 200px"
+                class="rounded-circle mx-auto d-block"
+                style="width: 150px; height: 150px"
               />
               {% endif %}
-            </div>
-            <div class="mb-3">
-              <!-- Display the form for changing the profile image -->
-              {{ form.profile_image.label_tag }}
-              {{ form.profile_image }}
             </div>
             <div class="mb-3">
               {{ form.email.label_tag }}
@@ -62,6 +58,11 @@
                 {% for error in form.new_password2.errors %}
                   <p class="text-danger">{{ error }}</p>
                 {% endfor %}
+              </div>
+              <div class="mb-3">
+                <!-- Display the form for changing the profile image -->
+                {{ form.profile_image.label_tag }}
+                {{ form.profile_image }}
               </div>
             </div>            
             <button type="submit" class="btn btn-primary">

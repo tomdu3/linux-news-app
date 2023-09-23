@@ -45,7 +45,7 @@ class SignUpForm(UserCreationForm):
 class UpdateProfileForm(UserChangeForm):
     email = forms.EmailField(
         max_length=100,
-        label='',
+        label='Email:',
         widget=forms.EmailInput(attrs={
             'class': 'form-control',
             'placeholder': 'Email address'},),
@@ -53,7 +53,7 @@ class UpdateProfileForm(UserChangeForm):
         help_text='',)
 
     profile_image = CloudinaryFileField(
-        label='Profile Image',
+        label='Change Profile Image',
         required=False,
         widget=forms.ClearableFileInput(attrs={
             'class': 'form-control-file',
@@ -81,12 +81,3 @@ class UpdateProfileForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('email', 'profile_image',)
-
-    def __init__(self, *args, **kwargs):
-        super(UpdateProfileForm, self).__init__(*args, **kwargs)
-
-        self.fields['email'].widget.attrs['class'] = 'form-control'
-        self.fields['email'].widget.attrs['placeholder'] = 'Email address'
-        self.fields['email'].label = ''
-        self.fields['email'].required = False
-        self.fields['email'].help_text = ''
