@@ -12,15 +12,15 @@
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.non_field_errors }}
-            <div class="mb-3">
+            <div class="mb-3 text-center"">
               <!-- Display the current profile image  -->
               {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url%}
             <img
               id="profileImagePreview"
               src="{{ user.userprofile.profile_image.url }}"
               alt="Profile Image"
-              class="img-thumbnail"
-              style="max-width: 200px"
+              class="rounded-circle mx-auto d-block"
+              style="width: 150px; height: 150px"
             />
             {% else %}
               <img
@@ -67,6 +67,7 @@
             <button type="submit" class="btn btn-primary">
               Update Profile
             </button>
+            <a href="{% url 'user_profile' %}" class="btn btn-danger">Cancel</a>
           </form>
         </div>
       </div>
@@ -74,4 +75,4 @@
   </div>
 </div>
 {% endblock %}
-{% endblock %}
+
