@@ -32,11 +32,11 @@
 </style>
 {% endblock %}
 {% block content %}
-<div class="title text-center">
+<div class="title text-center pt-4">
     <h1>Search Results</h1>
 </div>
 
-<div class="text-center">
+<div class="text-center pt-lg-4 pt-sm-2">
     <form method="GET" action="{% url 'find_book' %}">
         <input type="text" name="q" placeholder="Search books" value="{{ request.GET.q|default:'' }}">
         <button type="submit" class="btn btn-primary">Search</button>
@@ -49,23 +49,24 @@
 <div class="text-info">
     <p>Found {{ books|length }} records</p>
 </div>
+<div class="container pt-lg-4 pt-sm-2">
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>#</th>
-            <th>Author</th>
+            <th class="small-none">#</th>
+            <th class=>Author</th>
             <th>Title</th>
-            <th>Category</th>
-            <th></th>
+            <th class="small-none">Category</th>
+            <th>Like</th>
         </tr>
     </thead>
     <tbody>
         {% for book in books %}
             <tr>
-                <td>{{ forloop.counter }}</td>
+                <td class="small-none">{{ forloop.counter }}</td>
                 <td>{{ book.author }}</td>
-                <td><a href="{% url 'book_detail' slug=book.slug %}">{{ book.title }}</a></td>
-                <td>{{ book.category }}</td>
+                <td><a href="{% url 'book_detail' slug=book.slug %}" class="book-link">{{ book.title }} </a></td>
+                <td class="small-none">{{ book.category }}</td>
                 <td>
                     <form method="post" action="{% url 'like_book' book.slug %}">
                         {% csrf_token %}
@@ -81,6 +82,7 @@
         {% endfor %}
     </tbody>
 </table>
+</div>
 </div>
 
 {% else %}

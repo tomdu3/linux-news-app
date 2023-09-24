@@ -8,6 +8,10 @@
     --title: 'Mooli', sans-serif;
     --subtitle: 'Montserrat Alternates', sans-serif;
     --text: 'Roboto Serif', serif;
+    --size-1: 1.25rem;
+    --size-2: 1rem;
+    --size-3: 0.75rem;
+
 }
 
 body, footer {
@@ -18,51 +22,58 @@ h1 {
     font-family: var(--title);
 }
 
-h2, h3 {
+h2, h3, th {
     font-family: var(--subtitle);
 }
 
-a, p {
+a, p, td {
     font-family: var(--text);
     color: var(--dark-blue);
 }
 
+td {
+    font-size: var(--size-2);
+}
 .size-1 {
-    font-size: 1.25rem;
+    font-size: var(--size-1);
+  }
+  
+  .size-2 {
+    font-size: var(--size-2);
+  }
+  
+  .size-3 {
+    font-size: var(--size-3);
+  }
+
+.book-link {
+    font-size: var(--size-2);
+    transition:  font-size 0.3s; /* Add a smooth transition effect */
 }
 
-.size-2 {
-    font-size: 1rem;
+    /* hover effect for booklink */
+.book-link:hover {
+    font-size: calc(var(--size-2) + 0.1rem);
 }
 
-.size-3 {
-    font-size: 0.75rem;
+@media screen and (max-width: 767px) {
+    .small-none {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 768px) {
-    .size-1 {
-        font-size: 1.25rem;
+    :root {
+      --size-1: 1.25rem;
+      --size-2: 1rem;
+      --size-3: 0.75rem;
     }
-
-    .size-2 {
-        font-size: 1rem;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    :root {
+      --size-1: 1.5rem;
+      --size-2: 1.25rem;
+      --size-3: 1rem;
     }
-
-    .size-3 {
-        font-size: .75rem;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    .size-1 {
-        font-size: 1.5rem;
-    }
-
-    .size-2 {
-        font-size: 1.25rem;
-    }
-
-    .size-3 {
-        font-size: 1rem;
-    } 
-}
+  }
