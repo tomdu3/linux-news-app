@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Mooli&family=Roboto+Serif&display=swap');
+
+:root {
+    --midnight-blue: #265B8B;
+    --ivory: #ECECEB    ;
+    --dark-blue: #0B1C48;
+    --baby-blue: #84C7F2;
+    --title: 'Mooli', sans-serif;
+    --subtitle: 'Montserrat Alternates', sans-serif;
+    --text: 'Roboto Serif', serif;
+}
+
+body, footer {
+    background-color: var(--ivory);
+}
+
+h1 {
+    font-family: var(--title);
+}
+
+h2, h3 {
+    font-family: var(--subtitle);
+}
+
+a, p {
+    font-family: var(--text);
+    color: var(--dark-blue);
+}
+
+.size-1 {
+    font-size: 1.25rem;
+}
+
+.size-2 {
+    font-size: 1rem;
+}
+
+.size-3 {
+    font-size: 0.75rem;
+}
+
+@media screen and (min-width: 768px) {
+    .size-1 {
+        font-size: 1.25rem;
+    }
+
+    .size-2 {
+        font-size: 1rem;
+    }
+
+    .size-3 {
+        font-size: .75rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .size-1 {
+        font-size: 1.5rem;
+    }
+
+    .size-2 {
+        font-size: 1.25rem;
+    }
+
+    .size-3 {
+        font-size: 1rem;
+    } 
+}

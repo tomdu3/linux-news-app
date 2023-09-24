@@ -1,18 +1,52 @@
 {% extends 'books/base.html' %}
-
-{% block style %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
 {% endblock %}
+
 {% block content %}
 
+{% comment %} adapted from https://codepen.io/tomdu3/pen/VwqQNWo {% endcomment %}
+<div class="container text-center pt-2 mx-auto">
+    <div class="waviy pb-4">
+        <span style="--i:1">B</span>
+        <span style="--i:2">o</span>
+        <span style="--i:3">o</span>
+        <span style="--i:4">k</span>
+        <span style="--i:5">s</span>
+        <span style="--i:6">&nbsp;</span>
+        <span style="--i:7">f</span>
+        <span style="--i:8">o</span>
+        <span style="--i:8">r</span>
+        <span style="--i:9">&nbsp;</span>
+        <span style="--i:10">L</span>
+        <span style="--i:11">i</span>
+        <span style="--i:12">f</span>
+        <span style="--i:13">e</span>
+       </div>
+       <h2 class="fs-4 fw-bold text-lg-start text-center pb-3">Welcome
+            {% if user.is_authenticated %}
+            back, {{ user.username|capfirst }}!
+            {% else %}
+            , Guest!
+            {% endif %}
+        </h2>
+   
 
-<div class="text-center mb-4">
-    <h1 class="display-4">Books for Life</h1>
-</div>
-<div class="container">
-    <h2 class="fs-4 fw-bold text-center">Welcome to Books for Life</h2>
-    <p>
-        At Books for Life, we believe in the transformative power of books. Our mission is to inspire and guide you on a lifelong journey of learning, growth, and self-discovery through the magic of literature.
-    </p>
+    <div class="container pt-2 pt-md-4 pt-lg-6 pb-md-4 pb-lg-6 lh-lg">
+        <div class="pb-3">
+            <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
+                alt="Image of a scolar writing a book">
+        </div>
+        <p class="text-start size-2 pt-4">
+            At Books for Life, we believe in the transformative power of books. Our mission is to inspire and guide you on a lifelong journey of learning, growth, and self-discovery through the magic of literature.
+        </p>
+    </div>
+    <div class="container pt-2 pt-md-4 pt-lg-6 pb-md-4 pb-lg-6 lh-lg">
+        <div class="pb-3 d-none d-md-block">
+            <img src="{% static 'images/shakespeare.webp' %}" alt="shakespeare" class="rounded-circle">
+        </div>
+    </div>
 </div>
 {% endblock %}
 {% block script %}
