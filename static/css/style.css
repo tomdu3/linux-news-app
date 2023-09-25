@@ -22,7 +22,7 @@ h1 {
     font-family: var(--title);
 }
 
-h2, h3, th {
+h2, h3, h4, h5, th {
     font-family: var(--subtitle);
 }
 
@@ -34,6 +34,13 @@ a, p, td {
 td {
     font-size: var(--size-2);
 }
+
+input {
+    font-family: var(--text);
+    color: var(--dark-blue);
+    font-size: var(--size-2);
+}
+
 .size-1 {
     font-size: var(--size-1);
   }

@@ -1,53 +1,76 @@
-{% extends 'books/base.html' %}
-{% load static %}
-{% block head %}
-<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
-{% endblock %}
-
-{% block content %}
-
-{% comment %} adapted from https://codepen.io/tomdu3/pen/VwqQNWo {% endcomment %}
+{% extends 'books/base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
+{% endblock %} {% block content %} {% comment %} adapted from
+https://codepen.io/tomdu3/pen/VwqQNWo {% endcomment %}
 <div class="container text-center pt-2 mx-auto">
-    <div class="waviy pb-4">
-        <span style="--i:1">B</span>
-        <span style="--i:2">o</span>
-        <span style="--i:3">o</span>
-        <span style="--i:4">k</span>
-        <span style="--i:5">s</span>
-        <span style="--i:6">&nbsp;</span>
-        <span style="--i:7">f</span>
-        <span style="--i:8">o</span>
-        <span style="--i:8">r</span>
-        <span style="--i:9">&nbsp;</span>
-        <span style="--i:10">L</span>
-        <span style="--i:11">i</span>
-        <span style="--i:12">f</span>
-        <span style="--i:13">e</span>
-       </div>
-       <h2 class="fs-4 fw-bold text-lg-start text-center pb-3">Welcome
-            {% if user.is_authenticated %}
-            back, {{ user.username|capfirst }}!
-            {% else %}
-            , Guest!
-            {% endif %}
-        </h2>
-   
-
-    <div class="container pt-2 pt-md-4 pt-lg-6 pb-md-4 pb-lg-6 lh-lg">
-        <div class="pb-3">
-            <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
-                alt="Image of a scolar writing a book">
+  <div class="waviy pb-4">
+    <span style="--i: 1">B</span>
+    <span style="--i: 2">o</span>
+    <span style="--i: 3">o</span>
+    <span style="--i: 4">k</span>
+    <span style="--i: 5">s</span>
+    <span style="--i: 6">&nbsp;</span>
+    <span style="--i: 7">f</span>
+    <span style="--i: 8">o</span>
+    <span style="--i: 8">r</span>
+    <span style="--i: 9">&nbsp;</span>
+    <span style="--i: 10">L</span>
+    <span style="--i: 11">i</span>
+    <span style="--i: 12">f</span>
+    <span style="--i: 13">e</span>
+  </div>
+  <h2 class="fs-4 fw-bold text-center pb-md-3">
+    Welcome {% if user.is_authenticated %} back, {{ user.username|capfirst }}!
+    {% else %} , Guest! {% endif %}
+  </h2>
+  <div class="row container home-main align-items-center pb-lg-5">
+    <div class="col-sm-6">
+      <div class="card border-0">
+        <div class="card-body">
+          <div class="pb-3 d-none d-md-block">
+            <img
+              src="{% static 'images/shakespeare.webp' %}"
+              alt="shakespeare"
+              class="rounded-circle home-image"
+            />
+          </div>
+          <p class="card-text">
+            At Books for Life, we believe in the transformative power of books.
+            Our mission is to inspire and guide you on a lifelong journey of
+            learning, growth, and self-discovery through the magic of
+            literature.
+          </p>
+          <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+          <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
         </div>
-        <p class="text-start size-2 pt-4">
-            At Books for Life, we believe in the transformative power of books. Our mission is to inspire and guide you on a lifelong journey of learning, growth, and self-discovery through the magic of literature.
-        </p>
+      </div>
     </div>
-    <div class="container pt-2 pt-md-4 pt-lg-6 pb-md-4 pb-lg-6 lh-lg">
-        <div class="pb-3 d-none d-md-block">
-            <img src="{% static 'images/shakespeare.webp' %}" alt="shakespeare" class="rounded-circle">
+    <div class="col-sm-6">
+      <div class="pb-3">
+        <div class="card border-0">
+          <div class="card-body">
+            <h5 class="home-title pb-3">
+                <span>Dig into the world</span>
+                <span>of literature!</span>
+              </h5>
+            <img
+            class="home-image"
+            src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
+            alt="Image of a scolar writing a book"
+            />
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="container text-center mx-auto col-md-6 pt-md-5 lh-lg fst-italic">
+    <p>
+        In August of this year, I sadly lost my dear friend Grace. A decade ago, she gifted me a bookmark with a list of 50 books one should read in a lifetime. It is this touching memory that inspired the creation of this website.
+    </p>
+    </div>
+  </div>
 </div>
-{% endblock %}
-{% block script %}
-{% endblock %}
+</div>
+  {% endblock %} {% block script %} {% endblock %}
+</div>
