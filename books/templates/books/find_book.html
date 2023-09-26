@@ -37,12 +37,15 @@
 </div>
 
 <div class="text-center pt-lg-4 pt-sm-2">
-    <form method="GET" action="{% url 'find_book' %}">
-        <input type="text" name="q" id ="input-search" placeholder="Search books" value="{{ request.GET.q|default:'' }}">
-        <button type="submit" class="btn btn-primary">Search</button>
-        <button type="button" class="btn btn-secondary d-none" id="clearSearch">Clear</button>
-    </form>
+    <div class="col-5 mx-auto">
+        <form method="GET" action="{% url 'find_book' %}" class="d-flex align-items-center">
+            <input type="text" name="q" id="input-search" placeholder="Search books" value="{{ request.GET.q|default:'' }}" class="form-control me-2">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-secondary clear-search" id="clearSearch" style="visibility: hidden;">Clear</button>
+        </form>
+    </div>  
 </div>
+
 
 <div class="container-fluid custom-container">
 {% if books %}
@@ -94,21 +97,23 @@
 
 {% block script %}
 
-    // Function to clear the search field
-    document.getElementById('clearSearch').addEventListener('click', function() {
-        document.querySelector('#input-search').value = '';
-        this.classList.add('d-none');
-    });
-    // If the search field is empty, the clear button disappears
-    document.querySelector('#input-search').addEventListener('keyup', function() {
-        const clearSearch = document.getElementById('clearSearch');
-        
-        if (this.value.length > 0) {
-            clearSearch.classList.remove('d-none');
-        } else {
-            clearSearch.classList.add('d-none');
-        }
-    });
+// Function to clear the search field
+document.querySelector('#input-search').addEventListener('keyup', function() {
+    const clearSearch = document.getElementById('clearSearch');
+    
+    if (this.value.length > 0) {
+        clearSearch.style.visibility = 'visible';
+    } else {
+        clearSearch.style.visibility = 'hidden';
+    }
+});
+
+// If the search field is empty, the Clear button appears/disappears
+
+document.querySelector('#clearSearch').addEventListener('click', function() {
+    document.querySelector('#input-search').value = '';
+    this.style.visibility = 'hidden';
+});
 
 {% endblock %}
 
