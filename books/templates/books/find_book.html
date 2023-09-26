@@ -37,7 +37,7 @@
 </div>
 
 <div class="text-center pt-lg-4 pt-sm-2">
-    <div class="col-5 mx-auto">
+    <div class="col-lg-5 col-md-8 col-10 mx-auto">
         <form method="GET" action="{% url 'find_book' %}" class="d-flex align-items-center gap-1">
             <input type="text" name="q" id="input-search" placeholder="Search books" value="{{ request.GET.q|default:'' }}" class="form-control me-2">
             <button type="submit" class="btn btn-primary">Search</button>
