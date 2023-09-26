@@ -38,9 +38,9 @@
 
 <div class="text-center pt-lg-4 pt-sm-2">
     <form method="GET" action="{% url 'find_book' %}">
-        <input type="text" name="q" placeholder="Search books" value="{{ request.GET.q|default:'' }}">
+        <input type="text" name="q" id ="input-search" placeholder="Search books" value="{{ request.GET.q|default:'' }}">
         <button type="submit" class="btn btn-primary">Search</button>
-        <button type="button" class="btn btn-secondary" id="clearSearch">Clear</button>
+        <button type="button" class="btn btn-secondary d-none" id="clearSearch">Clear</button>
     </form>
 </div>
 
@@ -94,9 +94,21 @@
 
 {% block script %}
 
-    // function to clear the search field
+    // Function to clear the search field
     document.getElementById('clearSearch').addEventListener('click', function() {
-        document.querySelector('input[name="q"]').value = '';
+        document.querySelector('#input-search').value = '';
+        this.classList.add('d-none');
+    });
+    // If the search field is empty, the clear button disappears
+    document.querySelector('#input-search').addEventListener('keyup', function() {
+        const clearSearch = document.getElementById('clearSearch');
+        
+        if (this.value.length > 0) {
+            clearSearch.classList.remove('d-none');
+        } else {
+            clearSearch.classList.add('d-none');
+        }
     });
 
 {% endblock %}
+
