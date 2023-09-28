@@ -26,7 +26,7 @@ h2, h3, h4, h5, th {
     font-family: var(--subtitle);
 }
 
-a, p, td {
+a, p, td, label, option  {
     font-family: var(--text);
     color: var(--dark-blue);
 }
@@ -35,7 +35,7 @@ td, button {
     font-size: var(--size-2);
 }
 
-input {
+input, textarea {
     font-family: var(--text);
     color: var(--dark-blue);
     font-size: var(--size-2);
@@ -61,6 +61,13 @@ input {
     /* hover effect for booklink */
 .book-link:hover {
     font-size: calc(var(--size-2) + 0.1rem);
+}
+
+.form-group {
+  padding: 2px;
+}
+.form-label {
+  padding-top: 10px;
 }
 
 @media screen and (max-width: 767px) {

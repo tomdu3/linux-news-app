@@ -155,7 +155,8 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Needed for admin for django4.+
-CSRF_TRUSTED_ORIGINS=['https://8000-tomdu3-booksforlife-faydvwtuct5.ws-eu104.gitpod.io/*']
+CSRF_TRUSTED_ORIGINS=['https://8000-tomdu3-booksforlife-faydvwtuct5.ws-eu104.gitpod.io/*',
+                      'https://books-4-life-2d26bdf04dec.herokuapp.com/*']
 
 # Add custom User model
 AUTH_USER_MODEL = 'auth.User'
