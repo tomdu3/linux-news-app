@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views import generic, View
@@ -14,6 +15,7 @@ from django.db.models import Q
 def home(request):
     return render(request, 'books/home.html')
 
+@login_required
 def user_page(request):
     user = request.user
 
@@ -25,7 +27,7 @@ def user_page(request):
     return render(request, 'books/user_page.html', context=context)
 
 
-class BookDetail(View):
+class BookDetail(LoginRequiredMixin, View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Book.objects.filter(status=1)
@@ -41,7 +43,7 @@ class BookDetail(View):
              }
         return render(request, 'books/book_detail.html', context=context)
 
-
+@login_required
 def user_favourites(request):
     user = request.user
 
@@ -73,7 +75,7 @@ class BookUpdateView(LoginRequiredMixin, View):
 
         if form.is_valid():
             form.save()
-            return redirect('book_detail', book.slug)
+            return redirect('user_page')
 
         context = {
             'book': book,
@@ -82,8 +84,7 @@ class BookUpdateView(LoginRequiredMixin, View):
         return render(request, 'books/book_edit.html', context)
 
 
-
-class AddBookView(View):
+class AddBookView(LoginRequiredMixin, View):
     def get(self, request):
         form = BookForm()
         categories = Category.objects.all()
@@ -150,6 +151,7 @@ class BookDeleteView(LoginRequiredMixin, View):
         book.delete()
         return redirect('user_page')
 
+@login_required
 def find_book(request):
 
     query = request.GET.get('q')
@@ -170,7 +172,7 @@ def find_book(request):
     }
     return render(request, 'books/find_book.html', context=context)
 
-
+@login_required
 def like_book(request, slug):
     query_param = request.POST.get('q')
     print(query_param)
@@ -195,6 +197,7 @@ def like_book(request, slug):
         return redirect('find_book')
 
 
+@login_required
 def like_book_detail(request, slug):
     '''Book detail like view'''
     if request.method == 'POST' and request.user.is_authenticated:
