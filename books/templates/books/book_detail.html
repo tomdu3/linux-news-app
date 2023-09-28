@@ -1,9 +1,9 @@
 {% extends "books/base.html" %} {% load static %} {% block content %}
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-md-12">
+  <div class="row col-10 mx-auto">
+    <div class="col-12">
       <div class="card">
-        <div class="row container pb-4 mx-auto">
+        <div class="row container pb-md-4 mx-auto">
           <div class="col-12 col-md-6 text-center">
             <h2 class="card-title">{{ book.title }}</h2>
             <p class="card-text">Author: {{ book.author }}</p>
@@ -39,11 +39,18 @@
                     </a>
                   </div>
                 </div>
-                <p class="card-text pt-4">Category: {{ book.category }}</p>
+                <p class="card-text">Category: {{ book.category }}</p>
                 <p class="card-text">
                   Added on: {{ book.created_on|date:"F d, Y" }}
                 </p>
-                <p class="card-text">Likes: {{ book.likes_counter }}</p>
+                <div class="d-flex flex-row align-items-center">
+                  <p class="card-text text-start">Likes: {{ book.likes_counter }}</p>
+                  {% if request.user in book.likes.all %}
+                  <p class="btn text-danger"><i class="fa-solid fa-heart"></i></p>
+                  {% else %}
+                  <p class="btn text-danger"><i class="fa-regular fa-heart fa-beat"></i></p>
+                  {% endif %}
+                </div>
               </div>
             </div>
           </div>
