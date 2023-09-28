@@ -39,17 +39,23 @@
                     </a>
                   </div>
                 </div>
-                <p class="card-text">Category: {{ book.category }}</p>
+                <p class="card-text pt-2">Category: {{ book.category }}</p>
                 <p class="card-text">
                   Added on: {{ book.created_on|date:"F d, Y" }}
                 </p>
-                <div class="d-flex flex-row align-items-center">
-                  <p class="card-text text-start">Likes: {{ book.likes_counter }}</p>
-                  {% if request.user in book.likes.all %}
-                  <p class="btn text-danger"><i class="fa-solid fa-heart"></i></p>
-                  {% else %}
-                  <p class="btn text-danger"><i class="fa-regular fa-heart fa-beat"></i></p>
-                  {% endif %}
+                <div class="d-flex flex-row justify-content-start">
+                  <p class="card-text text-start pt-2">Likes: {{ book.likes_counter }}</p>
+                  <form method="post" action="{% url 'like_book_detail' book.slug %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="q" value="{{ request.GET.q }}">
+                    <button type="submit" class="btn shadow-none m-0">
+                        {% if request.user in book.likes.all %}
+                            <i class="fa-solid fa-heart fa-beat text-danger"></i>
+                        {% else %}
+                            <i class="fa-regular fa-thumbs-up fa-bounce text-danger"></i>
+                        {% endif %}
+                    </button>
+                </form>
                 </div>
               </div>
             </div>

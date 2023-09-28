@@ -193,3 +193,22 @@ def like_book(request, slug):
         return redirect(reverse('find_book') + f'?q={query_param}')
     else:
         return redirect('find_book')
+
+
+def like_book_detail(request, slug):
+    '''Book detail like view'''
+    if request.method == 'POST' and request.user.is_authenticated:
+        book = get_object_or_404(Book, slug=slug)
+        
+        # Check if the user has already liked the book
+        liked_by_user = book.likes.filter(id=request.user.id).exists()
+        
+        if liked_by_user:
+            # User has already liked the book, remove the like
+            book.likes.remove(request.user)
+        else:
+            # User hasn't liked the book, add the like
+            book.likes.add(request.user)
+
+        # Redirect back to the book detail page
+        return redirect('book_detail', slug=slug)
