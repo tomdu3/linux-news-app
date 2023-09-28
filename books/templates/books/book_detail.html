@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="row">
+        <div class="row container pb-4 mx-auto">
           <div class="col-12 col-md-6 text-center">
             <h2 class="card-title">{{ book.title }}</h2>
             <p class="card-text">Author: {{ book.author }}</p>
@@ -23,48 +23,26 @@
             />
             {% endif %}
           </div>
-          <div class="col-md-6 col-sm-12">
+          <div class="col-md-6">
             <div class="card border-0">
               <div class="card-body">
-                <div class="row col-md-12">
-                  <!-- This column takes full width on smaller screens and half width on medium and larger screens -->
-                  <div class="col-6 text-left text-md-left">
-                    {% if liked_by_user %}
-                    <p class="text-success">Liked by You!</p>
-                    {% else %}
-                    <p class="text-danger">NOT Liked by You!</p>
-
-                    {% comment %} <form
-                      method="post"
-                      action="{% url 'like_book' book.slug %}"
-                    >
-                      {% csrf_token %}
-                      <button type="submit" class="btn btn-primary">
-                        Like
-                      </button>
-                    </form> {% endcomment %}
-                    {% endif %}
-                  </div>
+                <div class="row">
                   <!-- This column takes half width on all screens -->
-                  <div class="col-6 d-flex justify-content-end">
-                    <div class="d-flex justify-content-end">
-                      <!-- Right-align the button -->
-                      <a href="javascript:history.go(-1)">
-                        <input
-                          type="button"
-                          value="Back"
-                          class="btn btn-primary"
-                          style="text-align: right"
-                        />
-                      </a>
-                    </div>
+                  <div class="d-flex justify-content-end">
+                    <!-- Right-align the button -->
+                    <a href="javascript:history.go(-1)">
+                      <input
+                        type="button"
+                        value="Back"
+                        class="btn btn-primary"
+                      />
+                    </a>
                   </div>
                 </div>
-                <p class="card-text">{{ book.category }}</p>
+                <p class="card-text pt-4">Category: {{ book.category }}</p>
                 <p class="card-text">
-                  Published Date: {{ book.created_on|date:"F d, Y" }}
+                  Added on: {{ book.created_on|date:"F d, Y" }}
                 </p>
-                <p class="card-text">Status: {{ book.get_status_display }}</p>
                 <p class="card-text">Likes: {{ book.likes_counter }}</p>
               </div>
             </div>
