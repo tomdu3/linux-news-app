@@ -28,9 +28,50 @@
                     <td class="small-none h6 align-middle">{{ book.category }}</td>
                     <td class="d-flex flex-row gap-1 justify-content-center align-middle">
                         <a href="{% url 'book_edit' slug=book.slug %}" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="{% url 'book_delete' slug=book.slug %}" class="btn btn-danger btn-sm">Delete</a>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ book.id }}">Delete</button>
                     </td>
                 </tr>
+                 <!-- Delete Confirmation Modal -->
+                 <div class="modal fade" id="deleteModal{{ book.id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex align-items-center">
+                                    {% if 'default' in book.image_url.url %}
+                                    <img
+                                    src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
+                                    class="card-img-top mx-auto"
+                                    style="max-width: 100px; max-height: 100px;"
+                                    alt="{{ book.title }} image"
+                                    />
+                                    {% else %}
+                                    <img
+                                        src="{{ book.image_url.url }}"
+                                        class="card-img-top mx-auto"
+                                        style="max-width: 100px; max-height: 100px;"
+                                        alt="{{ book.title }} image"
+                                    />
+                                    {% endif %}
+                                    
+                                    <div class="ms-3">
+                                        <h4 class="fw-bold">{{ book.title }}</h4>
+                                        <p>Author: {{ book.author }}</p>
+                                        <p><span class="fst-italic">Short Description:</span> {{ book.short_description }}</p>
+                                    </div>
+                                </div>
+                                <p>Are you sure you want to delete <span class="fw-bold text-danger">{{ book.title }}</span>?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <a href="{% url 'book_delete' slug=book.slug %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
         </tbody>
     </table>
@@ -41,7 +82,7 @@
 </div>
 {% endif %}
 <div class="container text-center">
-    <a href="{% url 'book_add' %}" class="btn btn-outline-danger">Add Book</a>
+    <a href="{% url 'book_add' %}" class="btn btn-outline-danger">Add a Book</a>
 </div>
 {% endif %}
 {% endblock %}
