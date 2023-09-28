@@ -15,10 +15,19 @@ from .models import UserProfile
 
 def login_user(request):
     if request.method == 'POST':
-        username = request.POST["username"]
+        username_or_email = request.POST["username_or_email"]
         password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-
+        
+        # Check if the input contains '@' to determine whether it's an email or username.
+        if "@" in username_or_email:
+            # Try to get a user with the provided email.
+            try:
+                user = User.objects.get(email=username_or_email)
+            except User.DoesNotExist:
+                user = None
+        else:
+            user = authenticate(request, username=username_or_email, password=password)
+            
         if user is not None:
             login(request, user)
             # Redirect to a success page.

@@ -14,8 +14,8 @@
             {% csrf_token %}
             <input type="hidden" name="form_type" value="login">
             <div class="mb-3">
-                {% comment %} <label for="loginUsername" class="form-label">User Name</label> {% endcomment %}
-                <input type="text" class="form-control" id="loginUsername" placeholder="User Name (required)" name="username" required>
+                {% comment %} <label for="loginUsernameEmail" class="form-label">User Name</label> {% endcomment %}
+                <input type="text" class="form-control" id="loginUsernameEmail" placeholder="User Name or E-mail (required)" name="username_or_email" required>
             </div>
             <div class="mb-3">
                 <input type="password" class="form-control" id="loginPassword" placeholder="Pasword (required)" name="password" required>
