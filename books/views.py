@@ -223,3 +223,17 @@ def like_book_detail(request, slug):
 
         # Redirect back to the book detail page
         return redirect('book_detail', slug=slug)
+
+
+def remove_from_favourites(request, slug):
+    user = request.user
+
+    # Get the book by its slug
+    book = get_object_or_404(Book, slug=slug)
+
+    # Check if the user has liked the book
+    if user in book.likes.all():
+        book.likes.remove(user)  # Remove the user from the book's likes
+
+    # Redirect back to the user's favourites page
+    return redirect('user_favourites')
