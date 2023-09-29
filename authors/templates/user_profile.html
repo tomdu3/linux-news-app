@@ -34,10 +34,12 @@
             />
             {% endif %}
           </div>
-          <p>Username: {{ user.username }}</p>
-          <p>Email: {{ user.email }}</p>
+          <div class="container">
+            <p><span class="fw-bold">Username:</span> {{ user.username }}</p>
+            <p><span class="fw-bold">Email:</span> {{ user.email }}</p>
+          </div>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
           <a href="{% url 'update_profile' %}" class="btn btn-primary"
             >Update Profile</a
           >
