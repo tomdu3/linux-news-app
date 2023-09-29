@@ -26,12 +26,12 @@ h2, h3, h4, h5, th {
     font-family: var(--subtitle);
 }
 
-a, p, td, label, option  {
+a, p, td, label, option, .description  {
     font-family: var(--text);
     color: var(--dark-blue);
 }
 
-td, button {
+td, button, .description {
     font-size: var(--size-2);
 }
 
@@ -68,6 +68,11 @@ input, textarea {
 }
 .form-label {
   padding-top: 10px;
+}
+
+.book-card {
+  padding-top: 8px;;    
+  
 }
 
 @media screen and (max-width: 767px) {
