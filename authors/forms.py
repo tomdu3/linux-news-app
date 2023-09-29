@@ -22,12 +22,12 @@ class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
 
-        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['username'].widget.attrs['class'] = 'form-control form-label'
         self.fields['username'].label = ''
         self.fields['username'].widget.attrs['placeholder'] = 'Username (required)'
         self.fields['username'].help_text = ''
 
-        self.fields['password1'].widget.attrs['class'] = 'form-control'
+        self.fields['password1'].widget.attrs['class'] = 'form-control form-label'
         self.fields['password1'].widget.attrs['placeholder'] = 'Password (required)'
         self.fields['password1'].label = ''
         self.fields['password1'].help_text = ''
@@ -35,7 +35,7 @@ class SignUpForm(UserCreationForm):
         
 
 
-        self.fields['password2'].widget.attrs['class'] = 'form-control'
+        self.fields['password2'].widget.attrs['class'] = 'form-control form-label'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password (required)'
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = ''
@@ -56,15 +56,15 @@ class UpdateProfileForm(UserChangeForm):
         label='Change Profile Image',
         required=False,
         widget=forms.ClearableFileInput(attrs={
-            'class': 'form-control-file',
+            'class': 'form-control form-label',
         })
     )
 
     new_password1 = forms.CharField(
         label='New Password',
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'New Password (leave blank to keep current password)'
+            'class': 'form-control form-label',
+            'placeholder': 'New Password (blank for current password)'
         }),
         required=False
     )
@@ -72,7 +72,7 @@ class UpdateProfileForm(UserChangeForm):
     new_password2 = forms.CharField(
         label='Confirm New Password',
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control',
+            'class': 'form-control form-label',
             'placeholder': 'Confirm New Password'
         }),
         required=False

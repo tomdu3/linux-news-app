@@ -33,6 +33,7 @@ a, p, td, label, option, .description  {
 
 td, button, .description {
     font-size: var(--size-2);
+    font-family: var(--text);
 }
 
 input, textarea {
