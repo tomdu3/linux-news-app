@@ -75,9 +75,9 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="q" value="{{ request.GET.q }}">
                                 {% if request.user in book.likes.all %}
-                                    <button type="submit" class="btn text-danger shadow-none"><i class="fa-regular fa-heart fa-beat"></i></button>
+                                    <button type="submit" class="btn text-danger shadow-none"><i class="fa-solid fa-heart fa-beat"></i></button>
                                 {% else %}
-                                <button type="submit" class="btn text-primary shadow-none"><i class="fa-regular fa-thumbs-up fa-bounce"></i></button>
+                                <button type="submit" class="btn text-primary shadow-none"><i class="fa-regular fa-heart fa-bounce"></i></button>
                                 {% endif %}
                             </form>
                         </td>

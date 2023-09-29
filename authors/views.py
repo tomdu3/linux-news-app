@@ -93,16 +93,16 @@ def update_profile(request):
             new_password_confirm = form.cleaned_data.get('new_password2')
 
             if new_password != new_password_confirm:
-                messages.error(request, 'The two password fields didn\'t match.')
+                messages.error(request, ('The two password fields didn\'t match.'), extra_tags='danger')
                 return redirect('update_profile')
 
             if new_password:
                 # Validate the new password
                 try:
                     validate_password(new_password)
-                except ValidationError as e:
-                    for error in e.error_list:
-                        messages.error(request, error)
+                except ValidationError as errors:
+                    for error in errors.error_list:
+                        messages.error(request, error, extra_tags='danger')
                     return redirect('update_profile')
 
                 # Update the user's password and keep them logged in
@@ -110,13 +110,13 @@ def update_profile(request):
                 user.save()
                 update_session_auth_hash(request, user)
 
-            messages.success(request, 'Your profile was successfully updated!')
+            messages.success(request, 'Your profile was successfully updated!', extra_tags='success')
             return redirect('user_profile')
         else:
             # Add error messages for form validation errors
             for field, errors in form.errors.items():
                 for error in errors:
-                    messages.error(request, f"Error in {field}: {error}")
+                    messages.error(request, (f'Error in {field}: {error}'), extra_tags='danger')
 
     else:
         form = UpdateProfileForm(instance=request.user)
