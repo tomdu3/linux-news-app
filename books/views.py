@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -75,6 +76,9 @@ class BookUpdateView(LoginRequiredMixin, View):
 
         if form.is_valid():
             form.save()
+
+            # Success message upon update
+            messages.success(request, (f'Book "{book.title}" successfully updated!'), extra_tags='success')
             return redirect('user_page')
 
         context = {
@@ -131,10 +135,10 @@ class AddBookView(LoginRequiredMixin, View):
                 user_id=user,
                 status=1,
             )
-            print(book.title, book.author, book.short_description, book.full_description, book.image_url, book.category, book.slug, book.user_id)
-
             book.save()
 
+            # Success message upon creation
+            messages.success(request, (f'Book "{book.title}" successfully added!'), extra_tags='success')
             return redirect('user_page')
 
         categories = Category.objects.all()
@@ -149,6 +153,10 @@ class BookDeleteView(LoginRequiredMixin, View):
     def get(self, request, slug):
         book = get_object_or_404(Book, slug=slug)
         book.delete()
+
+        # Success message upon deletion
+        messages.success(request, (f'Book "{book.title}" successfully deleted!'), extra_tags='success')
+        
         return redirect('user_page')
 
 @login_required
