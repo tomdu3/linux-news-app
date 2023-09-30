@@ -1,0 +1,72 @@
+{% extends 'books/base.html' %}
+
+{% load static %}
+
+{% block head %}
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init('jF0IEklCsgp1doOjY');
+        })();
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 col-9 col-md-6 col-lg-4">
+    <div class="text-center">
+        <h2>Contact Us</h2>
+    </div>
+    <div id="contactForm" class="form-container mt-3">
+        <form id="emailForm" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="mb-3">
+                {{ form.name }}
+                {{ form.name.errors }}
+                <input type="hidden" id="name" value="{{ form.name.value }}">
+            </div>
+            <div class="mb-3">
+                {{ form.email }}
+                {{ form.email.errors }}
+                <input type="hidden" id="email" value="{{ form.email.value }}">
+            </div>
+            <div class="mb-3">
+                {{ form.message }}
+                {{ form.message.errors }}
+                <input type="hidden" id="message" value="{{ form.message.value }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>
+
+<!-- Success Modal -->
+{% if success_message %}
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{{ success_message }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block script %}
+
+    <script src="{% static 'js/contact.js' %}"></script>
+
+{% endblock %}

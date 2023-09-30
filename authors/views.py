@@ -5,9 +5,12 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-from .forms import SignUpForm, UpdateProfileForm
+from .forms import SignUpForm, UpdateProfileForm, ContactForm
 from django.contrib.auth.models import User
 from .models import UserProfile
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 
 # Create your views here.
@@ -225,3 +228,18 @@ def delete_profile(request):
         return redirect('home')  # after deletion redirect to home page
 
     return render(request, 'profile.html', {'user': request.user})
+
+
+def contact(request):
+    success_message = None
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+
+            success_message = "Thank you for your message! We will get back to you soon."
+
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form, 'success_message': success_message})

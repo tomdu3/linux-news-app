@@ -1,37 +1,6 @@
 {% extends 'books/base.html' %}
 
-<!--TO REMOVE-->
-{% comment %} {% block head %}
-<style>
-    /* Add custom CSS for padding and margins */
-    @media (min-width: 992px) {
-        .custom-container {
-            padding-left: 100px;
-            padding-right: 100px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    }
-
-    @media (max-width: 991px) {
-        .custom-container {
-            padding-left: 15px;
-            padding-right: 15px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .custom-container {
-            padding-left: 10px;
-            padding-right: 10px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    }
-</style>
-{% endblock %} {% endcomment %}
+{% load static %}
 
 {% block content %}
 <div class="title text-center pt-4">
@@ -95,5 +64,18 @@
     <h3 class="pt-5">No books found</h3>
 </div>
 {% endif %}
+
 {% endblock %}
+
+{% block script %}
+
+{% block script %}
+
+    <script src="{% static 'js/search.js' %}"></script>
+
+{% endblock %}
+
+{% endblock %}
+
+
 

@@ -81,3 +81,27 @@ class UpdateProfileForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('email', 'profile_image',)
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(
+        label='',
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Name (required)'}))
+    email = forms.EmailField(
+        label='',
+        required=True,
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Email (required)'}))
+    message = forms.CharField(
+        label='',
+        widget=forms.Textarea(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Write your message (required)'}))

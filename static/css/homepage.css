@@ -9,7 +9,7 @@
     --bg-color: var(--ivory); 
 }
 
-.home-main > div>div>div{
+.home-main div>div>div{
     background-color: var(--ivory);
 }
 
@@ -22,7 +22,7 @@
   .waviy span {
     position: relative;
     display: inline-block;
-    font-size: 40px;
+    font-size: 35px;
     color: #274472;
     text-transform: uppercase;
     animation: flip 2s infinite;
