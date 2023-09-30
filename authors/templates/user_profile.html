@@ -1,5 +1,7 @@
 {% extends "books/base.html" %}
 
+{% load static %}
+
 {% block content %}
 
 <div class="container mt-5">
@@ -9,31 +11,29 @@
         <div class="card-header">
           <h2>Welcome, {{ user.username | capfirst }}</h2>
         </div>
-          <div class="text-center">
-            {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url%}
-            <img
-              src="{{ user.userprofile.profile_image.url }}"
-              alt="Profile Image"
-              class="rounded-circle mx-auto d-block"
-              style="width: 150px; height: 150px"
-            />
-            {% else %}
-            <img
-              src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp"
-              alt="Profile Image Default"
-              class="rounded-circle mx-auto d-block"
-              style="width: 150px; height: 150px"
-            />
-            {% endif %}
-          </div>
-          <div class="container pt-3">
-            <p><span class="fw-bold">Username:</span> {{ user.username }}</p>
-            <p><span class="fw-bold">Email:</span> {{ user.email }}</p>
-          </div>
+        <div class="text-center mx-auto pt-3">
+          {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url%}
+          <img
+            src="{{ user.userprofile.profile_image.url }}"
+            id="profileImagePreview"
+            alt="Profile Image"
+            class="rounded-circle mx-auto d-block img-fluid"
+          />
+          {% else %}
+          <img
+            src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp"
+            alt="Profile Image Default"
+            id="profileImagePreview"
+            class="rounded-circle d-block img-fluid"
+          />
+          {% endif %}
+        </div>
+        <div class="container pt-3">
+          <p><span class="fw-bold">Username:</span> {{ user.username }}</p>
+          <p><span class="fw-bold">Email:</span> {{ user.email }}</p>
+        </div>
         <div class="card-footer text-center">
-          <a href="{% url 'update_profile' %}" class="btn btn-primary"
-            >Update Profile</a
-          >
+          <a href="{% url 'update_profile' %}" class="btn btn-primary">Update Profile</a>
           <button
             type="button"
             class="btn btn-danger"
@@ -54,8 +54,7 @@
   tabindex="-1"
   role="dialog"
   aria-labelledby="deleteProfileModalLabel"
-  aria-hidden="true"
->
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -66,8 +65,7 @@
           type="button"
           class="close"
           data-bs-dismiss="modal"
-          aria-label="Close"
-        >
+          aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -84,6 +82,7 @@
           {% csrf_token %}
           <button type="submit" class="btn btn-danger">Delete</button>
         </form>
+
       </div>
     </div>
   </div>
@@ -93,16 +92,7 @@
 
 {% block script %}
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Get a reference to the "Delete Profile" button
-  const deleteButton = document.getElementById('deleteProfileButton');
+  <script src="{% static 'js/profile.js' %}"></script>
 
-  // Add a click event listener to the button
-  deleteButton.addEventListener('click', function () {
-    // Show the modal when the button is clicked
-    const deleteProfileModal = new bootstrap.Modal(document.getElementById('deleteProfileModal'));
-    deleteProfileModal.show();
-  });
-});
 
 {% endblock %}

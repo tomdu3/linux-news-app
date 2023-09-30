@@ -3,13 +3,19 @@
     margin: 0;
     box-sizing: border-box;
   }
+
+
 :root {
     --bg-color: var(--ivory); 
 }
+
 .home-main > div>div>div{
     background-color: var(--ivory);
 }
-/*  adapted from https://codepen.io/tomdu3/pen/VwqQNWo find original */
+
+/* code "Flip Text Animation" adapted from https://alvarotrigo.com/blog/css-text-animations */
+/* Homepage Main Titles */
+
   .waviy {
     position: relative;
   }
@@ -34,8 +40,8 @@
     display: inline-block;
   }
 
-  /* ADAPTED FROM: */
-  /* title styles */
+  /* ADAPTED FROM: https://codepen.io/andysanchez-dev/pen/GYPevV*/
+  /* Homepage Second Title */
 .home-title span{
     position: relative;
     overflow: hidden;

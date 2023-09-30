@@ -13,7 +13,7 @@
           {% if 'default' in book.image_url.url %}
            <p class="text-center text-danger">No image</p>
             {% else %}
-            <div class="d-flex justify-content-center align-items-center">
+            <div class="d-flex justify-content-center align-items-center book-image">
               <img
                   src="{{ book.image_url.url }}"
                   class="card-img-top mx-auto"

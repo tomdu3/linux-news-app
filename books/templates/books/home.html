@@ -1,7 +1,13 @@
-{% extends 'books/base.html' %} {% load static %} {% block head %}
+{% extends 'books/base.html' %}
+{% load static %}
+
+{% block head %}
 <link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
-{% endblock %} {% block content %} {% comment %} adapted from
-https://codepen.io/tomdu3/pen/VwqQNWo {% endcomment %}
+{% endblock %}
+
+{% block content %}
+
+<!-- code "Flip Text Animation" adapted from https://alvarotrigo.com/blog/css-text-animations/-->
 <div class="container text-center pt-2 mx-auto">
   <div class="waviy pb-4">
     <span style="--i: 1">B</span>
@@ -40,12 +46,18 @@ https://codepen.io/tomdu3/pen/VwqQNWo {% endcomment %}
             learning, growth, and self-discovery through the magic of
             literature.
           </p>
-          {% if user.is_authenticated %} 
-            <a href="{% url 'user_page' %}" class="btn btn-secondary text-white">My Books</a>
-            <a href="{% url 'user_profile' %}" class="btn btn-outline-danger ">My Profile</a>
-          {% else %} 
-            <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
-            <a href="{% url 'register' %}" class="btn btn-outline-secondary">Register</a>
+          {% if user.is_authenticated %}
+          <a href="{% url 'user_page' %}" class="btn btn-secondary text-white"
+            >My Books</a
+          >
+          <a href="{% url 'user_profile' %}" class="btn btn-outline-danger"
+            >My Profile</a
+          >
+          {% else %}
+          <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+          <a href="{% url 'register' %}" class="btn btn-outline-secondary"
+            >Register</a
+          >
           {% endif %}
         </div>
       </div>
@@ -55,13 +67,13 @@ https://codepen.io/tomdu3/pen/VwqQNWo {% endcomment %}
         <div class="card border-0">
           <div class="card-body">
             <h5 class="home-title pb-3">
-                <span>Dig into the world</span>
-                <span>of literature!</span>
-              </h5>
+              <span>Dig into the world</span>
+              <span>of literature!</span>
+            </h5>
             <img
-            class="home-image"
-            src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
-            alt="Image of a scolar writing a book"
+              class="home-image"
+              src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
+              alt="Image of a scolar writing a book"
             />
           </div>
         </div>
@@ -69,13 +81,16 @@ https://codepen.io/tomdu3/pen/VwqQNWo {% endcomment %}
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="container text-center mx-auto col-md-6 pt-md-5 lh-lg fst-italic">
-    <p>
-        In August of this year, I sadly lost my dear friend Grace. A decade ago, she gifted me a bookmark with a list of 50 books one should read in a lifetime. It is this touching memory that inspired the creation of this website.
-    </p>
+    <div
+      class="container text-center mx-auto col-md-6 pt-md-5 lh-lg fst-italic"
+    >
+      <p>
+        In August of this year, I sadly lost my dear friend Grace. A decade ago,
+        she gifted me a bookmark with a list of 50 books one should read in a
+        lifetime. It is this touching memory that inspired the creation of this
+        website.
+      </p>
     </div>
   </div>
 </div>
-</div>
-  {% endblock %} {% block script %} {% endblock %}
-</div>
+{% endblock %}

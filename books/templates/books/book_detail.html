@@ -14,15 +14,13 @@
             {% if 'default' in book.image_url.url %}
             <img
               src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
-              class="card-img-top mx-auto"
-              style="width: 10rem"
+              class="card-img-top mx-auto book-image"
               alt="{{ book.title }} image"
             />
             {% else %}
             <img
               src="{{ book.image_url.url }}"
-              class="card-img-top mx-auto"
-              style="width: 10rem"
+              class="card-img-top mx-auto book-image"
               alt="{{ book.title }} image"
             />
             {% endif %}
@@ -73,6 +71,6 @@
         <div class="card-text description">{{ book.full_description|safe }}</div>
       </div>
     </div>
-    {% endblock %}
   </div>
 </div>
+{% endblock %}

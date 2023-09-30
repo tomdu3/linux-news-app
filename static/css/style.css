@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Mooli&family=Roboto+Serif&display=swap');
 
+/* Default CSS Variables */
 :root {
     --midnight-blue: #265B8B;
     --ivory: #ECECEB    ;
@@ -14,6 +15,7 @@
 
 }
 
+/* Common Styling */
 body, footer {
     background-color: var(--ivory);
 }
@@ -54,16 +56,34 @@ input, textarea {
     font-size: var(--size-3);
   }
 
+  /* Profile Image */
+#profileImage {
+  width: 30px;
+  height: 30px;
+}
+
+  /* Book Record styling */
+  /* Book Link */
 .book-link {
     font-size: var(--size-2);
     transition:  font-size 0.3s; /* Add a smooth transition effect */
 }
 
-    /* hover effect for booklink */
+/* hover effect for booklink */
 .book-link:hover {
     font-size: calc(var(--size-2) + 0.1rem);
 }
 
+/* Book Image */
+.book-image {
+    width: 12rem;
+}
+
+.book-card {
+  padding-top: 8px;;     
+}
+
+/* Forms */
 .form-group {
   padding: 2px;
 }
@@ -72,11 +92,7 @@ input, textarea {
   padding-top: 10px;
 }
 
-.book-card {
-  padding-top: 8px;;    
-  
-}
-
+/* media queries */
 @media screen and (max-width: 767px) {
     .small-none {
         display: none;
@@ -98,3 +114,11 @@ input, textarea {
       --size-3: 1rem;
     }
   }
+
+  /* Profile */
+
+/* Image Profile Preview */
+#profileImagePreview {
+  width: 15rem;
+  height: 15rem; 
+}

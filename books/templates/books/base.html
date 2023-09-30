@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
   <head>
@@ -80,16 +79,16 @@
                 {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url%}
                 <img
                   src="{{ user.userprofile.profile_image.url }}"
+                  id="profileImage"
                   alt="Profile Image"
                   class="rounded-circle mx-auto img-fluid d-inline me-2"
-                  style="width: 30px; height: 30px"
                 />
                 {% else %}
                 <img
                   src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp"
+                  id="profileImage"
                   alt="Profile Image Default"
                   class="rounded-circle mx-auto img-fluid d-inline me-2"
-                  style="width: 30px; height: 30px"
                 />
                 {% endif %}
               {{ user.username | capfirst }}</a>
@@ -206,12 +205,9 @@
         <strong>Tomislav Dukez</strong>
       </div>
     </footer>
-
-    <script>
       {% block script %}
 
       {% endblock %} 
-    </script>
     <script src="{% static 'js/script.js' %}"></script>
   </body>
 </html>

@@ -1,6 +1,7 @@
 {% extends 'books/base.html' %}
 
-{% block head %}
+<!--TO REMOVE-->
+{% comment %} {% block head %}
 <style>
     /* Add custom CSS for padding and margins */
     @media (min-width: 992px) {
@@ -30,7 +31,8 @@
         }
     }
 </style>
-{% endblock %}
+{% endblock %} {% endcomment %}
+
 {% block content %}
 <div class="title text-center pt-4">
     <h1>Search Results</h1>
@@ -93,39 +95,5 @@
     <h3 class="pt-5">No books found</h3>
 </div>
 {% endif %}
-{% endblock %}
-
-{% block script %}
-
-// Function to clear the search field
-document.addEventListener('DOMContentLoaded', function() {
-    const inputField = document.querySelector('#input-search');
-    const clearSearch = document.getElementById('clearSearch');
-
-    if (inputField.value.length > 0) {
-        clearSearch.style.visibility = 'visible';
-    } else {
-        clearSearch.style.visibility = 'hidden';
-    }
-});
-
-
-document.querySelector('#input-search').addEventListener('keyup', function() {
-    const clearSearch = document.getElementById('clearSearch');
-    
-    if (this.value.length > 0) {
-        clearSearch.style.visibility = 'visible';
-    } else {
-        clearSearch.style.visibility = 'hidden';
-    }
-});
-
-// If the search field is empty, the Clear button appears/disappears
-
-document.querySelector('#clearSearch').addEventListener('click', function() {
-    document.querySelector('#input-search').value = '';
-    this.style.visibility = 'hidden';
-});
-
 {% endblock %}
 
