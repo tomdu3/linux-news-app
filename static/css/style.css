@@ -92,28 +92,6 @@ input, textarea {
   padding-top: 10px;
 }
 
-/* media queries */
-@media screen and (max-width: 767px) {
-    .small-none {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    :root {
-      --size-1: 1.25rem;
-      --size-2: 1rem;
-      --size-3: 0.75rem;
-    }
-  }
-  
-  @media screen and (min-width: 1024px) {
-    :root {
-      --size-1: 1.5rem;
-      --size-2: 1.25rem;
-      --size-3: 1rem;
-    }
-  }
 
   /* Profile */
 
@@ -128,4 +106,40 @@ input, textarea {
 /* Success Submission Image */
 #success-image {
   width: 150px;
+}
+
+/* 404 Page */
+
+/* 404 Image */
+#404-image {
+  width: 300px;
+  height: 300px;
+}
+
+/* media queries */
+@media screen and (max-width: 767px) {
+  .small-none {
+      display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --size-1: 1.25rem;
+    --size-2: 1rem;
+    --size-3: 0.75rem;
+  }
+
+  #404-image {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --size-1: 1.5rem;
+    --size-2: 1.25rem;
+    --size-3: 1rem;
+  }
 }
