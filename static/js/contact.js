@@ -1,7 +1,7 @@
 // EmailJS - Send email from contact form
 // reference: https://martinezjf2.medium.com/how-to-setup-emailjs-33809350f0f8
 
-document.getElementById("contactForm").addEventListener("submit", function(event) {
+document.getElementById("emailForm").addEventListener("submit", function(event) {
     event.preventDefault();
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -16,14 +16,16 @@ document.getElementById("contactForm").addEventListener("submit", function(event
         function(response) {
             console.log('SUCCESS!', response.status, response.text);
 
-            // Submit the form
-            document.getElementById("contactForm").submit();
+            // Display success modal
+            const successModal = document.getElementById("successModal");
+            successModal.classList.add("show");
+            successModal.style.display = "block";
+            successModal.setAttribute("aria-hidden", "false");
 
-            // Display success modal and hide the form
-            document.getElementById("contactForm").style.display = "none";
-            document.getElementById("successModal").style.display = "block";
-        },
-        function(error) {
+            // Hide the form
+            const contactForm = document.getElementById("contactForm");
+            contactForm.style.display = "none";
+        }.function(error) {
             console.log('FAILED...', error);
         });
 });

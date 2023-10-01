@@ -231,15 +231,6 @@ def delete_profile(request):
 
 
 def contact(request):
-    success_message = None
+    form = ContactForm()
 
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-
-            success_message = "Thank you for your message! We will get back to you soon."
-
-    else:
-        form = ContactForm()
-
-    return render(request, 'contact.html', {'form': form, 'success_message': success_message})
+    return render(request, 'contact.html', {'form': form})
