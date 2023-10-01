@@ -31,7 +31,7 @@ def user_page(request):
 class BookDetail(LoginRequiredMixin, View):
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = Book.objects.filter(status=1)
+        queryset = Book.objects.all()
         book = get_object_or_404(queryset, slug=slug)
 
         liked_by_user = False
@@ -133,7 +133,6 @@ class AddBookView(LoginRequiredMixin, View):
                 category=category,
                 slug=slug,
                 user_id=user,
-                status=1,
             )
             book.save()
 

@@ -9,7 +9,7 @@ admin.site.register(Category)
 class BookAdmin(SummernoteModelAdmin):
 
     prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('status', 'created_on')
+    list_filter = ('created_on', 'slug')
     summernote_fields = ('full_description',)
-    list_display = ('title', 'author', 'status', 'created_on')
+    list_display = ('title', 'author', 'created_on')
     search_fields = ['title', 'author']
