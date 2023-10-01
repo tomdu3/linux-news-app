@@ -2,19 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
-# Create your models here.
 
+# Category model
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return f'{self.name}'
-    
+
     class Meta:
         ordering = ['name']
         verbose_name_plural = 'Categories'
 
 
+# Book model
 class Book(models.Model):
     title = models.CharField(max_length=100, blank=False)
     author = models.CharField(max_length=100)
@@ -28,7 +29,12 @@ class Book(models.Model):
         on_delete=models.CASCADE,
         related_name='book_details'
     )
-    likes = models.ManyToManyField(User, related_name='liked_books', blank=True)
+    likes = models.ManyToManyField(
+        User,
+        related_name='liked_books',
+        blank=True)
+    # liked_by_user is a control field to check if the user has liked
+    #  the book or not. It is not 'a strict field value' in the database
     liked_by_user = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

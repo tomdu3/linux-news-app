@@ -3,19 +3,19 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views import generic, View
-from django.http import HttpResponse
-from cloudinary import CloudinaryImage
+from django.views import View
 from django.utils.text import slugify
 from .models import Book, Category
 from .forms import BookForm
-from django.db.models import Q 
-# Create your views here.
+from django.db.models import Q
 
 
+# Home Page view
 def home(request):
     return render(request, 'books/home.html')
 
+
+# User Page View (My Books)
 @login_required
 def user_page(request):
     user = request.user
@@ -28,22 +28,26 @@ def user_page(request):
     return render(request, 'books/user_page.html', context=context)
 
 
+# Book Detail View
 class BookDetail(LoginRequiredMixin, View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Book.objects.all()
         book = get_object_or_404(queryset, slug=slug)
 
+        # the control field for the like button
         liked_by_user = False
         if book.likes.filter(id=request.user.id).exists():
             liked_by_user = True
-        
+
         context = {
             'book': book,
             'liked_by_user': liked_by_user,
              }
         return render(request, 'books/book_detail.html', context=context)
 
+
+# User Favourites View
 @login_required
 def user_favourites(request):
     user = request.user
@@ -56,6 +60,7 @@ def user_favourites(request):
     return render(request, 'books/user_favourites.html', context=context)
 
 
+# Book Edit (Update) View
 class BookUpdateView(LoginRequiredMixin, View):
     def get(self, request, slug):
         book = get_object_or_404(Book, slug=slug)
@@ -78,7 +83,10 @@ class BookUpdateView(LoginRequiredMixin, View):
             form.save()
 
             # Success message upon update
-            messages.success(request, (f'Book "{book.title}" successfully updated!'), extra_tags='success')
+            messages.success(
+                request,
+                (f'Book "{book.title}" successfully updated!'),
+                extra_tags='success')
             return redirect('user_page')
 
         context = {
@@ -88,6 +96,7 @@ class BookUpdateView(LoginRequiredMixin, View):
         return render(request, 'books/book_edit.html', context)
 
 
+# Book Add View
 class AddBookView(LoginRequiredMixin, View):
     def get(self, request):
         form = BookForm()
@@ -118,7 +127,8 @@ class AddBookView(LoginRequiredMixin, View):
             base_slug = slugify(title)
             slug = base_slug
             counter = 1
-            # Check if a record with the same slug already exists
+            # Check if a record with the same slug already exists and apply
+            # a counter to add to the text slug if it does
             while Book.objects.filter(slug=slug).exists():
                 slug = f'{base_slug}-{counter}'
                 counter += 1
@@ -137,7 +147,10 @@ class AddBookView(LoginRequiredMixin, View):
             book.save()
 
             # Success message upon creation
-            messages.success(request, (f'Book "{book.title}" successfully added!'), extra_tags='success')
+            messages.success(
+                request,
+                (f'Book "{book.title}" successfully added!'),
+                extra_tags='success')
             return redirect('user_page')
 
         categories = Category.objects.all()
@@ -148,28 +161,38 @@ class AddBookView(LoginRequiredMixin, View):
         }
         return render(request, 'books/book_add.html', context)
 
+
+# Delete Book View
 class BookDeleteView(LoginRequiredMixin, View):
     def get(self, request, slug):
         book = get_object_or_404(Book, slug=slug)
         book.delete()
 
         # Success message upon deletion
-        messages.success(request, (f'Book "{book.title}" successfully deleted!'), extra_tags='success')
-        
+        messages.success(
+            request,
+            (f'Book "{book.title}" successfully deleted!'),
+            extra_tags='success'
+            )
+
         return redirect('user_page')
 
+
+# Find Book View
 @login_required
 def find_book(request):
 
-    query = request.GET.get('q')
+    query = request.GET.get('q')  # Get the query parameter from the URL
     if query:
         # Search for books that match the query in title, author or category
-        books = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query) |
+        books = Book.objects.filter(
+            Q(title__icontains=query) | Q(author__icontains=query) |
             Q(category__name__icontains=query))
     else:
         # If no query is provided, display all books
         books = Book.objects.all()
-    
+
+    # Add a control field value to each book liked by user
     for book in books:
         if book.likes.filter(id=request.user.id).exists():
             book.liked_by_user = True
@@ -179,17 +202,19 @@ def find_book(request):
     }
     return render(request, 'books/find_book.html', context=context)
 
+
+# Like Book View (from the 'find_book' view)
 @login_required
 def like_book(request, slug):
-    query_param = request.POST.get('q')
+    query_param = request.POST.get('q')  # Get the query parameter from the URL
     print(query_param)
 
     if request.method == 'POST' and request.user.is_authenticated:
         book = get_object_or_404(Book, slug=slug)
-        
+
         # Check if the user has already liked the book
         liked_by_user = book.likes.filter(id=request.user.id).exists()
-        
+
         if liked_by_user:
             # User has already liked the book, remove the like
             book.likes.remove(request.user)
@@ -204,15 +229,15 @@ def like_book(request, slug):
         return redirect('find_book')
 
 
+# Like Book View (from the 'book_detail' view)
 @login_required
 def like_book_detail(request, slug):
-    '''Book detail like view'''
     if request.method == 'POST' and request.user.is_authenticated:
         book = get_object_or_404(Book, slug=slug)
-        
+
         # Check if the user has already liked the book
         liked_by_user = book.likes.filter(id=request.user.id).exists()
-        
+
         if liked_by_user:
             # User has already liked the book, remove the like
             book.likes.remove(request.user)
@@ -224,6 +249,7 @@ def like_book_detail(request, slug):
         return redirect('book_detail', slug=slug)
 
 
+# Remove from Favourites View
 def remove_from_favourites(request, slug):
     user = request.user
 
