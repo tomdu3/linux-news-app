@@ -189,5 +189,5 @@ def contact(request):
     return render(request, 'contact.html', {'form': form})
 
 
-def custom_404_view(request):
+def custom_404_view(request, exception):
     return render(request, '404.html', {}, status=404)
