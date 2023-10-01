@@ -17,8 +17,9 @@ def login_user(request):
     if request.method == 'POST':
         username_or_email = request.POST["username_or_email"]
         password = request.POST["password"]
-        
-        # Check if the input contains '@' to determine whether it's an email or username.
+
+        # Check if the input contains '@' to determine whether it's an email or
+        # username.
         if "@" in username_or_email:
             # Try to get a user with the provided email.
             try:
@@ -26,24 +27,30 @@ def login_user(request):
             except User.DoesNotExist:
                 user = None
         else:
-            user = authenticate(request, username=username_or_email, password=password)
-            
+            user = authenticate(request, username=username_or_email,
+                                password=password)
+
         if user is not None:
             login(request, user)
             # Redirect to a home page.
-            messages.success(request, ('You are logged in. Congrats!'), extra_tags='success')
+            messages.success(request, (
+                'You are logged in. Congrats!'), extra_tags='success')
             return redirect('/')
         else:
             # Return an 'invalid login' error message.
-            messages.error(request, ('Login error! Please check your username and password.'), extra_tags='danger')
+            messages.error(request, (
+                'Login error! Please check your username and password.'),
+                 extra_tags='danger')
             return redirect('login')
     else:
         return render(request, 'authentication/login.html', {})
 
+
 # User logout view
 def logout_user(request):
     logout(request)
-    messages.success(request, ('You have been logged out!', ), extra_tags='info')
+    messages.success(request, ('You have been logged out!', ),
+                     extra_tags='info')
     return redirect('/')
 
 
@@ -57,12 +64,13 @@ def register_user(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            messages.success(request, ('You have registered!'), extra_tags='success')
+            messages.success(request, ('You have registered!'),
+                             extra_tags='success')
             return redirect('/')
     else:
         form = SignUpForm()
 
-    context = {'form': form} 
+    context = {'form': form}
     return render(request, 'authentication/signup.html', context)
 
 
@@ -74,6 +82,7 @@ def user_profile(request):
         'user': user
         }
     return render(request, 'user_profile.html', context)
+
 
 # Update Profile View
 @login_required
@@ -87,27 +96,33 @@ def update_profile(request):
         user_profile.save()
 
     if request.method == 'POST':
-        form = UpdateProfileForm(request.POST, request.FILES, instance=request.user)
+        form = UpdateProfileForm(request.POST, request.FILES,
+                                 instance=request.user)
 
         if form.is_valid():
-            user = form.save(commit=False)  # Use commit=False to prevent saving the User model for now
+            # Use commit=False to prevent saving the User model for now
+            user = form.save(commit=False)
 
             # Check if the user entered a new password
             new_password = form.cleaned_data.get('new_password1')
             new_password_confirm = form.cleaned_data.get('new_password2')
 
             if new_password != new_password_confirm:
-                form.add_error('new_password1', 'The two password fields didn\'t match.')
-                return render(request, 'user_profile_update.html', {'form': form})
+                form.add_error('new_password1',
+                               'The two password fields didn\'t match.')
+                return render(request, 'user_profile_update.html',
+                              {'form': form}
+                              )
 
             if new_password:
                 # Validate the new password
                 try:
                     validate_password(new_password)
-                except ValidationError as e:
-                    for error in e.error_list:
+                except ValidationError as errors:
+                    for error in errors.error_list:
                         form.add_error('new_password1', error)
-                    return render(request, 'user_profile_update.html', {'form': form})
+                    return render(request, 'user_profile_update.html',
+                                  {'form': form})
 
                 # Update the user's password and keep them logged in
                 user.set_password(new_password)
@@ -117,18 +132,24 @@ def update_profile(request):
             # Check if the user is changing the email address
             new_email = form.cleaned_data.get('email')
             if new_email and new_email != user.email:
-                email_validator = EmailValidator(message='Enter a valid email address.')
+                email_validator = EmailValidator(
+                    message='Enter a valid email address.')
 
                 try:
                     email_validator(new_email)
                 except ValidationError:
                     form.add_error('email', 'Invalid email format.')
-                    return render(request, 'user_profile_update.html', {'form': form})
+                    return render(request, 'user_profile_update.html',
+                                  {'form': form})
 
                 # Check if the new email address is unique
-                if User.objects.filter(email=new_email).exclude(username=user.username).exists():
-                    form.add_error('email', 'This email address is already in use.')
-                    return render(request, 'user_profile_update.html', {'form': form})
+                if User.objects.filter(email=new_email
+                                       ).exclude(
+                                           username=user.username).exists():
+                    form.add_error('email',
+                                   'This email address is already in use.')
+                    return render(request, 'user_profile_update.html',
+                                  {'form': form})
 
                 # Update the email address
                 user.email = new_email
@@ -141,7 +162,9 @@ def update_profile(request):
             user.save()  # Save the updated User model
             user_profile.save()  # Save the updated UserProfile model
 
-            messages.success(request, ('Your profile was successfully updated!'), extra_tags='success')
+            messages.success(request, (
+                'Your profile was successfully updated!'),
+                extra_tags='success')
             return redirect('user_profile')
 
     else:
@@ -166,5 +189,5 @@ def contact(request):
     return render(request, 'contact.html', {'form': form})
 
 
-def custom_404_view(request, exception):
+def custom_404_view(request):
     return render(request, '404.html', {}, status=404)
