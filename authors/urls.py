@@ -11,4 +11,5 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
 ]
 
+# 404 Error Page settings
 handler404 = views.custom_404_view

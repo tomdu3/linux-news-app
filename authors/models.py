@@ -2,7 +2,8 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.db import models
 
-# Create your models here.
+
+# User Profile Model - Extends the User Model with a profile image
 class UserProfile(models.Model):
     ''' Update the user profile with a profile image'''
 

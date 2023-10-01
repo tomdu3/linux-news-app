@@ -2,9 +2,11 @@ from django.contrib import admin
 from .models import Book, Category
 from django_summernote.admin import SummernoteModelAdmin
 
-# Register your models here.
+# Register Category Model
 admin.site.register(Category)
 
+
+# Register Book Model
 @admin.register(Book)
 class BookAdmin(SummernoteModelAdmin):
 
