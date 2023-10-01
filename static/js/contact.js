@@ -12,20 +12,18 @@ document.getElementById("emailForm").addEventListener("submit", function(event) 
         'from_email': email,
         'project_request': message
     })
-    .then(
-        function(response) {
-            console.log('SUCCESS!', response.status, response.text);
+    .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
 
-            // Display success modal
-            const successModal = document.getElementById("successModal");
-            successModal.classList.add("show");
-            successModal.style.display = "block";
-            successModal.setAttribute("aria-hidden", "false");
+        // Hide the form
+        const contactForm = document.getElementById("contactForm");
+        contactForm.style.display = "none";
 
-            // Hide the form
-            const contactForm = document.getElementById("contactForm");
-            contactForm.style.display = "none";
-        }.function(error) {
-            console.log('FAILED...', error);
-        });
+        // Display the success message
+        const successMessage = document.getElementById("successMessage");
+        successMessage.style.display = "block";
+    })
+    .catch(function(error) { // Use ".catch" to handle errors
+        console.log('FAILED...', error);
+    });
 });

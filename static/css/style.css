@@ -122,3 +122,10 @@ input, textarea {
   width: 15rem;
   height: 15rem; 
 }
+
+/* Contact Page */
+
+/* Success Submission Image */
+#success-image {
+  width: 150px;
+}

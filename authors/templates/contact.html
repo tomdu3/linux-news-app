@@ -27,42 +27,30 @@
             <div class="mb-3">
                 {{ form.name }}
                 {{ form.name.errors }}
-                <!-- <input type="hidden" id="name" value="{{ form.name.value }}"> -->
             </div>
             <div class="mb-3">
                 {{ form.email }}
                 {{ form.email.errors }}
-                <!-- <input type="hidden" id="email" value="{{ form.email.value }}"> -->
             </div>
             <div class="mb-3">
                 {{ form.message }}
                 {{ form.message.errors }}
-                <!-- <input type="hidden" id="message" value="{{ form.message.value }}"> -->
             </div>
             <button type="submit" class="btn btn-primary">Send</button>
         </form>
     </div>
 </div>
 
-<!-- Success Modal -->
-{% if success_message %}
-<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Success</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>{{ success_message }}</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
+<!-- Success Message -->
+<div id="successMessage" style="display: none;" class="card text-center mt-4 col-10 col-md-4 mx-auto">
+    <div class="card-body">
+        <img src="{% static 'images/letter.webp' %}" alt="Success Submission Image Letter" class="img-fluid mb-3" id="success-image">
+        <h5 class="card-title fw-bold mb-3">Thank you for contacting us</h5>
+        <p class="card-text">We have received your message and will reply shortly.</p>
     </div>
 </div>
-{% endif %}
+
+
 {% endblock %}
 
 {% block script %}
