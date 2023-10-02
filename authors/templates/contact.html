@@ -1,14 +1,23 @@
-{% extends 'books/base.html' %} {% load static %} {% block head %}
+{% extends 'books/base.html' %}
+{% load static %}
+
+{% block head %}
+
   <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
       (function () {
           emailjs.init('jF0IEklCsgp1doOjY');
       })();
-  </script> {% endblock %} {% block content %}
+  </script>
+{% endblock %}
+
+{% block content %}
+
+  <!-- Contact Form -->
   <div class="container mt-5 col-9 col-md-6 col-lg-4">
     <div class="text-center">
-      <h2>Contact Us</h2>
+      <h1 class="h2">Contact Us</h1>
     </div>
     <div id="contactForm" class="form-container mt-3">
       <form id="emailForm" method="post"> {% csrf_token %} {{ form.non_field_errors }}
@@ -30,13 +39,20 @@
       </form>
     </div>
   </div>
-  <!-- Success Message -->
+
+  <!-- Success Message Modal -->
   <div id="successMessage" style="display: none;" class="card text-center mt-4 col-10 col-md-4 mx-auto">
     <div class="card-body">
       <img src="{% static 'images/letter.webp' %}" alt="Success Submission Image Letter" class="img-fluid mb-3"
            id="success-image">
-      <h5 class="card-title fw-bold mb-3">Thank you for contacting us</h5>
+      <h2 class="h5 card-title fw-bold mb-3">Thank you for contacting us</h2>
       <p class="card-text">We have received your message and will reply shortly.</p>
     </div>
-  </div> {% endblock %} {% block script %}
-  <script src="{% static 'js/contact.js' %}"></script> {% endblock %}
+  </div>
+{% endblock %}
+
+{% block script %}
+
+  <script src="{% static 'js/contact.js' %}"></script>
+
+{% endblock %}
