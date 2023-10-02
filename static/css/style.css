@@ -122,7 +122,7 @@ textarea {
 /* 404 Page */
 
 /* 404 Image */
-#404-image {
+#image-404 {
   width: 300px;
   height: 300px;
 }
@@ -141,7 +141,7 @@ textarea {
     --size-3: 0.75rem;
   }
 
-  #404-image {
+  #image-404 {
     width: 400px;
     height: 400px;
   }

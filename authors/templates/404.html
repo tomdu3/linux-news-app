@@ -1,7 +1,7 @@
 {% extends "books/base.html" %} {% load static %} {% block content %}
   <div class="container text-center mt-5">
     <a href="{% url 'home' %}">
-      <img id="404-image" src="{% static 'images/404g.webp' %}" alt="Home"
+      <img id="image-404" src="{% static 'images/404g.webp' %}" alt="404 Image"
            class="img-thumbnail rounded-circle mt-md-4 mt-lg-5" onmouseover="this.src='{% static 'images/404.webp' %}'"
            onmouseout="this.src='{% static 'images/404g.webp' %}'">
     </a>
