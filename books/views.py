@@ -76,9 +76,11 @@ class BookUpdateView(LoginRequiredMixin, View):
 
     def post(self, request, slug):
         book = get_object_or_404(Book, slug=slug)
-        form = BookForm(request.POST, instance=book)
+        categories = Category.objects.all()
+        form = BookForm(request.POST or None, request.FILES or None, instance=book)  # Include request.FILES
 
         if form.is_valid():
+            # Save the form to update the Book instance, including the image file
             form.save()
 
             # Success message upon update
@@ -91,6 +93,7 @@ class BookUpdateView(LoginRequiredMixin, View):
         context = {
             'book': book,
             'form': form,
+            'categories': categories,
         }
         return render(request, 'books/book_edit.html', context)
 

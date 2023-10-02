@@ -12,7 +12,7 @@
               <img src="{{ book.image_url.url }}" class="card-img-top mx-auto" alt="{{ book.title }} image"/>
             </div> {% endif %}
             <div class="d-flex justify-content-center">
-              <form class="col-10" action="{% url 'book_edit' book.slug %}" method="post"> {% csrf_token %}
+              <form class="col-10" action="{% url 'book_edit' book.slug %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
                 <div class="form-group">
                   <label class="form-label" for="title">Title:</label>
                   <input type="text" class="form-control" id="title" name="title" value="{{ book.title }}"
