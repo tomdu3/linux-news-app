@@ -3,8 +3,8 @@
     <h2>Register</h2>
   </div>
   <div id="registerForm" class="form-container mt-3">
-    <form action="{% url 'register' %}" method="POST" > {% csrf_token %} {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">Register</button> Already registered? Click <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'login' %}">here</a>.
+    <form method="POST" > {% csrf_token %} {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Register</button> Already registered? Click <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'login' %}">here</a>. 
     </form>
   </div>
 </div> {% endblock %}

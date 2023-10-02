@@ -4,7 +4,7 @@
       <h2>Login</h2>
     </div>
     <div id="loginForm" class="form-container mt-3">
-      <form action="login" method="POST"> {% csrf_token %} <input type="hidden" name="form_type" value="login">
+      <form method="POST"> {% csrf_token %} <input type="hidden" name="form_type" value="login">
         <div class="mb-3">
           <input type="text" class="form-control" id="loginUsernameEmail" placeholder="User Name or E-mail (required)"
                  name="username_or_email" required>
