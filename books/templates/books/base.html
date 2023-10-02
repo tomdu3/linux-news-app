@@ -10,11 +10,13 @@
         content="Explore book reviews on literature and life. Join our community of librophiles and discover your next favorite book.">
   <meta name="keywords" content="books, life, literature, librophile, book reviews, Tomislav Dukez">
   <link rel="canonical" href="https://books-4-life-2d26bdf04dec.herokuapp.com/">
+  
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
   <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
+  
   <!-- Bootstrap 5.0.2 links -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -24,13 +26,20 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
           integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
           crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <!-- Font Awesome -->
+  
+  <!-- Font Awesome 6.4.2 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"> {% block head %} {% endblock %}
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+{% block head %}
+
+{% endblock %}
 </head>
+
 <body class="h-100 d-flex flex-column">
+
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
@@ -40,16 +49,23 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse collapse" id="navbarColor01" style="">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0"> {% if user.is_authenticated %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <!-- Navbar item available if logged in -->
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'find_book' %}">Find a Book</a>
-        </li> {% endif %}
+        </li>
+        {% endif %}
+
         <li class="nav-item">
           <a class="nav-link" href="{% url 'contact' %}">Contact</a>
         </li>
       </ul>
-      <ul class="navbar-nav flex flex-column flex-lg-row mb-2 mb-lg-0 gap-1
-          "> {% if user.is_authenticated %}
+
+      <!-- Navbar items available if logged in -->
+      <ul class="navbar-nav flex flex-column flex-lg-row mb-2 mb-lg-0 gap-1">
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'book_add' %}">Add Book</a>
         </li>
@@ -60,35 +76,53 @@
           <a class="nav-link align-self-lg-center" href="{% url 'user_favourites' %}">My Favourites</a>
         </li>
         <li class="nav-item align-self-lg-center d-inline-flex">
+          <!-- Profile image, if not present, a default image displayed -->
           <a href="{% url 'user_profile' %}" class="text-info nav-link">
             {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url %}
               <img src="{{ user.userprofile.profile_image.url }}" id="profileImage" alt="Profile Image"
-                   class="rounded-circle mx-auto img-fluid d-inline me-2"> {% else %}
-              <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp" id="profileImage"
+                   class="rounded-circle mx-auto img-fluid d-inline me-2">
+            {% else %}
+              <img src="{% static 'images/user.webp' %}" id="profileImage"
                    alt="Profile Image Default"
-                   class="rounded-circle mx-auto img-fluid d-inline me-2"> {% endif %} {{ user.username | capfirst }}
+                   class="rounded-circle mx-auto img-fluid d-inline me-2">
+            {% endif %}
+            {{ user.username | capfirst }}
           </a>
         </li>
         <li class="nav-item mx-md-auto">
           <a class="nav-link btn btn-primary text-light px-md-1 align-self-lg-center"
              href="{% url 'logout' %}">Logout</a>
-        </li> {% else %}
+        </li>
+        {% else %}
+        <!-- Navbar items available if not logged in - Login and Register -->
         <li class="nav-item mx-md-auto">
           <a class="nav-link btn btn-primary text-light px-md-1 align-self-lg-center" href="{% url 'login' %}">Login</a>
         </li>
         <li class="nav-item mx-md-auto">
           <a class="nav-link btn btn-outline-secondary text-light px-md-1 align-self-lg-center"
              href="{% url 'register' %}">Register</a>
-        </li> {% endif %}
+        </li>
+        {% endif %}
       </ul>
     </div>
   </div>
 </nav>
-<!-- main --> {% if messages %}{% for message in messages %}
-  <div class="alert alert-{{ message.extra_tags }} fade show" role="alert">
-    {{ message }}
-    <button type="button" class="btn-close btn-sm" aria-label="Close" data-bs-dismiss="alert"></button>
-  </div> {% endfor %} {% endif %} {% block content %} {% endblock %}
+
+<!-- main -->
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.extra_tags }} fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close btn-sm"
+      aria-label="Close" data-bs-dismiss="alert"></button>
+    </div>
+  {% endfor %}
+{% endif %}
+
+{% block content %}
+
+{% endblock %}
+
 <!-- footer -->
 <!-- code adapted from https://mdbootstrap.com/docs/standard/navigation/footer/ -->
 <footer class="mt-auto text-center text-white">
@@ -123,11 +157,18 @@
       </a>
     </div>
   </div>
+
   <!-- Copyright -->
-  <div class="text-center p-3 text-dark" style="background-color: rgba(0, 0, 0, 0.2)"> © 2023 Copyright: <strong>Tomislav
-    Dukez</strong>
+  <div class="text-center p-3 text-dark" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2023 Copyright: <strong>Tomislav Dukez</strong>
   </div>
-</footer> {% block script %} {% endblock %}
+</footer>
+
+{% block script %}
+
+{% endblock %}
 <script src="{% static 'js/script.js' %}"></script>
+
 </body>
+
 </html>

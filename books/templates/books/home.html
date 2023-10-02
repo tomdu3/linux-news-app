@@ -1,5 +1,13 @@
-{% extends 'books/base.html' %} {% load static %} {% block head %}
-  <link rel="stylesheet" href="{% static 'css/homepage.css' %}"> {% endblock %} {% block content %}
+{% extends 'books/base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  <!-- Title animation and Main Title -->
   <!-- code "Flip Text Animation" adapted from https://alvarotrigo.com/blog/css-text-animations/-->
   <div class="container text-center pt-2 mx-auto">
     <div class="waviy pb-4">
@@ -18,8 +26,13 @@
       <span style="--i: 12">f</span>
       <span style="--i: 13">e</span>
     </div>
-    <h1 class="h2 fs-4 fw-bold text-center pb-md-3"> Welcome {% if user.is_authenticated %} back,
-      {{ user.username|capfirst }}! {% else %} , Guest! {% endif %} </h1>
+    <h1 class="h2 fs-4 fw-bold text-center pb-md-3">
+      Welcome{% if user.is_authenticated %} back, {{ user.username|capfirst }}!
+      {% else %},
+      Guest!
+      {% endif %}</h1>
+
+    <!-- Main content -->
     <div class="row container home-main align-items-center pb-lg-5">
       <div class="col-sm-6">
         <div class="border-0">
@@ -29,11 +42,14 @@
             </div>
             <p class="card-text"> At Books for Life, we believe in the transformative power of books. Our mission is to
               inspire and guide you on a lifelong journey of learning, growth, and self-discovery through the magic of
-              literature. </p> {% if user.is_authenticated %}
-            <a href="{% url 'user_page' %}" class="btn btn-secondary text-white">My Books</a>
-            <a href="{% url 'user_profile' %}" class="btn btn-danger">My Profile</a> {% else %}
-            <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
-            <a href="{% url 'register' %}" class="btn btn-outline-secondary">Register</a> {% endif %}
+              literature. </p>
+              {% if user.is_authenticated %}
+              <a href="{% url 'user_page' %}" class="btn btn-secondary text-white">My Books</a>
+              <a href="{% url 'user_profile' %}" class="btn btn-danger">My Profile</a>
+              {% else %}
+              <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+              <a href="{% url 'register' %}" class="btn btn-outline-secondary">Register</a>
+              {% endif %}
           </div>
         </div>
       </div>
@@ -45,7 +61,8 @@
                 <span>Dig into the world</span>
                 <span>of literature!</span>
               </h2>
-              <img class="home-image" src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
+              <img class="home-image"
+              src="{% static 'images/default-book.webp' )%}"
                    alt="Image of a scolar writing a book">
             </div>
           </div>
@@ -53,10 +70,13 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="container text-center mx-auto col-md-6 pt-md-5 lh-lg fst-italic">
+      <div class="container text-center mx-auto col-md-6 pt-md-5 lh-lg fst-italic"
+      aria-label="dedication of the Site to Grace">
         <p> In August of this year, I sadly lost my dear friend Grace. A decade ago, she gifted me a bookmark with a
           list of 50 books one should read in a lifetime. It is this touching memory that inspired the creation of this
           website. </p>
       </div>
     </div>
-  </div> {% endblock %}
+  </div>
+
+{% endblock %}
