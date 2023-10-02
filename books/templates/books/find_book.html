@@ -1,24 +1,38 @@
-{% extends 'books/base.html' %} {% load static %} {% block content %}
+{% extends 'books/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <!-- Search Section -->
   <div class="title text-center pt-4">
     <h1>Search Results</h1>
   </div>
   <div class="text-center pt-lg-4 pt-sm-2">
     <div class="col-lg-5 col-md-8 col-10 mx-auto">
-      <form method="GET" action="{% url 'find_book' %}" class="d-flex align-items-center gap-1">
+
+      <!-- Search form -->
+      <form method="GET" action="{% url 'find_book' %}"
+      class="d-flex align-items-center gap-1">
+        <!-- Search input -->
         <input type="text" name="q" id="input-search" placeholder="Search books" value="{{ request.GET.q|default:'' }}"
                class="form-control me-2">
         <button type="submit" class="btn btn-primary">Search</button>
+        <!-- Clear search button, hidden by default and if input field empty -->
         <button type="button" class="btn btn-secondary clear-search" id="clearSearch" style="visibility: hidden;">
           Clear
         </button>
       </form>
     </div>
   </div>
-  <div class="container-fluid custom-container"> {% if books %}
-    <div class="text-info">
-      <p>Found {{ books|length }} records</p>
+
+  <!-- Search Results -->
+  <div class="container-fluid custom-container">
+    {% if books %}
+    <div class="container pt-2">
+      <p class="text-end">Found {{ books|length }} records</p>
     </div>
-    <div class="container pt-lg-4 pt-sm-2">
+    <div class="container pt-2">
       <table class="table table-striped">
         <thead>
         <tr>
@@ -44,23 +58,32 @@
                 {% csrf_token %}
                 <input type="hidden" name="q" value="{{ request.GET.q }}">
                 {% if request.user in book.likes.all %}
-                  <button type="submit" class="btn text-danger shadow-none">
+                  <button type="submit" class="btn text-danger shadow-none" aria-label="like">
                     <i class="fa-solid fa-heart fa-beat"></i>
-                  </button> {% else %}
-                  <button type="submit" class="btn text-primary shadow-none">
+                  </button>
+                {% else %}
+                  <button type="submit" class="btn text-primary shadow-none" aria-label="unlike">
                     <i class="fa-regular fa-heart fa-bounce"></i>
-                  </button> {% endif %} </form>
+                  </button>
+                {% endif %}
+              </form>
             </td>
-          </tr> {% endfor %} </tbody>
+          </tr>
+          {% endfor %}
+        </tbody>
       </table>
     </div>
-    </div>{% else %}
-    <div class="text-center">
-      <h3 class="pt-5">No books found</h3>
-    </div>
-    {% endif %}
+  </div>
+  {% else %}
+  <div class="text-center">
+    <h3 class="pt-5">No books found</h3>
+  </div>
+  {% endif %}
 
-    {% endblock %}
-    {% block script %}
-    <script src="{% static 'js/search.js' %}"></script>
-    {% endblock %}
+{% endblock %}
+
+{% block script %}
+
+<script src="{% static 'js/search.js' %}"></script>
+
+{% endblock %}
