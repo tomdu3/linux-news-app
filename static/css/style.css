@@ -112,6 +112,11 @@ textarea {
   height: 12rem;
 }
 
+#book-image-delete {
+  width: 100px;
+  height: 100px;
+}
+
 /* Contact Page */
 
 /* Success Submission Image */
@@ -126,6 +131,7 @@ textarea {
   width: 300px;
   height: 300px;
 }
+
 
 /* media queries */
 @media screen and (max-width: 767px) {

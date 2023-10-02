@@ -1,55 +1,35 @@
-{% extends "books/base.html" %} {% load static %} {% block content %}
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="row">
-            <div class="col-12 col-md-6 text-center">
-              <h1 class="card-title text-danger"> Delete Book</h1>
-              <h2 class="card-title">{{ book.title }}</h2>
-              <p class="card-text">Author: {{ book.author }}</p>
-              {% if 'default' in book.image_url.url %}
-                <img
-                    src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
-                    class="card-img-top mx-auto book-image"
-                    alt="{{ book.title }} image"
-                >
-              {% else %}
-                <img
-                    src="{{ book.image_url.url }}"
-                    class="card-img-top mx-auto book-image"
-                    alt="{{ book.title }} image"
-                >
-              {% endif %}
-            </div>
-            <div class="col-md-6 col-sm-12">
-              <div class="card border-0">
-                <div class="card-body">
-                  <div class="row col-md-12">
-                    <div class="col-6 text-left text-md-left">
-                    </div>
-                    <div class="col-6 d-flex justify-content-end">
-                      <div class="d-flex justify-content-end form-group">
-                        <form action="" method=POST>
-                          {% csrf_token %}
-                          <h2>Are you sure? <span class="badge bg-danger">Cannot undo</span></h2>
-                          <button type="submit" class="btn btn-danger">Yes! Delete</button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+{% extends "books/base.html" %}
 
-      <div class="row col-md-12">
-        <div class="card-body">
-          <div class="card-text">{{ book.short_description }}</div>
-        </div>
+{% load static %}
+
+{% block content %}
+<div class="container pt-2">
+  <div class="card col-10 col-md-6 mx-auto">
+    <h1 class="text-danger text-center">Delete Book</h1>
+    <h2 class="text-center">{{ book.title }}</h2>
+    <p class="text-center">Author: {{ book.author }}</p>
+    <div class="mx-auto">
+      {% if 'default' in book.image_url.url %}
+      <img src="{% static 'images/default-book.webp' %}" class="card-img-top mx-auto book-image" alt="{{ book.title }} image">
+      {% else %}
+      <img src="{{ book.image_url.url }}" class="card-img-top mx-auto book-image" alt="{{ book.title }} image">
+      {% endif %}
+    </div>
+    <div>
+      <p class="ps-3 pt-2">
+        <span class="fst-italic">Short Description:</span>
+        {{ book.short_description }}
+      </p>
+      <div class="form-group text-center pb-2">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <p>Are you sure? <span class="text-danger">Cannot undo!</span>
+          </p>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
       </div>
     </div>
   </div>
+</div>
+
 {% endblock %}

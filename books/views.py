@@ -5,10 +5,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views import View
 from django.utils.text import slugify
+from django.db.models import Q
 from .models import Book, Category
 from .forms import BookForm
-from django.db.models import Q
-
 
 # Home Page view
 def home(request):
@@ -26,6 +25,18 @@ def user_page(request):
         'books': user_books,
     }
     return render(request, 'books/user_page.html', context=context)
+
+
+def book_delete_confirmation(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+
+    if request.method == 'POST':
+        # Handle the actual deletion of the book here
+        book.delete()
+        return redirect('user_page')  # Redirect to the book list page or any other appropriate page
+
+
+    return render(request, 'books/book_delete.html', {'book': book})
 
 
 # Book Detail View
