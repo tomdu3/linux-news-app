@@ -76,7 +76,6 @@ class BookUpdateView(LoginRequiredMixin, View):
 
     def post(self, request, slug):
         book = get_object_or_404(Book, slug=slug)
-        categories = Category.objects.all()
         form = BookForm(request.POST, instance=book)
 
         if form.is_valid():
