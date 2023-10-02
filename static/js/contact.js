@@ -13,7 +13,6 @@ document.getElementById("emailForm").addEventListener("submit", function(event) 
 			'project_request': message
 		})
 		.then(function(response) {
-			console.log('SUCCESS!', response.status, response.text);
 
 			// Hide the form
 			const contactForm = document.getElementById("contactForm");
