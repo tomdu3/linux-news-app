@@ -72,6 +72,7 @@ textarea {
 #profileImage {
   width: 30px;
   height: 30px;
+  object-fit: cover;
 }
 
 /* Book Record styling */
@@ -110,6 +111,7 @@ textarea {
 #profileImagePreview {
   width: 12rem;
   height: 12rem;
+  object-fit: cover;
 }
 
 /* Contact Page */
