@@ -18,8 +18,8 @@
       <span style="--i: 12">f</span>
       <span style="--i: 13">e</span>
     </div>
-    <h2 class="fs-4 fw-bold text-center pb-md-3"> Welcome {% if user.is_authenticated %} back,
-      {{ user.username|capfirst }}! {% else %} , Guest! {% endif %} </h2>
+    <h1 class="h2 fs-4 fw-bold text-center pb-md-3"> Welcome {% if user.is_authenticated %} back,
+      {{ user.username|capfirst }}! {% else %} , Guest! {% endif %} </h1>
     <div class="row container home-main align-items-center pb-lg-5">
       <div class="col-sm-6">
         <div class="border-0">
@@ -31,7 +31,7 @@
               inspire and guide you on a lifelong journey of learning, growth, and self-discovery through the magic of
               literature. </p> {% if user.is_authenticated %}
             <a href="{% url 'user_page' %}" class="btn btn-secondary text-white">My Books</a>
-            <a href="{% url 'user_profile' %}" class="btn btn-outline-danger">My Profile</a> {% else %}
+            <a href="{% url 'user_profile' %}" class="btn btn-danger">My Profile</a> {% else %}
             <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
             <a href="{% url 'register' %}" class="btn btn-outline-secondary">Register</a> {% endif %}
           </div>
@@ -41,10 +41,10 @@
         <div class="pb-3">
           <div class="card border-0">
             <div class="card-body">
-              <h5 class="home-title pb-3">
+              <h2 class="h5 home-title pb-3">
                 <span>Dig into the world</span>
                 <span>of literature!</span>
-              </h5>
+              </h2>
               <img class="home-image" src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
                    alt="Image of a scolar writing a book">
             </div>
