@@ -184,8 +184,16 @@ def delete_profile(request):
 
 
 def contact(request):
-    form = ContactForm()
-
+    initial_data = {}
+    
+    # Check if the user is authenticated
+    if request.user.is_authenticated:
+        # If authenticated, populate the initial_data dictionary with user's name and email
+        name = request.user.first_name
+        initial_data['name'] = name if name else request.user.username
+        initial_data['email'] = request.user.email
+    
+    form = ContactForm(initial=initial_data)
     return render(request, 'contact.html', {'form': form})
 
 
