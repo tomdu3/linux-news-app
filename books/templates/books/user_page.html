@@ -1,89 +1,74 @@
-{% extends 'books/base.html' %}
-{% load static %}
-
-{% block content %}
-    <div class="title text-center pt-4 h1">
-        <h1>{{ user.username|capfirst }}'s Added Books</h1>
-    </div>
-    {% if user.is_authenticated %}
-    {% if books|length != 0 %}
-        <div class="container pt-lg-4 pt-sm-2 col-lg-8">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="small-none">#</th>
-                        <th>Author</th>
-                        <th>Title</th>
-                        <th class="small-none">Category</th>
-                        <th class="text-center">Modify</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for book in books %}
-                        <tr>
-                            <td class="small-none align-middle">{{ forloop.counter }}</td>
-                            <td class="h6 align-middle">{{ book.author }}</td>
-                            <td class="align-middle"><a href="{% url 'book_detail' slug=book.slug %}" class="book-link">{{ book.title }}</a></td>
-                            <td class="small-none h6 align-middle">{{ book.category }}</td>
-                            <td class="align-middle">
-                                <div class="d-flex align-items-center gap-1">
-                                    <a href="{% url 'book_edit' slug=book.slug %}" class="btn btn-primary btn-sm">Edit</a>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ book.id }}">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Delete Confirmation Modal -->
-                        <div class="modal fade" id="deleteModal{{ book.id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="d-flex align-items-center">
-                                            {% if 'default' in book.image_url.url %}
-                                                <img
-                                                src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
-                                                class="card-img-top mx-auto"
-                                                style="max-width: 100px; max-height: 100px;"
-                                                alt="{{ book.title }} image"
-                                                />
-                                            {% else %}
-                                                <img
-                                                    src="{{ book.image_url.url }}"
-                                                    class="card-img-top mx-auto"
-                                                    style="max-width: 100px; max-height: 100px;"
-                                                    alt="{{ book.title }} image"
-                                                />
-                                            {% endif %}
-                                            
-                                            <div class="ms-3">
-                                                <h4 class="fw-bold">{{ book.title }}</h4>
-                                                <p>Author: {{ book.author }}</p>
-                                                <p><span class="fst-italic">Short Description:</span> {{ book.short_description }}</p>
-                                            </div>
-                                        </div>
-                                        <p>Are you sure you want to delete <span class="fw-bold text-danger">{{ book.title }}</span>?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <a href="{% url 'book_delete' slug=book.slug %}" class="btn btn-danger">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    {% else %}
-        <div class="text-center">
-            <h3>No books yet</h3>
-        </div>
-    {% endif %}
-        <div class="container text-center">
-            <a href="{% url 'book_add' %}" class="btn btn-outline-danger">Add a Book</a>
-        </div>
-    {% endif %}
-{% endblock %}
+{% extends 'books/base.html' %} {% load static %} {% block content %}
+  <div class="title text-center pt-4 h1">
+    <h1>{{ user.username|capfirst }}'s Added Books</h1>
+  </div> {% if user.is_authenticated %}{% if books|length != 0 %}
+    <div class="container pt-lg-4 pt-sm-2 col-lg-8">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th class="small-none">#</th>
+          <th>Author</th>
+          <th>Title</th>
+          <th class="small-none">Category</th>
+          <th class="text-center">Modify</th>
+        </tr>
+        </thead>
+        <tbody> {% for book in books %}
+          <tr>
+            <td class="small-none align-middle">{{ forloop.counter }}</td>
+            <td class="h6 align-middle">{{ book.author }}</td>
+            <td class="align-middle">
+              <a href="{% url 'book_detail' slug=book.slug %}" class="book-link">{{ book.title }}</a>
+            </td>
+            <td class="small-none h6 align-middle">{{ book.category }}</td>
+            <td class="align-middle">
+              <div class="d-flex align-items-center gap-1">
+                <a href="{% url 'book_edit' slug=book.slug %}" class="btn btn-primary btn-sm">Edit</a>
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ book.id }}">
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+          <!-- Delete Confirmation Modal -->
+          <div class="modal fade" id="deleteModal{{ book.id }}" tabindex="-1" aria-labelledby="deleteModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="d-flex align-items-center"> {% if 'default' in book.image_url.url %}
+                    <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
+                         class="card-img-top mx-auto" style="max-width: 100px; max-height: 100px;"
+                         alt="{{ book.title }} image"/> {% else %}
+                    <img src="{{ book.image_url.url }}" class="card-img-top mx-auto"
+                         style="max-width: 100px; max-height: 100px;" alt="{{ book.title }} image"/> {% endif %}
+                    <div class="ms-3">
+                      <h4 class="fw-bold">{{ book.title }}</h4>
+                      <p>Author: {{ book.author }}</p>
+                      <p>
+                        <span class="fst-italic">Short Description:</span> {{ book.short_description }}
+                      </p>
+                    </div>
+                  </div>
+                  <p>Are you sure you want to delete <span class="fw-bold text-danger">{{ book.title }}</span>? </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <a href="{% url 'book_delete' slug=book.slug %}" class="btn btn-danger">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div> {% endfor %}
+        </tbody>
+      </table>
+    </div>{% else %}
+    <div class="text-center">
+      <h3>No books yet</h3>
+    </div>{% endif %}
+    <div class="container text-center">
+      <a href="{% url 'book_add' %}" class="btn btn-outline-danger">Add a Book</a>
+    </div> {% endif %} {% endblock %}

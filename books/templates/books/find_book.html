@@ -1,77 +1,59 @@
-{% extends 'books/base.html' %}
-
-{% load static %}
-
-{% block content %}
-<div class="title text-center pt-4">
+{% extends 'books/base.html' %} {% load static %} {% block content %}
+  <div class="title text-center pt-4">
     <h1>Search Results</h1>
-</div>
-
-<div class="text-center pt-lg-4 pt-sm-2">
+  </div>
+  <div class="text-center pt-lg-4 pt-sm-2">
     <div class="col-lg-5 col-md-8 col-10 mx-auto">
-        <form method="GET" action="{% url 'find_book' %}" class="d-flex align-items-center gap-1">
-            <input type="text" name="q" id="input-search" placeholder="Search books" value="{{ request.GET.q|default:'' }}" class="form-control me-2">
-            <button type="submit" class="btn btn-primary">Search</button>
-            <button type="button" class="btn btn-secondary clear-search" id="clearSearch" style="visibility: hidden;">Clear</button>
-        </form>
-    </div>  
-</div>
-
-
-<div class="container-fluid custom-container">
-    {% if books %}
+      <form method="GET" action="{% url 'find_book' %}" class="d-flex align-items-center gap-1">
+        <input type="text" name="q" id="input-search" placeholder="Search books" value="{{ request.GET.q|default:'' }}"
+               class="form-control me-2">
+        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="button" class="btn btn-secondary clear-search" id="clearSearch" style="visibility: hidden;">
+          Clear
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="container-fluid custom-container"> {% if books %}
     <div class="text-info">
-        <p>Found {{ books|length }} records</p>
+      <p>Found {{ books|length }} records</p>
     </div>
     <div class="container pt-lg-4 pt-sm-2">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th class="small-none">#</th>
-                    <th class=>Author</th>
-                    <th>Title</th>
-                    <th class="small-none">Category</th>
-                    <th>Like</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for book in books %}
-                    <tr>
-                        <td class="small-none">{{ forloop.counter }}</td>
-                        <td>{{ book.author }}</td>
-                        <td><a href="{% url 'book_detail' slug=book.slug %}" class="book-link">{{ book.title }} </a></td>
-                        <td class="small-none">{{ book.category }}</td>
-                        <td>
-                            <form method="post" action="{% url 'like_book' book.slug %}">
-                                {% csrf_token %}
-                                <input type="hidden" name="q" value="{{ request.GET.q }}">
-                                {% if request.user in book.likes.all %}
-                                    <button type="submit" class="btn text-danger shadow-none"><i class="fa-solid fa-heart fa-beat"></i></button>
-                                {% else %}
-                                <button type="submit" class="btn text-primary shadow-none"><i class="fa-regular fa-heart fa-bounce"></i></button>
-                                {% endif %}
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th class="small-none">#</th>
+          <th class=>Author</th>
+          <th>Title</th>
+          <th class="small-none">Category</th>
+          <th>Like</th>
+        </tr>
+        </thead>
+        <tbody> {% for book in books %}
+          <tr>
+            <td class="small-none">{{ forloop.counter }}</td>
+            <td>{{ book.author }}</td>
+            <td>
+              <a href="{% url 'book_detail' slug=book.slug %}" class="book-link">{{ book.title }} </a>
+            </td>
+            <td class="small-none">{{ book.category }}</td>
+            <td>
+              <form method="post" action="{% url 'like_book' book.slug %}"> {% csrf_token %} <input type="hidden"
+                                                                                                    name="q"
+                                                                                                    value="{{ request.GET.q }}">
+                {% if request.user in book.likes.all %}
+                  <button type="submit" class="btn text-danger shadow-none">
+                    <i class="fa-solid fa-heart fa-beat"></i>
+                  </button> {% else %}
+                  <button type="submit" class="btn text-primary shadow-none">
+                    <i class="fa-regular fa-heart fa-bounce"></i>
+                  </button> {% endif %} </form>
+            </td>
+          </tr> {% endfor %} </tbody>
+      </table>
     </div>
-</div>
-
-{% else %}
-<div class="text-center">
-    <h3 class="pt-5">No books found</h3>
-</div>
-{% endif %}
-
-{% endblock %}
-
-{% block script %}
-
-    <script src="{% static 'js/search.js' %}"></script>
-
-{% endblock %}
-
-
-
+    </div>{% else %}
+    <div class="text-center">
+      <h3 class="pt-5">No books found</h3>
+    </div> {% endif %} {% endblock %} {% block script %}
+  <script src="{% static 'js/search.js' %}"></script> {% endblock %}

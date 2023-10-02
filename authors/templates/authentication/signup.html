@@ -1,23 +1,10 @@
-{% extends 'books/base.html' %}
-
-{% load static %}
-
-{% block content %}
-  
-<div class="container mt-5 col-9 col-md-6 col-lg-4">
-    <div class="text-center">
-        <h2>Register</h2>
-    </div>
-    <div id="registerForm" class="form-container mt-3">
-        <form action="" method="POST" action={% url 'register' %}>
-            {% csrf_token %}
-
-            {{ form.as_p }}
-
-            <button type="submit" class="btn btn-primary">Register</button>
-            Already registered? Click <a class ="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'login' %}">here</a>.</p>
-        </form>
-    </div>
-</div>
-{% endblock %}
-
+{% extends 'books/base.html' %} {% load static %} {% block content %} <div class="container mt-5 col-9 col-md-6 col-lg-4">
+  <div class="text-center">
+    <h2>Register</h2>
+  </div>
+  <div id="registerForm" class="form-container mt-3">
+    <form action="" method="POST" action={% url 'register' %}> {% csrf_token %} {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Register</button> Already registered? Click <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'login' %}">here</a>. </p>
+    </form>
+  </div>
+</div> {% endblock %}
