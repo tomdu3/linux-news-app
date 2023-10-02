@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block content %}
-
   <!-- Edit Book Card and Form -->
   <div class="container mt-5">
     <div class="row">
@@ -12,18 +11,21 @@
           <div class="card-header">
             <h2 class="card-title">Edit Book</h2>
           </div>
-          <div class="card-body"> {% if 'default' in book.image_url.url %}
-            <p class="text-center text-danger">No image</p> {% else %}
-            <div class="d-flex justify-content-center align-items-center book-image mx-auto">
-              <img src="{{ book.image_url.url }}" class="card-img-top mx-auto" alt="{{ book.title }} image">
-            </div> {% endif %}
+          <div class="card-body">
+            {% if 'default' in book.image_url.url %}
+              <p class="text-center text-danger">No image</p>
+            {% else %}
+              <div class="d-flex justify-content-center align-items-center book-image mx-auto">
+                <img src="{{ book.image_url.url }}" class="card-img-top mx-auto" alt="{{ book.title }} image">
+              </div>
+            {% endif %}
             <div class="d-flex justify-content-center">
               <form class="col-10" action="{% url 'book_edit' book.slug %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                   <label class="form-label" for="title">Title:</label>
                   <input type="text" class="form-control" id="title" name="title" value="{{ book.title }}"
-                  placeholder="Title (required)" required>
+                         placeholder="Title (required)" required>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="author">Author:</label>
@@ -31,16 +33,13 @@
                          placeholder="Author (required)" required>
                 </div>
                 <div class="form-group">
-                  <label class="from-label" for="short_description">Short Description:</label>
-                  <textarea class="form-control" id="short_description" name="short_description" rows="3"
-                  placeholder="Short Description (required)" required>
-                  {{ book.short_description }}
-                </textarea>
+                  <label class="form-label" for="short_description">Short Description:</label>
+                  <textarea class="form-control" id="short_description" name="short_description" rows="3" placeholder="Short Description (required)" required>{{ book.short_description }}</textarea>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="full_description">Full Description:</label>
                   <textarea class="form-control" id="full_description" name="full_description" rows="10"
-                  placeholder="Full Description (required)" required>{{ book.full_description }}</textarea>
+                            placeholder="Full Description (required)" required>{{ book.full_description }}</textarea>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="image_url">Image URL:</label>
@@ -50,9 +49,10 @@
                   <label class="form-label" for="category">Category:</label>
                   <select class="form-select" id="category" name="category">
                     {% for category in categories %}
-                    <option value="{{ category.id }}"{% if book.category == category %} selected {% endif %}>
-                      {{ category.name }}
-                    </option>
+                      <option value="{{ category.id }}"
+                      {% if book.category == category %} selected {% endif %}>
+                        {{ category.name }}
+                      </option>
                     {% endfor %}
                   </select>
                 </div>
@@ -66,5 +66,4 @@
       </div>
     </div>
   </div>
-
 {% endblock %}
