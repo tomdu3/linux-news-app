@@ -1,95 +1,102 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-
-:root {
-    --bg-color: var(--ivory); 
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.home-main div>div>div{
-    background-color: var(--ivory);
+:root {
+  --bg-color: var(--ivory);
+}
+
+.home-main div > div > div {
+  background-color: var(--ivory);
 }
 
 /* code "Flip Text Animation" adapted from https://alvarotrigo.com/blog/css-text-animations */
 /* Homepage Main Titles */
 
-  .waviy {
-    position: relative;
+.waviy {
+  position: relative;
+}
+.waviy span {
+  position: relative;
+  display: inline-block;
+  font-size: 35px;
+  color: #274472;
+  text-transform: uppercase;
+  animation: flip 2s infinite;
+  animation-delay: calc(0.2s * var(--i));
+}
+@keyframes flip {
+  0%,
+  80% {
+    transform: rotateY(360deg);
   }
-  .waviy span {
-    position: relative;
-    display: inline-block;
-    font-size: 35px;
-    color: #274472;
-    text-transform: uppercase;
-    animation: flip 2s infinite;
-    animation-delay: calc(.2s * var(--i))
-  }
-  @keyframes flip {
-    0%,80% {
-      transform: rotateY(360deg) 
-    }
-  }
-
-  img {
-    width: 15rem;
-    height: 15rem;
-    display: inline-block;
-  }
-
-  /* ADAPTED FROM: https://codepen.io/andysanchez-dev/pen/GYPevV*/
-  /* Homepage Second Title */
-.home-title span{
-    position: relative;
-    overflow: hidden;
-    display: block;
-    line-height: 1.2;
 }
 
-.home-title span::after{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--baby-blue);
-    animation: a-ltr-after 2s cubic-bezier(.77,0,.18,1) forwards;
-    transform: translateX(-101%);
+img {
+  width: 15rem;
+  height: 15rem;
+  display: inline-block;
 }
 
-.home-title span::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-color);
-    animation: a-ltr-before 2s cubic-bezier(.77,0,.18,1) forwards;
-    transform: translateX(0);
+/* ADAPTED FROM: https://codepen.io/andysanchez-dev/pen/GYPevV*/
+/* Homepage Second Title */
+.home-title span {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  line-height: 1.2;
+}
+
+.home-title span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--baby-blue);
+  animation: a-ltr-after 2s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+  transform: translateX(-101%);
+}
+
+.home-title span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  animation: a-ltr-before 2s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+  transform: translateX(0);
 }
 
 .home-title span:nth-of-type(1)::before,
-.home-title span:nth-of-type(1)::after{
-    animation-delay: 1s;
+.home-title span:nth-of-type(1)::after {
+  animation-delay: 1s;
 }
 
 .home-title span:nth-of-type(2)::before,
-.home-title span:nth-of-type(2)::after{
-    animation-delay: 1.5s;
+.home-title span:nth-of-type(2)::after {
+  animation-delay: 1.5s;
 }
 
-@keyframes a-ltr-after{
-    0% {transform: translateX(-100%)}
-    100% {transform: translateX(101%)}
+@keyframes a-ltr-after {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(101%);
+  }
 }
 
-@keyframes a-ltr-before{
-    0% {transform: translateX(0)}
-    100% {transform: translateX(200%)}
+@keyframes a-ltr-before {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(200%);
+  }
 }
-

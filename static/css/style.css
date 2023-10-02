@@ -1,86 +1,98 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Mooli&family=Roboto+Serif&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Mooli&family=Roboto+Serif&display=swap");
 
 /* Default CSS Variables */
 :root {
-    --midnight-blue: #265B8B;
-    --ivory: #ECECEB    ;
-    --dark-blue: #0B1C48;
-    --baby-blue: #84C7F2;
-    --title: 'Mooli', sans-serif;
-    --subtitle: 'Montserrat Alternates', sans-serif;
-    --text: 'Roboto Serif', serif;
-    --size-1: 1.25rem;
-    --size-2: 1rem;
-    --size-3: 0.75rem;
-
+  --midnight-blue: #265b8b;
+  --ivory: #ececeb;
+  --dark-blue: #0b1c48;
+  --baby-blue: #84c7f2;
+  --title: "Mooli", sans-serif;
+  --subtitle: "Montserrat Alternates", sans-serif;
+  --text: "Roboto Serif", serif;
+  --size-1: 1.25rem;
+  --size-2: 1rem;
+  --size-3: 0.75rem;
 }
 
 /* Common Styling */
-body, footer {
-    background-color: var(--ivory);
+body,
+footer {
+  background-color: var(--ivory);
 }
 
 h1 {
-    font-family: var(--title);
+  font-family: var(--title);
 }
 
-h2, h3, h4, h5, th {
-    font-family: var(--subtitle);
+h2,
+h3,
+h4,
+h5,
+th {
+  font-family: var(--subtitle);
 }
 
-a, p, td, label, option, .description  {
-    font-family: var(--text);
-    color: var(--dark-blue);
+a,
+p,
+td,
+label,
+option,
+.description {
+  font-family: var(--text);
+  color: var(--dark-blue);
 }
 
-td, button, .description {
-    font-size: var(--size-2);
-    font-family: var(--text);
+td,
+button,
+.description {
+  font-size: var(--size-2);
+  font-family: var(--text);
 }
 
-input, textarea {
-    font-family: var(--text);
-    color: var(--dark-blue);
-    font-size: var(--size-2);
+input,
+textarea {
+  font-family: var(--text);
+  color: var(--dark-blue);
+  font-size: var(--size-2);
 }
 
 .size-1 {
-    font-size: var(--size-1);
-  }
-  
-  .size-2 {
-    font-size: var(--size-2);
-  }
-  
-  .size-3 {
-    font-size: var(--size-3);
-  }
+  font-size: var(--size-1);
+}
 
-  /* Profile Image */
+.size-2 {
+  font-size: var(--size-2);
+}
+
+.size-3 {
+  font-size: var(--size-3);
+}
+
+/* Profile Image */
 #profileImage {
   width: 30px;
   height: 30px;
 }
 
-  /* Book Record styling */
-  /* Book Link */
+/* Book Record styling */
+/* Book Link */
 .book-link {
-    font-size: var(--size-2);
-    transition:  font-size 0.3s; /* Add a smooth transition effect */
+  font-size: var(--size-2);
+  transition: font-size 0.3s; /* Add a smooth transition effect */
 }
 
 /* hover effect for booklink */
 .book-link:hover {
-    font-size: calc(var(--size-2) + 0.1rem);
+  font-size: calc(var(--size-2) + 0.1rem);
 }
 
 /* Book Image */
 .book-image {
-    width: 12rem;
+  width: 12rem;
 }
 
 .book-card {
-  padding-top: 8px;;     
+  padding-top: 8px;
 }
 
 /* Forms */
@@ -92,13 +104,12 @@ input, textarea {
   padding-top: 10px;
 }
 
-
-  /* Profile */
+/* Profile */
 
 /* Image Profile Preview */
 #profileImagePreview {
   width: 12rem;
-  height: 12rem; 
+  height: 12rem;
 }
 
 /* Contact Page */
@@ -119,7 +130,7 @@ input, textarea {
 /* media queries */
 @media screen and (max-width: 767px) {
   .small-none {
-      display: none;
+    display: none;
   }
 }
 
