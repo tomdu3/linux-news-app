@@ -9,7 +9,7 @@
           <div class="card-body"> {% if 'default' in book.image_url.url %}
             <p class="text-center text-danger">No image</p> {% else %}
             <div class="d-flex justify-content-center align-items-center book-image mx-auto">
-              <img src="{{ book.image_url.url }}" class="card-img-top mx-auto" alt="{{ book.title }} image"/>
+              <img src="{{ book.image_url.url }}" class="card-img-top mx-auto" alt="{{ book.title }} image">
             </div> {% endif %}
             <div class="d-flex justify-content-center">
               <form class="col-10" action="{% url 'book_edit' book.slug %}" method="post" enctype="multipart/form-data"> {% csrf_token %}

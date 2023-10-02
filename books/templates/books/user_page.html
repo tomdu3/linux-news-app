@@ -43,9 +43,9 @@
                   <div class="d-flex align-items-center"> {% if 'default' in book.image_url.url %}
                     <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
                          class="card-img-top mx-auto" style="max-width: 100px; max-height: 100px;"
-                         alt="{{ book.title }} image"/> {% else %}
+                         alt="{{ book.title }} image"> {% else %}
                     <img src="{{ book.image_url.url }}" class="card-img-top mx-auto"
-                         style="max-width: 100px; max-height: 100px;" alt="{{ book.title }} image"/> {% endif %}
+                         style="max-width: 100px; max-height: 100px;" alt="{{ book.title }} image"> {% endif %}
                     <div class="ms-3">
                       <h4 class="fw-bold">{{ book.title }}</h4>
                       <p>Author: {{ book.author }}</p>

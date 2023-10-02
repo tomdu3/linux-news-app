@@ -9,9 +9,9 @@
           <div class="text-center mx-auto pt-3">
             {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url %}
               <img src="{{ user.userprofile.profile_image.url }}" id="profileImagePreview" alt="Profile Image"
-                   class="rounded-circle mx-auto d-block img-fluid"/> {% else %}
+                   class="rounded-circle mx-auto d-block img-fluid"> {% else %}
               <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp" alt="Profile Image Default"
-                   id="profileImagePreview" class="rounded-circle d-block img-fluid"/> {% endif %} </div>
+                   id="profileImagePreview" class="rounded-circle d-block img-fluid"> {% endif %} </div>
           <div class="container pt-3">
             <p>
               <span class="fw-bold">Username:</span> {{ user.username }}

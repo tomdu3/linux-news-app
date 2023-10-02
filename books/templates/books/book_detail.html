@@ -8,9 +8,9 @@
               <h2 class="card-title">{{ book.title }}</h2>
               <p class="card-text">Author: {{ book.author }}</p> {% if 'default' in book.image_url.url %}
               <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
-                   class="card-img-top mx-auto book-image" alt="{{ book.title }} image"/> {% else %}
+                   class="card-img-top mx-auto book-image" alt="{{ book.title }} image"> {% else %}
               <img src="{{ book.image_url.url }}" class="card-img-top mx-auto book-image"
-                   alt="{{ book.title }} image"/> {% endif %}
+                   alt="{{ book.title }} image"> {% endif %}
             </div>
             <div class="col-md-6">
               <div class="card border-0">
@@ -20,7 +20,7 @@
                     <div class="d-flex justify-content-end">
                       <!-- Right-align the button -->
                       <a href="javascript:history.go(-1)">
-                        <input type="button" value="Back" class="btn btn-primary"/>
+                        <input type="button" value="Back" class="btn btn-primary">
                       </a>
                     </div>
                   </div>
