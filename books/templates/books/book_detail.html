@@ -1,4 +1,8 @@
-{% extends "books/base.html" %} {% load static %} {% block content %}
+{% extends "books/base.html" %}
+
+{% load static %}
+
+{% block content %}
   <div class="container mt-5">
     <div class="row col-10 mx-auto">
       <div class="col-12">
@@ -6,11 +10,14 @@
           <div class="row container pb-md-4 mx-auto">
             <div class="col-12 col-md-6 text-center">
               <h2 class="card-title">{{ book.title }}</h2>
-              <p class="card-text">Author: {{ book.author }}</p> {% if 'default' in book.image_url.url %}
-              <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/default_book.webp"
-                   class="card-img-top mx-auto book-image" alt="{{ book.title }} image"> {% else %}
-              <img src="{{ book.image_url.url }}" class="card-img-top mx-auto book-image"
-                   alt="{{ book.title }} image"> {% endif %}
+              <p class="card-text">Author: {{ book.author }}</p>
+              {% if 'default' in book.image_url.url %}
+              <img src="{% static 'images/default-book.webp' %}"
+                   class="card-img-top mx-auto book-image"
+                   alt="{{ book.title }} image">
+              {% else %}
+              <img src="{{ book.image_url.url }}" class="card-img-top mx-auto book-image" alt="{{ book.title }} image">
+              {% endif %}
             </div>
             <div class="col-md-6">
               <div class="card border-0">
@@ -31,9 +38,14 @@
                     <p class="card-text text-start pt-2">Likes: {{ book.likes_counter }}</p>
                     <form method="post" action="{% url 'like_book_detail' book.slug %}"> {% csrf_token %} <input
                         type="hidden" name="q" value="{{ request.GET.q }}">
-                      <button type="submit" class="btn shadow-none m-0"> {% if request.user in book.likes.all %}
-                        <i class="fa-solid fa-heart fa-beat text-danger"></i> {% else %}
-                        <i class="fa-regular fa-heart fa-bounce text-primary"></i> {% endif %} </button>
+                      {% if request.user in book.likes.all %}
+                      <button type="submit" class="btn shadow-none m-0" aria-label="Unlike">
+                        <i class="fa-solid fa-heart fa-beat text-danger"></i>
+                      {% else %}
+                      <button type="submit" class="btn shadow-none m-0" aria-label="Like">
+                        <i class="fa-regular fa-heart fa-bounce text-primary"></i>
+                      {% endif %}
+                      </button>
                     </form>
                   </div>
                 </div>
@@ -44,8 +56,12 @@
       </div>
       <div class="row col-md-12">
         <div class="card-body">
-          <div class="card-text description">{{ book.full_description|safe|linebreaksbr }}</div>
+          <div class="card-text description">
+            {{ book.full_description|safe|linebreaksbr }}
+          </div>
         </div>
       </div>
     </div>
-  </div> {% endblock %}
+  </div>
+  
+  {% endblock %}
