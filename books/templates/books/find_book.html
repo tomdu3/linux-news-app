@@ -34,13 +34,15 @@
             <td class="small-none">{{ forloop.counter }}</td>
             <td>{{ book.author }}</td>
             <td>
-              <a href="{% url 'book_detail' slug=book.slug %}" class="book-link">{{ book.title }} </a>
+              <a href="{% url 'book_detail' slug=book.slug %}" class="book-link">
+                {{ book.title }}
+              </a>
             </td>
             <td class="small-none">{{ book.category }}</td>
             <td>
-              <form method="post" action="{% url 'like_book' book.slug %}"> {% csrf_token %} <input type="hidden"
-                                                                                                    name="q"
-                                                                                                    value="{{ request.GET.q }}">
+              <form method="POST" action="{% url 'like_book' book.slug %}">
+                {% csrf_token %}
+                <input type="hidden" name="q" value="{{ request.GET.q }}">
                 {% if request.user in book.likes.all %}
                   <button type="submit" class="btn text-danger shadow-none">
                     <i class="fa-solid fa-heart fa-beat"></i>
@@ -55,5 +57,10 @@
     </div>{% else %}
     <div class="text-center">
       <h3 class="pt-5">No books found</h3>
-    </div> {% endif %} {% endblock %} {% block script %}
-  <script src="{% static 'js/search.js' %}"></script> {% endblock %}
+    </div>
+    {% endif %}
+
+    {% endblock %}
+    {% block script %}
+    <script src="{% static 'js/search.js' %}"></script>
+    {% endblock %}

@@ -11,7 +11,7 @@
           </div>
           <div class="card-body">
             <div class="d-flex justify-content-center">
-              <form class="col-10" method="post" enctype="multipart/form-data">
+              <form class="col-10" action="{% url 'book_add' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                   <label class="form-label" for="title">Title:</label>
