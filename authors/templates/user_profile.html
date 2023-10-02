@@ -1,4 +1,9 @@
-{% extends "books/base.html" %} {% load static %} {% block content %}
+{% extends "books/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -9,9 +14,11 @@
           <div class="text-center mx-auto pt-3">
             {% if user.userprofile.profile_image and "profile_image" not in user.userprofile.profile_image.url %}
               <img src="{{ user.userprofile.profile_image.url }}" id="profileImagePreview" alt="Profile Image"
-                   class="rounded-circle mx-auto d-block img-fluid"> {% else %}
-              <img src="https://web-photos-td.s3.eu-north-1.amazonaws.com/user.webp" alt="Profile Image Default"
-                   id="profileImagePreview" class="rounded-circle d-block img-fluid"> {% endif %} </div>
+                   class="rounded-circle mx-auto d-block img-fluid">
+            {% else %}
+              <img src="{% static 'images/user.webp' %}" alt="Profile Image Default" id="profileImagePreview" class="rounded-circle d-block img-fluid">
+            {% endif %}
+          </div>
           <div class="container pt-3">
             <p>
               <span class="fw-bold">Username:</span> {{ user.username }}
@@ -21,8 +28,8 @@
             </p>
           </div>
           <div class="card-footer text-center">
-            <a href="{% url 'update_profile' %}" class="btn btn-primary">Update Profile</a>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProfileModal">
+            <a href="{% url 'update_profile' %}" class="btn btn-primary btn-sm">Update Profile</a>
+            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteProfileModal">
               Delete Profile
             </button>
           </div>
@@ -30,9 +37,9 @@
       </div>
     </div>
   </div>
+
   <!-- Delete Profile Modal -->
-  <div class="modal fade" id="deleteProfileModal" tabindex="-1" role="dialog" aria-labelledby="deleteProfileModalLabel"
-       aria-hidden="true">
+  <div class="modal fade" id="deleteProfileModal" tabindex="-1" role="dialog" aria-labelledby="deleteProfileModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -55,5 +62,11 @@
         </div>
       </div>
     </div>
-  </div> {% endblock %} {% block script %}
-  <script src="{% static 'js/profile.js' %}"></script> {% endblock %}
+  </div>
+{% endblock %}
+
+{% block script %}
+
+  <script src="{% static 'js/profile.js' %}"></script>
+
+{% endblock %}
