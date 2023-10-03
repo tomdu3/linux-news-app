@@ -25,6 +25,7 @@
           {% csrf_token %}
           <p>Are you sure? <span class="text-danger">Cannot undo!</span>
           </p>
+          <a href="{% url 'user_page' %}" class="btn btn-primary">Cancel</a>
           <button type="submit" class="btn btn-danger">Delete</button>
         </form>
       </div>
