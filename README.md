@@ -305,3 +305,18 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 
 ***
 
+5. As a ***registered user***, I want to ***be able to update the the books I've added***, so I can ***correct the information of the record (title, author, image, descriptions)***.
+- **Acceptance Criteria**
+
+
+- [x] The user must be logged in as a registered user to access the book update feature.
+- [x] There should be a visible and accessible option or button to edit/update a book's information.
+- [x] When the user clicks the edit/update option for a book, they should be directed to a book editing form.
+- [x] The editing form should display the current information of the book (title, author, image, descriptions).
+- [x] The user should be able to modify the title, author, image, and descriptions fields.
+- [x] The form should have validation to ensure that required fields are not left empty.
+- [x] The user should have the option to cancel the editing process and return to the book details page without saving any changes.
+- [x] Upon saving the changes, the book's information (title, author, image, descriptions) should be updated in the database.
+- [x] A confirmation message should be displayed to the user after successfully updating the book's information.
+
+***
