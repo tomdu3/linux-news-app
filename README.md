@@ -367,5 +367,17 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 
 ***
 
+9. As a ***bibliophile*** and a ***registered user***, I want to ***access a dedicated "Favourites" page***, so I can ***see all the books I've liked in one place***.
 
+- **Acceptance Criteria**
+
+- [x] When I log in as a registered user, there should be a "Favourites" option visible in the navigation menu.
+- [x] Clicking on the "Favourites" option should take me to a dedicated page that displays all the books I've marked as favorites.
+- [x] On the "Favourites" page, I should see a clear and user-friendly list of the books I've liked, including their titles, authors, and cover images.
+- [x] If I haven't marked any books as favorites yet, the page should display a friendly message indicating that my list is empty and encouraging me to explore and like books.
+- [x] Each book displayed on the "Favourites" page should have a button or link that allows me to remove it from my favourites list.
+- [x] When I remove a book from my favourites list, it should be immediately removed from the "Favourites" page without requiring a page refresh.
+- [x] The "Favourites" page should be responsive and work well on both desktop and mobile devices.
+
+***
 
