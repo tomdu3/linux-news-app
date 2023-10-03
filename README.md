@@ -381,3 +381,19 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 
 ***
 
+10. As a ***bibliophile*** and a ***registered user***, I want to ***search for books on the website***, so that I can ***browse and discover new books added by all users on the website***.
+
+- **Acceptance Criteria**
+
+- [x] The website should have a search bar prominently displayed on the homepage.
+- [x] As a registered user, I should be able to access the search functionality without any issues.
+- [x] When I type a search query into the search bar and press "Enter" or click the search button, the website should display a list of relevant books based on my query.
+- [x] The search results should include book titles, authors, and category of each book.
+- [x] Each search result should be clickable, allowing me to view more details about the book when I click on it.
+- [x] The search functionality should be responsive and work well on both desktop and mobile devices.
+- [x] The search should support basic search features such as partial matching (e.g., "macbeth" should return results for books with "Macbeth" in the title).
+- [x]  The search should make me able to like a certain book.
+
+***
+
+
