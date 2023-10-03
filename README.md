@@ -336,3 +336,17 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 
 ***
 
+7. As a ***registered user***, I want to ***be able to like a book review*** so that I can ***keep track of my favorite books***.
+
+- **Acceptance Criteria**
+- [x] The user must be logged in to their registered account.
+- [x] In search results there should be a  "Like" or "Favourite" button.
+- [x] Clicking the "Like" button should add the book details to the user's list of liked/favourite books.
+- [x] Clicking the "Like" button again should remove the book presentation from the user's liked/favorite books.
+- [x] The user should see a visual indication (e.g., change in button color or icon) when a book presentation is liked.
+- [x] The user should see a visual indication (e.g., change in button color or icon) when a book presentation is unliked.
+- [x] The liked/favourite book presentations should be stored and associated with the user's account.
+- [x] The user should be able to easily access their list of liked/favourite books from their user profile.
+- [x] If the user unlikes a book presentation, it should be immediately removed from their liked/favourite list.
+
+***
