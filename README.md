@@ -119,7 +119,7 @@
 
 ![Other Features](./docs/images/vt_other_features.png)
 
-#### Scope
+#### SCOPE
 - **Features:** user registration, profile management, book addition, editing and deletion, liking books, viewing user-added books, a favourites page, contact form, and book search.
 - **Content:** Book Review will contain book titles, authors, images, and descriptions (short and full).
 - **User Flow:** The user will be able to register for an account, log in, add books, edit books, delete books, like books, view their books, view their favourites, and contact the admin.
@@ -129,5 +129,60 @@
 - **Technical Requirements:** Front-End: HTML, CSS, Javascript, Bootstrap 5, Font Awesome; Back-End: Python, Django 4.1, PostgreSQL For deployment, the project will be hosted on Heroku, with static files stored on Cloudinary and the database hosted on ElephantSQL.The whole project will be version controlled using Git and GitHub.
 Milestones: The whole project is broken down into smaller milestones, which are then broken down into tasks. The project will be managed using Github Project.The three milestones are: MVP Release, User Profile Issues, Project Refinement.
 
+##### Content Requirements
+- Content (text, images, videos) that user will need.
+- The User will be looking for:
+    - Customisable Account
+    - Custom username/password
+    - Add/Modify/Delete Book Details
+    - View list of Favourite Books
+- Easy and Intuitive Navigation
+- Pleasant Theme (typography, imagery, colour palette)
+- Book Detail Page:
+    - Title
+    - Author
+    - Image URL
+    - Description
+    - Likes
+- Searchable Book Database
+- Contact Form
+- Favourite Books Page
+- User Added Books Page
+- User Profile Page
+
+##### Functionality Requirements
+The user will be able to:
+- Register for an account
+- Log in to their account
+- Log out of their account
+- Add a book to the database:
+    - Title
+    - Author
+    - Image URL
+    - Short Description
+    - Full Description
+- Edit a book in the database
+- Delete a book from the database
+- Like a book
+- View list of their favourite books
+- View list of their added books
+- View all books
+- Search for books
+- View book details
+- Contact the admin
+- View their profile
+- Customise their profile
+- Delete their profile
+- View a custom 404 page
+
+#### Structure
+- **Interaction Design:** The user will be able to interact with the website using a mouse and keyboard.
+- **Information Architecture:** The information will be structured in a way that is easy to navigate and understand. The information will be organised into logical groups and categories, with the most important information being the most prominent.
+- **Navigation:** The navigation will be intuitive and easy to use. The navigation will be consistent across the website, with the navigation bar being the primary means of navigation. The navigation will be responsive and will adapt to different screen sizes.
+- **Information Design:** The information will be presented in a way that is easy to understand and digest. The information will be presented in a way that is visually appealing and engaging.
+- **Interface Design:** The interface will be clean and simple. The interface will be responsive and will adapt to different screen sizes. The interface will be consistent across the website.
+
+<!-- TODO: Make a Diagram -->
+**Information Architecture and Navigation**
 
 ### Typography
