@@ -320,3 +320,19 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 - [x] A confirmation message should be displayed to the user after successfully updating the book's information.
 
 ***
+
+6. As a ***registered user***, I want to ***be able to delete book details from my profile***, so it ***will no longer be accessible***.
+
+- **Acceptance Criteria**
+
+- [x] When I am logged in as a registered user and I navigate to my profile, I should see a list of books associated with my profile.
+- [x] Next to each book entry in my profile, there should be "Edit" and "Delete" buttons that I can click on to initiate the book deletion process.
+- [x] When I click the "Delete" button for a specific book, a confirmation dialog or prompt should appear to ensure that I want to delete the book.
+- [x] If I confirm the deletion, the book details should be permanently removed from my profile and should no longer be visible.
+- [x] After successfully deleting a book, I should receive a confirmation message or notification indicating that the deletion was successful.
+- [x] If I cancel the deletion from the confirmation dialog, the book should remain on my profile, unchanged.
+- [x] The deletion process should be quick and responsive, ensuring a smooth user experience.
+- [x] The system should handle any errors gracefully and provide appropriate error messages if the deletion process fails for any reason.
+
+***
+
