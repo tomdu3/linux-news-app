@@ -396,4 +396,18 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 
 ***
 
+11. As a ***registered user***, I want to ***be able to use a contact form***, so I can ***reach out to the website administrators with questions, feedback, or concerns***.
+
+- **Acceptance Criteria**
+
+- [x] The contact form should be accessible to registered users when they are logged in.
+- [x] The contact form should have fields for the user to input their name, email address, subject, message, and an optional attachment field.
+- [x] The name and email address fields should be pre-filled with the user's registered information.
+- [x] There should be a "Submit" button to send the message to the website administrators.
+- [x] Upon submitting the form, the user should receive a confirmation message indicating that their message has been sent successfully.
+- [x] Website administrators should receive an email notification with the user's message, subject, and contact information when a user submits the form.
+- [x] Users should not be able to submit the form if any required fields are left blank or if the attachment exceeds the maximum size.
+Users should receive an error message if there are any issues with their submission (e.g., invalid email address, attachment too large) and should be prompted to correct the errors.
+- [x] The contact form should be responsive and visually appealing on different devices (e.g., desktop, tablet, mobile).
+- [x] The contact form should be accessible to users with disabilities, following WCAG guidelines.
 
