@@ -21,7 +21,7 @@
         {{ book.short_description }}
       </p>
       <div class="form-group text-center pb-2">
-        <form action="" method="POST">
+        <form method="POST">
           {% csrf_token %}
           <p>Are you sure? <span class="text-danger">Cannot undo!</span>
           </p>
