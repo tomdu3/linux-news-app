@@ -1,10 +1,22 @@
-{% extends 'books/base.html' %} {% load static %} {% block content %} <div class="container mt-5 col-9 col-md-6 col-lg-4">
+{% extends 'books/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5 col-9 col-md-6 col-lg-4">
   <div class="text-center">
-    <h2>Register</h2>
+    <h1 class="h2">Register</h1>
   </div>
   <div id="registerForm" class="form-container mt-3">
-    <form method="POST" > {% csrf_token %} {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">Register</button> Already registered? Click <a class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'login' %}">here</a>. 
+    <form method="POST" >
+      {% csrf_token %}
+      {{ form.as_p }}
+      <p>
+        <button type="submit" class="btn btn-primary">Register</button> Already registered? <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'login' %}">Login here</a>.
+      </p>
     </form>
   </div>
-</div> {% endblock %}
+</div>
+
+{% endblock %}
