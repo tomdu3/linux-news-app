@@ -9,6 +9,7 @@ from django.db.models import Q
 from .models import Book, Category
 from .forms import BookForm
 
+
 # Home Page view
 def home(request):
     return render(request, 'books/home.html')
@@ -33,8 +34,7 @@ def book_delete_confirmation(request, book_id):
     if request.method == 'POST':
         # Handle the actual deletion of the book here
         book.delete()
-        return redirect('user_page')  # Redirect to the book list page or any other appropriate page
-
+        return redirect('user_page')
 
     return render(request, 'books/book_delete.html', {'book': book})
 
@@ -88,10 +88,10 @@ class BookUpdateView(LoginRequiredMixin, View):
     def post(self, request, slug):
         book = get_object_or_404(Book, slug=slug)
         categories = Category.objects.all()
-        form = BookForm(request.POST, request.FILES, instance=book)  
+        form = BookForm(request.POST, request.FILES, instance=book)
 
         if form.is_valid():
-            # Save the form to update the Book instance, including the image file
+            # Save the form to update the Book instance
             form.save()
 
             # Success message upon update
