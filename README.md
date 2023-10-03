@@ -207,3 +207,29 @@ This colour scheme is used throughout the website. To it the standard Bootstrap 
 
 Monserrat Alternates is used for the logo and headings. Roboto Serif is used for the body text. Mooli is used for the book titles. They are all Google Fonts.
 
+##### Imagery
+
+##### Branding
+A logo is created that reflect the essence of "Books for Life." Nothing fancy, just a simple logo that is easy to remember and recognisable (B4L). The tool used is the online [favicon.io](https://favicon.io/) generator.
+
+![Books for Life logo](./docs/images/android-chrome-192x192.png)
+
+##### Prototypes
+Given the time constraints, the website was not prototyped. The website was built using the wireframes as a guide.
+
+##### Feedback and Iteration
+Generally, the developer relied on the feedback from the mentor and the peer-code review to improve the website. The developer also relied on the feedback from some other users to improve the website. The constant changing of the website functionalities and design was a result of the feedback received.
+
+#### Accessibility
+Website complies with accessibility standards. The Lighthouse Validation was used to check the website for accessibility issues. The website is fully accessible.
+
+## Database Design
+Database design was made with QuickDBD. The database is hosted on ElephantSQL and is a PostgreSQL database.
+
+![Database Design](./docs/images/quickdbd_database_diagram.png)
+
+There's a customised **UserProfile** Model that extends the AbstractUser Model. The UserProfile Model is used to store additional information about the user, in this case a profile picture. It's activated once the user takes an action that requires a profile picture, that is updating the profile data.
+**Book** Model has fields title, author, slug, short_description, full_description, image_url, likes, and user. The user field is a foreign key to the UserProfile Model. The likes in fact is not, stricly saying, the field of the book. It's Many to Many connection that generates a linking model between Book record and User record. The slug field is used to create a unique URL for each book. The slug field is automatically generated from the title and there's a custom save method that checks if the slug is unique. If it's not unique, a number is added to the slug. The slug field is used in the URL to identify the book. The id is used to identify the book in the database. The id is used in the URL to identify the book and it's generate automatically.
+**Category** model is a simple one. Other than id that is generated automatically, it has only a multiple choice field name. The name field is used to identify the category in the database. It is a one to many relationship between Category and Book models. The original idea was to have many to many model, but there wasn't time for implementation.
+
+## Features
