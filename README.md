@@ -43,7 +43,7 @@
 1. As a new user, I want to be able to register for an account on the "Books for Life" website so that I can log in with a username and password.
 
 
-2. As a registered user, I want to be able to edit my profile information, including my name, password, and profile picture.
+2. As a registered user, I want to be able to edit my profile information, including my password, and profile picture.
 
 3. As a registered user, I want the option to delete my user profile if I decide to leave the website.
 
@@ -240,7 +240,7 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 ### Testing User Stories
 1. As a ***new user***, I want to ***be able to register for an account on the "Books for Life" website***, so that I can ***log in with username or email, and password***.
 - **Acceptance Criteria**
-    ***Registration Form:***
+***Registration Form:***
 - [x] There is a registration form accessible from the website's homepage.
 - [x] The registration form includes fields for username, email address, password, and password confirmation.
 - [x] Passwords are required to meet minimum default complexity requirements.
@@ -263,3 +263,17 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 - [x] User sessions are managed securely, allowing users to stay logged in until they choose to log out.
 
 ***
+
+2. As a ***registered user***, I want to ***be able to edit my profile information***, so I can ***easily change a password, and a profile picture***.
+
+***
+- **Acceptance Criteria**
+
+- [x] When logged in as a registered user, I should see an option to access my profile settings.
+- [x]  Within the profile settings, I should see fields for editing my email, password, and uploading a new profile picture. If the profile picture field doesn't exist, I should see a placeholder image.
+- [x] The password field should allow me to change my password with appropriate validation rules (e.g., minimum length, complexity requirements).
+- [x] After making changes, I should be able to save my updated profile information.
+- [x] Once saved, my profile information should reflect the changes on my user profile page.
+
+***
+
