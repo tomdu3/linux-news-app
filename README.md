@@ -238,6 +238,7 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 
 ## Testing
 ### Testing User Stories
+***
 1. As a ***new user***, I want to ***be able to register for an account on the "Books for Life" website***, so that I can ***log in with username or email, and password***.
 - **Acceptance Criteria**
 ***Registration Form:***
@@ -266,7 +267,6 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 
 2. As a ***registered user***, I want to ***be able to edit my profile information***, so I can ***easily change a password, and a profile picture***.
 
-***
 - **Acceptance Criteria**
 
 - [x] When logged in as a registered user, I should see an option to access my profile settings.
@@ -274,6 +274,34 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 - [x] The password field should allow me to change my password with appropriate validation rules (e.g., minimum length, complexity requirements).
 - [x] After making changes, I should be able to save my updated profile information.
 - [x] Once saved, my profile information should reflect the changes on my user profile page.
+
+***
+
+3. As a ***registered user***, I want ***the option to delete my user profile*** so I can ***decide to leave the website***.
+
+
+- **Acceptance Criteria**
+
+- [x] When logged in as a registered user, I should see an option to access my account settings.
+- [x] Within the account settings, there should be a clear and easily accessible option to delete my user profile.
+- [x] Clicking the "Delete Profile" option should prompt me to confirm my decision.
+- [x] After confirming, my user profile and all associated data should be permanently deleted.
+- [x] Upon deletion, I should be logged out, and I should receive a confirmation message indicating that my profile has been deleted.
+
+***
+
+4. As a ***registered user***, I want to ***add a new book to the website***, so that ***its details would be added to the database***.
+
+- **Acceptance Criteria**
+
+- [x] The user must be logged in as a registered user to access the "Add Book" feature.
+- [x] There should be a clearly visible option or button for adding a new book on the website.
+- [x] The user should be able to enter the following information for the book: Title (mandatory), Author (mandatory), Image (mandatory), Short Description (mandatory, limited character count), Full Description (mandatory), Image (optional).
+- [x] The title and the author should provide a slug, but there should be a validation to generate different slug if there are books with the same  title.
+- [x] The image upload should support common image formats (e.g., JPG, PNG) and have a file size limit. Invalid image formats or oversized images should be rejected with a clear error message.
+- [x] After submitting the book details, the book should be saved in the database with a unique identifier.
+- [x] The newly added book should be displayed on the website immediately after submission.
+- [x] The user should receive a confirmation message after successfully adding a book.
 
 ***
 
