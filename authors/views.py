@@ -67,6 +67,9 @@ def register_user(request):
             messages.success(request, ('You have registered!'),
                              extra_tags='success')
             return redirect('/')
+        else:
+            messages.error(request, ('Registration error!'),
+                           extra_tags='danger')
     else:
         form = SignUpForm()
 
