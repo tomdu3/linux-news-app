@@ -350,3 +350,22 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 - [x] If the user unlikes a book presentation, it should be immediately removed from their liked/favourite list.
 
 ***
+
+8. As a ***registered user***, I want to ***see a list of all the books I've added to the website*** for ***easy reference***.
+
+- **Acceptance Criteria**
+
+- [x] User Authentication: The feature should only be accessible to registered users who are logged in.
+- [x] Navigation: There should be a clear and easily accessible link or button in the user interface that takes the user to their list of added books.
+- [x] Book List Display: When the user accesses their list, they should see a clear and organized list of all the books they have added to the website.
+- [x] Each book entry should display at least the book title, author, and category.
+- [x] Detail View: Users should be able to click on a book in the list to view more details about that book, including a description, and any other relevant information.
+- [x] Edit and Delete Options: Users should be able to edit the information of a book in their list.
+- [x]  Users should also have the option to delete a book from their list.
+- [x] Responsive Design: The feature should be accessible and user-friendly on various devices and screen sizes (e.g., desktop, tablet, mobile).
+- [x] Performance: The page should load reasonably quickly, even if the user has a large number of books in their list.
+
+***
+
+
+
