@@ -175,7 +175,7 @@ The user will be able to:
 - Delete their profile
 - View a custom 404 page
 
-#### Structure
+#### STRUCTURE
 - **Interaction Design:** The user will be able to interact with the website using a mouse and keyboard.
 - **Information Architecture:** The information will be structured in a way that is easy to navigate and understand. The information will be organised into logical groups and categories, with the most important information being the most prominent.
 - **Navigation:** The navigation will be intuitive and easy to use. The navigation will be consistent across the website, with the navigation bar being the primary means of navigation. The navigation will be responsive and will adapt to different screen sizes.
@@ -185,4 +185,25 @@ The user will be able to:
 <!-- TODO: Make a Diagram -->
 **Information Architecture and Navigation**
 
-### Typography
+
+#### SKELETON
+help me
+- **Wireframes:** The wireframes were created using Balsamiq. The wireframes were created for desktop, tablet, and mobile devices. The wireframes were created for the following pages: Home, Register, Login, Profile, Add Book, Edit Book, Delete Book, Book Details, Favourites, User Added Books, Contact, and 404.
+
+[Link to Wireframes](./docs/wireframes/initial_wireframes_balsamiq.pdf)
+
+N.B. The wireframes were created before the project was started. The final project will abundantly differ from the wireframes.
+
+#### SURFACE
+
+##### Colour Scheme
+[Sunny Bay Bridge color combination](https://www.canva.com/colors/color-palettes/sunny-bay-bridge/)
+
+![colour scheme](./docs/images/colour_scheme.png)
+
+This colour scheme is used throughout the website. To it the standard Bootstrap colours are added. It is a nice and clean colour scheme that is easy on the eyes and doesn't disctract the user from the content.
+
+##### Typography
+
+Monserrat Alternates is used for the logo and headings. Roboto Serif is used for the body text. Mooli is used for the book titles. They are all Google Fonts.
+
