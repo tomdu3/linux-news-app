@@ -224,12 +224,42 @@ Generally, the developer relied on the feedback from the mentor and the peer-cod
 Website complies with accessibility standards. The Lighthouse Validation was used to check the website for accessibility issues. The website is fully accessible.
 
 ## Database Design
-Database design was made with QuickDBD. The database is hosted on ElephantSQL and is a PostgreSQL database.
+Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/). The database is hosted on ElephantSQL and is a PostgreSQL database.
 
 ![Database Design](./docs/images/quickdbd_database_diagram.png)
 
-There's a customised **UserProfile** Model that extends the AbstractUser Model. The UserProfile Model is used to store additional information about the user, in this case a profile picture. It's activated once the user takes an action that requires a profile picture, that is updating the profile data.
-**Book** Model has fields title, author, slug, short_description, full_description, image_url, likes, and user. The user field is a foreign key to the UserProfile Model. The likes in fact is not, stricly saying, the field of the book. It's Many to Many connection that generates a linking model between Book record and User record. The slug field is used to create a unique URL for each book. The slug field is automatically generated from the title and there's a custom save method that checks if the slug is unique. If it's not unique, a number is added to the slug. The slug field is used in the URL to identify the book. The id is used to identify the book in the database. The id is used in the URL to identify the book and it's generate automatically.
-**Category** model is a simple one. Other than id that is generated automatically, it has only a multiple choice field name. The name field is used to identify the category in the database. It is a one to many relationship between Category and Book models. The original idea was to have many to many model, but there wasn't time for implementation.
+- There's a customised **UserProfile** Model that extends the AbstractUser Model. The UserProfile Model is used to store additional information about the user, in this case a profile picture. It's activated once the user takes an action that requires a profile picture, that is updating the profile data.
+- **Book** Model has fields title, author, slug, short_description, full_description, image_url, likes, and user. The user field is a foreign key to the UserProfile Model. The likes in fact is not, stricly saying, the field of the book. It's Many to Many connection that generates a linking model between Book record and User record. The slug field is used to create a unique URL for each book. The slug field is automatically generated from the title and there's a custom save method that checks if the slug is unique. If it's not unique, a number is added to the slug. The slug field is used in the URL to identify the book. The id is used to identify the book in the database. The id is used in the URL to identify the book and it's generate automatically.
+- **Category** model is a simple one. Other than id that is generated automatically, it has only a multiple choice field name. The name field is used to identify the category in the database. It is a one to many relationship between Category and Book models. The original idea was to have many to many model, but there wasn't time for implementation.
 
 ## Features
+
+
+
+## Testing
+### Testing User Stories
+1. As a ***new user***, I want to ***be able to register for an account on the "Books for Life" website***, so that I can ***log in with username or email, and password***.
+- **Acceptance Criteria**
+    ***Registration Form:***
+- [x] There is a registration form accessible from the website's homepage.
+- [x] The registration form includes fields for username, email address, password, and password confirmation.
+- [x] Passwords are required to meet minimum default complexity requirements.
+***Validation:***
+- [x] Users are alerted with clear error messages if they submit incomplete or invalid data.
+- [x] Users receive an error message if the chosen username is already in use.
+- [x] Users receive an error message if the provided email address is already registered.
+***Password Security:***
+- [x] Passwords are securely hashed and salted before being stored in the database.
+- [x] The system enforces password complexity requirements.
+***User Data Storage:***
+- [x] User data (username, hashed password, email, etc.) is stored securely in the database upon successful registration.
+***User Feedback:***
+- [x] Upon successful registration, the user receives a confirmation message.
+- [ ] Optionally, an email confirmation link is sent to the user's provided email address.
+***Login Functionality:***
+- [x] After registration, users can log in using their username and password.
+- [x] Users receive an error message if they enter incorrect login credentials.
+***Session Management:***
+- [x] User sessions are managed securely, allowing users to stay logged in until they choose to log out.
+
+***
