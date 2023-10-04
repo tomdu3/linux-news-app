@@ -459,6 +459,7 @@ Under Deployment Method, choose GitHub and search for your repository and click 
 ## Credits
 
 ### Code
+- Navbar code was adapted from [Bootstrap](https://getbootstrap.com/docs/5.0/examples/navbars/).
 - The code for the contact form was adapted from [EmailJS](https://www.emailjs.com/).
 - The code for the custom 404 page was adapted from [Django Docs](https://docs.djangoproject.com/en/3.2/ref/views/#error-views).
 
