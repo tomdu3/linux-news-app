@@ -36,8 +36,6 @@ DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = [
     'books-4-life-2d26bdf04dec.herokuapp.com',
-    '8000-tomdu3-booksforlife-faydvwtuct5.ws-eu104.gitpod.io',
-    '*'
     ]
 
 
