@@ -424,6 +424,8 @@ These are the results of the validation:
 ### Browser Validation
 The website was tested with **pass** on the following browsers:
 Google Chrome, Microsoft Edge, Mozilla Firefox, Opera, Safari, Vivaldi, Brave.
+
+In regards to **responsiveness**, the website was tested with **pass** on the following devices:
 The website was tested with **pass** on the following devices:
 - Laptop ThinkPad x270 on Linux Manjaro 3.0 Uranos
 - Ipad Air 2 on iOS 16.7
