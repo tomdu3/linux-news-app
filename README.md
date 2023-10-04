@@ -244,12 +244,72 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 ## Features
 
 ### Existing Features
+#### Navbar
+Navbar is based on a template from Bootstrap Documentation. On the left, there's a logo that is also a clickable link to the homepage. Find Book link to the page for searching books and the Contact Page link. THe Find Book link doesn't appear if the user is not logged in.
+On the right, there are links to the Register and Login pages. If the user is logged in, the links to the Register and Login pages are replaced with the links to the Profile with a small profile image icon and Logout pages. Similarly, left of them, there are links Add Book, My Books and My Favourites that lead to the corresponding pages, and they also appear only on successfull login. The links are responsive and collapse into a hamburger menu on smaller screens.
+For the profile image there's a default image that is used if the user doesn't upload their own image.
 
+#### Footer
+Footer is based on a template from [MdBootstrap Documentation](https://mdbootstrap.com/docs/standard/navigation/footer/). It contains links to the social media accounts of the website. The links open in a new tab. At the bottom, there are copywrite information. There's a JS code that takes care of the fotter's possibility to stick to the bottom of the page.
+
+Navbar and Footer are the common elements for all the pages of the website.
+
+#### Homepage
+On the homepage there are animations, images and a short description of the website. The animations are made with CSS and Javascript. The animations and contents are responsive. There are also buttons to My Books and My Profile Page.
+
+#### Contact Page
+Contact Page is a simple page with a contact form. The form is made with EmailJS. The form is responsive. The form is validated on the client side and the server side. The form is validated on the client side with HTML5 validation. The final result is an email that the developer receives on their email account.
+
+#### Find a Book Page
+Find a Book Page is a page with a search form. The form is made with html and is controlled by a view in Django. The form is responsive. The form is validated on the client side and the server side. The form is validated on the client side with HTML5 validation. The final result is a list of books that match the search criteria.
+There's a search field in which a user can write their queries. The button next to the search field triggers the search. The search works for the data that include titles, authors and categories of the books. If the input field is not empty, the clear search buttton appears. The clear search button clears the search field. If the input field is empty, the clear search button disappears. The search results are ordered by the date of creation of the book record.
+The nuber of found records appears above the table. Table has as columns number (sequential), Author, TItle, Category, and like. On smaller screens, numbers and categories columns dissapear. The book can be liked or unliked by clicking on the heart icon. Unliked book has a blue shallow animated heart, liked the red solid animated heart. The implementation isn't perfect, because every (un)liking refreshes the page, and if there are many books, the pages moves to the top.
+User can click on the title of the book to be redirected to the book details page.
+
+#### Book Details Page
+To this page the user is redirected when they click on the title of the book in the search results on Finda A Book Page, on My Books Page or on My Favourites Page. The page contains all the information about the book. The page is responsive. The page contains the title, author, image, full description, date of addition, category and the number of likes.
+There's a Back button to bring the user back to the page from which they came to the Book Details. It is not he perfect solution, but it's the best that could be done in the time given.
+There's also the possibility to like or unlike a book like on the Find a Book Page.
+#### Add Book
+Add Book Page is a page with a form for adding a book to the database. The form is made with html and is controlled by a view in Django. Only non required filed is the image. The form is validated on the client side and the server side. The final result is a new book record in the database. After the book is added, the user is redirected to the My Books Page.
+
+#### My Books Page
+My Books Page is a page with a table of books added by the user. The page is responsive. The table has as columns number (sequential), Author, Title, Category, and like. On smaller screens, numbers and categories columns dissapear. The book can be edited or deleted by clicking on the relative buttons on the right of the record. The user can click on the title of the book to be redirected to the book details page.
+At the bootom of the page is Add a Book button that brings the user to the Add Book Page.
+By clicking on the Edit button, the user is redirected to the Edit Book Page. By clicking on the Delete button, the user is redirected to the Delete Book Page.
+
+#### Edit Book Page
+Edit Book Page is a form for editing a book record. The form is made with html and is controlled by a view in Django. Only non required filed is the image. The form is validated on the client side and the server side.
+The form is prepopulated with the data from the book record. The user can edit the data and submit the form. The final result is an updated book record in the database. After the book is edited, the user is redirected to the My Books Page.
+If the user clicks on the Cancel button, they are redirected to the My Books Page without any changes in the record of the database.
+
+#### Delete Book Page
+Delete Book Page is a simple one. It contains the details of the book record: title, author, image, and short description.
+There are also a confirmation message and two buttons. If the user clicks on the Delete button, the book record is deleted from the database and the user is redirected to the My Books Page. If the user clicks on the Cancel button, they are redirected to the My Books Page without any changes in the record of the database.
+The original idea was to have a modal for the confirmation message on My Books Page, but there wasn't time for implementation.
+
+### My Favourites Page
+Similarly to Find a Book and My Books Pages, this Page contains a table of books. The table has as columns number (sequential), Author, Title, Category, and UnFav. On smaller screens, numbers and categories columns dissapear. The book can be unliked by clicking on the red X icon. By UnFav(ouring) of the book, the same is removed from the list.
+At the bottom of the page is Add to Favourites button that brings the user to the Fidn a Book Page that allows users to like or unlike a book.
+
+#### Profile Page
+To arrive to Profile Page, user can click or on the button on the Homepage or on the link in the Navbar (that is, a round profile image with username on the right). The page contains the user's profile image, username and email. There are two buttons: Edit Profile and Delete Profile. By clicking on the Edit Profile button, the user is redirected to the Edit Profile Page.
+By clicking on the Delete Profile button, the Delete Profile modal is called for the confirmation. If confirmed, the user is redirected to the Homepage and their profile is deleted from the database. The same deletion causes the deletion of all the books added by the user. The user is logged out and the session is terminated. If the user clicks on the Cancel button, they are back to the Profile Page without any changes in the record of the database.
+
+#### Edit Profile Page
+Edit Profile Page is a simple form that gives the user the possibility to change their email, pasword and profile image. The form is made with Django, and is controlled by a view in Django. The form is validated on the client side and the server side. The form is prepopulated with the data from the user record. The user can edit the data and submit the form. The final result is an updated user record in the database. After the user is edited, the user is redirected back to the Profile Page. If password is left empty, the password is not changed.
+If the user clicks on the Cancel button, they are redirected to the Profile Page without any changes in the record of the database.
 #### Custom Error Page
+Custom 404 Error Page is made with Django. It is a simple page with a message and a large round image that changes from grayscale to colour on hoverm and by clicking on it, the user comes back to the Homepage.
 
 #### Favicon
-
+Favicons are made by the online [favicon.io](https://favicon.io/) generator. The favicon is a simple B4L logo that is self explanatory and recognizable.
 #### Future Features
+In early stages, the idea was to have a rich text editor for the book descriptions. The idea was to use Summernote. The implementation wasn't successful, and the idea was partialy abandoned. The idea is to implement it in the future.
+The idea was to have a dedicated page for the categories in order to add a new category. The idea was to have a Many to Many relationship between the Book and Category models. The idea was to implement it in the future.
+Another idea was to have a details of the contributing user on the book detail page, and to be able to see all the users and their books on the dedicated page. The idea was to implement it in the future. 
+Obviously, there was the idea of implementing the administrator's access and different functionalities. Especially the control of the deletions (books and users) and the control of the categories. In that way, the deletion couldn't be automatic, but controlled by requests to Administrator.
+Developer wanted to implement the pagination for all the tables, but there wasn't time for that. The idea is to implement it in the future.
 
 [Back to top ⇧](#table-of-contents)
 
