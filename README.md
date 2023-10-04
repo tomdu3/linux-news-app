@@ -328,6 +328,9 @@ Developer wanted to implement the pagination for all the tables, but there wasn'
     - **Issue:** The idea was to have a Back button that would bring the user back to the page from which they came to the Book Details. It is not he perfect solution. It uses a navigation history to go one step back. If the book is (un)liked, and page refreshes, that back needs to be pressed a few times to get the user back to the desired page without refreshing the cache.
 - *Book Short Description*
     - **Issue:** In early stages, the idea was to have a modal showing on book title clicked with only a short description and the button read more that would bring to the Book detail page. But, there wasn't time for full implementation.
+- *Directory Structure*
+    - **Issue:** The directory structure is not the best. The developer tried to make it as logical as possible, but there's a lot of room for improvement. The templates in the authors app are not following the ideal structure (/templates/app-name/...). Unfortunatelly, the developer realised that too late and didn't want to compromise the functionality of the website by changing the structure.
+
 [Back to top ⇧](#table-of-contents)
 
 ## Technologies Used
@@ -531,6 +534,18 @@ Under Deployment Method, choose GitHub and search for your repository and click 
 
 14. Now whenever you push your commits to GitHub, Heroku will rebuild the application.
 
+### Forking the GitHub Repository
+The project can be forked in order to make a copy of the original repository and propose changes to the project owner using Pull Requests.
+That can be done by following these steps:
+First, log in to GitHub and locate the [Project's Repository](github.com/tomdu3/books-for-life).
+At the top of the Repository, on the right side of the page, locate the "Fork" button.
+A copy of the Repository should now be in your GitHub account.
+You can now propose changes to the Repository by creating a Pull Request.
+
+### Live deployment
+The web site is deployed on Heroku and can be found [here](https://books-4-life-2d26bdf04dec.herokuapp.com/).
+
+
 [Back to top ⇧](#table-of-contents)
 
 ## Credits
@@ -570,4 +585,4 @@ the [stackoverflow](https://stackoverflow.com/), [Django documentation](https://
 - Code Institute's Slack community for their support and feedback.
 - Code Institute's Tutor Support for their support and feedback (I don't want to give names. I hope that's ok with you, Rebecca :-)).
 - My dear colleagues and friends from the Code Institute's Full Stack Web Development, especially Sirinya, Victoria, Richard, Lauren, Ho, for their support and testing services.
-- My friends: Boris, Zeljka i Dragan for helping me with the testing.
+- My friends: Boris, Zeljka and Dragan for helping me with the testing.
