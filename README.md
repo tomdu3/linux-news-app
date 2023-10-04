@@ -236,6 +236,70 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 
 [Back to top ⇧](#table-of-contents)
 
+
+## Features
+
+### Existing Features
+
+#### Custom Error Page
+
+#### Favicon
+
+#### Future Features
+
+[Back to top ⇧](#table-of-contents)
+
+## Issues and Bugs
+
+[Back to top ⇧](#table-of-contents)
+
+## Technologies Used
+
+### Main Languages Used
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+    - The project uses **HTML5** to create the content of the website.
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
+    - The project uses **CSS3** to style the content of the website.
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+    - The project uses **JavaScript** to add interactivity to the website.
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+    - The project uses **Python** to create the backend of the website.
+
+### Frameworks, Libraries & Programs Used
+#### Front-End
+- [Bootstrap 5](https://getbootstrap.com/)
+    - The project uses **Bootstrap 5** to simplify the structure of the website and make the website responsive easily.
+- [Google Fonts](https://fonts.google.com/)
+    - The project uses **Google Fonts** to style the fonts of the website.
+- [Font Awesome](https://fontawesome.com/)
+    - The project uses **Font Awesome** to add icons to the website.
+
+#### Back-End
+- [Django](https://www.djangoproject.com/)
+- The project uses **Django** to create the backend of the website.
+- [PostgreSQL](https://www.postgresql.org/)
+    - The project uses **PostgreSQL** to create the database of the website.
+- [ElephantSQL](https://www.elephantsql.com/)
+    - The project uses **ElephantSQL** to host the database of the website.
+- [Heroku](https://www.heroku.com/)
+    - The project uses **Heroku** to deploy the website.
+- [Cloudinary](https://cloudinary.com/)
+    - The project uses **Cloudinary** to store the images of the website.
+- [Summernote](https://summernote.org/)
+    - The project uses **Summernote** to create a rich text editor for the website. Although, this functionality wasn't entirely implemented in the final version of the website.
+- [gunicorn](https://pypi.org/project/gunicorn/)
+    - The project uses Python **gunicorn** library to run the website on Heroku.
+- [dj_database_url](https://pypi.org/project/dj-database-url/)
+    - The project uses Python **dj_database_url** library to connect to the database on Heroku.
+- [psycopg2](https://pypi.org/project/psycopg2/)
+    - The project uses Python **psycopg2** library to connect to the database on Heroku.
+- [python-dotenv](https://pypi.org/project/python-dotenv/)
+    - The project uses **python-dotenv** library to hide sensitive information.
+
+- [EmailJS](https://www.emailjs.com/)
+    - EmailJS JavaScript library was used to create a functional contact form.
+
 ## Testing
 For Testing details go to a separated file [TESTING.md](TESTING.md)
+
 
