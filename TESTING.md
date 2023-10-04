@@ -86,6 +86,9 @@ Return to [README.md](README.md)
 
 ***
 
+[Back to top ⇧](#table-of-contents)
+
+
 5. As a ***registered user***, I want to ***be able to update the the books I've added***, so I can ***correct the information of the record (title, author, image, descriptions)***.
 
 - **Acceptance Criteria**
@@ -148,6 +151,8 @@ Return to [README.md](README.md)
 
 ***
 
+[Back to top ⇧](#table-of-contents)
+
 9. As a ***bibliophile*** and a ***registered user***, I want to ***access a dedicated "Favourites" page***, so I can ***see all the books I've liked in one place***.
 
 - **Acceptance Criteria**
@@ -201,7 +206,54 @@ Users should receive an error message if there are any issues with their submiss
 #### Common Elements Testing
 Manual testing was conducted on the following elements that appear on every page:
 
+- Navbar
+![Navbar Test](./docs/images/manual_testing/navbar.gif)
 
+- Footer
+![Footer Test](./docs/images/manual_testing/footer.gif)
+
+- Favicon
+![Favicon Test](./docs/images/manual_testing/favicon.png)
+
+#### Functionalities testing
+- Login
+![Login Test](./docs/images/manual_testing/login.gif)
+
+- Register
+![Register Test](./docs/images/manual_testing/registration.gif)
+
+- Logout
+![Logout Test](./docs/images/manual_testing/logout.gif)
+
+- Profile Update
+![Profile Update Test](./docs/images/manual_testing/profile_update.gif)
+
+- Profile Delete
+![Profile Delete Test](./docs/images/manual_testing/profile_delete.gif)
+
+- Verify Profile Deletion (and all book records associated with the user)
+![Verify Profile Deletion Test](./docs/images/manual_testing/delete_verify.gif)
+
+- Add Book
+![Add Book Test](./docs/images/manual_testing/add_book.gif)
+
+- Edit Book
+![Edit Book Test](./docs/images/manual_testing/edit_book.gif)
+
+- Delete Book
+![Delete Book Test](./docs/images/manual_testing/delete_book.gif)
+
+- Find Book
+![Find Book Test](./docs/images/manual_testing/find_book.gif)
+
+- Book Details
+![Book Details Test](./docs/images/manual_testing/book_details.gif)
+
+- Favourites Page
+![Favourites Page Test](./docs/images/manual_testing/favourites.gif)
+
+- Contact Page
+![Contact Page Test](./docs/images/manual_testing/contact.gif)
 
 ## Automated Testing
 ### Code Validation
@@ -339,7 +391,6 @@ These are the results of the validation:
 - 404 Page couldn't be tested with Lighthouse
 
 [Back to top ⇧](#table-of-contents)
-
 
 ### Browser Validation
 The website was tested with **pass** on the following browsers:
