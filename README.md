@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-[Books4Life](#books4life)
+[Books4Life](#books-for-life)
   * [Table of Contents](#table-of-contents)
   * [Introduction](#introduction)
   * [User Stories](#user-stories)
@@ -114,12 +114,12 @@
 
 ![Other Features](./docs/images/vt_other_features.png)
 
+[Back to top ⇧](#table-of-contents)
+
 #### SCOPE
 - **Features:** user registration, profile management, book addition, editing and deletion, liking books, viewing user-added books, a favourites page, contact form, and book search.
 - **Content:** Book Review will contain book titles, authors, images, and descriptions (short and full).
 - **User Flow:** The user will be able to register for an account, log in, add books, edit books, delete books, like books, view their books, view their favourites, and contact the admin.
-
-<!-- TODO: Diagram -->
 
 - **Technical Requirements:** Front-End: HTML, CSS, Javascript, Bootstrap 5, Font Awesome; Back-End: Python, Django 4.1, PostgreSQL For deployment, the project will be hosted on Heroku, with static files stored on Cloudinary and the database hosted on ElephantSQL.The whole project will be version controlled using Git and GitHub.
 Milestones: The whole project is broken down into smaller milestones, which are then broken down into tasks. The project will be managed using Github Project.The three milestones are: MVP Release, User Profile Issues, Project Refinement.
@@ -170,6 +170,8 @@ The user will be able to:
 - Delete their profile
 - View a custom 404 page
 
+[Back to top ⇧](#table-of-contents)
+
 #### STRUCTURE
 - **Interaction Design:** The user will be able to interact with the website using a mouse and keyboard.
 - **Information Architecture:** The information will be structured in a way that is easy to navigate and understand. The information will be organised into logical groups and categories, with the most important information being the most prominent.
@@ -180,14 +182,16 @@ The user will be able to:
 <!-- TODO: Make a Diagram -->
 **Information Architecture and Navigation**
 
-
+[Back to top ⇧](#table-of-contents)
 #### SKELETON
 help me
 - **Wireframes:** The wireframes were created using Balsamiq. The wireframes were created for desktop, tablet, and mobile devices. The wireframes were created for the following pages: Home, Register, Login, Profile, Add Book, Edit Book, Delete Book, Book Details, Favourites, User Added Books, Contact, and 404.
 
 [Link to Wireframes](./docs/wireframes/initial_wireframes_balsamiq.pdf)
 
-N.B. The wireframes were created before the project was started. The final project will abundantly differ from the wireframes.
+_N.B. The wireframes were created before the project was started. The final project will abundantly differ from the wireframes._
+
+[Back to top ⇧](#table-of-contents)
 
 #### SURFACE
 
@@ -200,7 +204,8 @@ This colour scheme is used throughout the website. To it the standard Bootstrap 
 
 ##### Typography
 
-Monserrat Alternates is used for the logo and headings. Roboto Serif is used for the body text. Mooli is used for the book titles. They are all Google Fonts.
+Monserrat Alternates is used for the logo and headings. Roboto Serif is used for the body text. Mooli is used for the book titles. They are all [Google Fonts](https://fonts.google.com/).
+
 
 ##### Imagery
 
@@ -215,7 +220,9 @@ Given the time constraints, the website was not prototyped. The website was buil
 ##### Feedback and Iteration
 Generally, the developer relied on the feedback from the mentor and the peer-code review to improve the website. The developer also relied on the feedback from some other users to improve the website. The constant changing of the website functionalities and design was a result of the feedback received.
 
-#### Accessibility
+[Back to top ⇧](#table-of-contents)
+
+## Accessibility
 Website complies with accessibility standards. The Lighthouse Validation was used to check the website for accessibility issues. The website is fully accessible.
 
 ## Database Design
@@ -223,13 +230,11 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 
 ![Database Design](./docs/images/quickdbd_database_diagram.png)
 
-- There's a customised **UserProfile** Model that extends the AbstractUser Model. The UserProfile Model is used to store additional information about the user, in this case a profile picture. It's activated once the user takes an action that requires a profile picture, that is updating the profile data.
-- **Book** Model has fields title, author, slug, short_description, full_description, image_url, likes, and user. The user field is a foreign key to the UserProfile Model. The likes in fact is not, stricly saying, the field of the book. It's Many to Many connection that generates a linking model between Book record and User record. The slug field is used to create a unique URL for each book. The slug field is automatically generated from the title and there's a custom save method that checks if the slug is unique. If it's not unique, a number is added to the slug. The slug field is used in the URL to identify the book. The id is used to identify the book in the database. The id is used in the URL to identify the book and it's generate automatically.
-- **Category** model is a simple one. Other than id that is generated automatically, it has only a multiple choice field name. The name field is used to identify the category in the database. It is a one to many relationship between Category and Book models. The original idea was to have many to many model, but there wasn't time for implementation.
+- **UserProfile** Model extends the AbstractUser Model. The UserProfile Model is used to store additional information about the user, in this case a profile picture. It's activated once the user takes an action that requires a profile picture, that is updating the profile data.
+- **Book** Model has fields _title, author, slug, short_description, full_description, image_url, likes,_ and _user_. The user field is a foreign key to the UserProfile Model. The likes in fact is not, stricly saying, the field of the book. It's Many to Many connection that generates a linking model between Book record and User record. The slug field is used to create a unique URL for each book. The slug field is automatically generated from the title and there's a custom save method that checks if the slug is unique. If it's not unique, a number is added to the slug. The slug field is used in the URL to identify the book. The id is used to identify the book in the database. The id is used in the URL to identify the book and it's generate automatically.
+- **Category** model is a simple one. Other than id that is generated automatically, it has only a multiple choice field name. The name field is used to identify the category in the database. It is a One to Many relationship between Category and Book models. The original idea was to have Many to Many model, but there wasn't time for implementation.
 
-## Features
-
-
+[Back to top ⇧](#table-of-contents)
 
 ## Testing
 For Testing details go to a separated file [TESTING.md](TESTING.md)
