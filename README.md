@@ -314,7 +314,14 @@ Developer wanted to implement the pagination for all the tables, but there wasn'
 [Back to top ⇧](#table-of-contents)
 
 ## Issues and Bugs
-
+- *Book Deletion Modal*
+    - **Issue:** The idea was to have a modal for the confirmation message on My Books Page, but there wasn't time for implementation. The attempt to add modal resulted in making automatic modal for the deletion for each record. That was not the desired result.
+- *Book Liking*
+    - **Issue:** The implementation isn't perfect, because every (un)liking refreshes the page, and if there are many books, the pages moves to the top. The developer tried to implement it without using JS, but that didn't give the desired result.
+- *Back Button*
+    - **Issue:** The idea was to have a Back button that would bring the user back to the page from which they came to the Book Details. It is not he perfect solution. It uses a navigation history to go one step back. If the book is (un)liked, and page refreshes, that back needs to be pressed a few times to get the user back to the desired page without refreshing the cache.
+- *Book Short Description*
+    - **Issue:** In early stages, the idea was to have a modal showing on book title clicked with only a short description and the button read more that would bring to the Book detail page. But, there wasn't time for full implementation.
 [Back to top ⇧](#table-of-contents)
 
 ## Technologies Used
