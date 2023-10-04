@@ -260,8 +260,14 @@ Footer is based on a template from [MdBootstrap Documentation](https://mdbootstr
 
 Navbar and Footer are the common elements for all the pages of the website.
 
+#### Messages
+In-built Django messages system is used to inform the user about the actions they took. The messages are displayed on the top of the page. The messages are responsive and disappear after a few seconds.
+
 #### Homepage
 On the homepage there are animations, images and a short description of the website. The animations are made with CSS and Javascript. The animations and contents are responsive. There are also buttons to My Books and My Profile Page.
+
+#### Login/Register Pages
+Login and Register Pages are simple pages with forms for login and registration. The forms are made with html and are controlled by views in Django. The forms are responsive. The forms are validated on the client side and the server side. The forms are validated on the client side with HTML5 validation. The final result is a new user record in the database. After the user is registered, the user is redirected to the My Books Page. After the user is logged in, the user is redirected to the My Books Page.
 
 #### Contact Page
 Contact Page is a simple page with a contact form. The form is made with EmailJS. The form is responsive. The form is validated on the client side and the server side. The form is validated on the client side with HTML5 validation. The final result is an email that the developer receives on their email account.
