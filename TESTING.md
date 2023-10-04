@@ -283,3 +283,8 @@ The [JSHint JavaScript Code Quality Tool](https://jshint.com/) was used to valid
 #### Python Validation
 For Python code, the [CI PEP8 online validator](https://pep8ci.herokuapp.com/) was used to validate the code.
 
+Because there are so many, the developer includes here only the results of the validation of the `settings.py` file. All other Python files were validated and passed the test with same results.
+
+- Settings.py File
+![Settings.py Validation](./docs/images/python_validation/settings_py.png)
+
