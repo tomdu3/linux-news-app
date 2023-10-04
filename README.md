@@ -40,27 +40,29 @@
 
 ## User Stories
 
-1. As a new user, I want to be able to register for an account on the "Books for Life" website so that I can log in with a username and password.
+1. As a ***new user***, I want to ***be able to register for an account on the "Books for Life" website***, so that I can ***log in with username or email, and password***.
 
+2. As a ***registered user***, I want to ***be able to edit my profile information***, so I can ***easily change a password, and a profile picture***.
 
-2. As a registered user, I want to be able to edit my profile information, including my password, and profile picture.
+3. As a ***registered user***, I want ***the option to delete my user profile*** so I can ***decide to leave the website***.
 
-3. As a registered user, I want the option to delete my user profile if I decide to leave the website.
+4. As a ***registered user***, I want to ***add a new book to the website***, so that ***its details would be added to the database***.
 
-4. As a registered user, I want to add a new book to the website, including its title, author, image, short description, and full description.
+5. As a ***registered user***, I want to ***be able to update the the books I've added***, so I can ***correct the information of the record (title, author, image, descriptions)***.
 
-5. As a registered user, I want to be able to update the information (title, author, image, descriptions) of the books I've added.
+6. As a ***registered user***, I want to ***be able to delete book details from my profile***, so it ***will no longer be accessible***.
 
-6. As a registered user, I want to be able to delete book details from my profile, so it will no longer be visible.
+7. As a ***registered user***, I want to ***be able to like a book review*** so that I can ***keep track of my favorite books***.
 
-7. As a registered user, I want to be able to like a book presentation so that I can keep track of my favourite books.
+8. As a ***registered user***, I want to ***see a list of all the books I've added to the website*** for ***easy reference***.
 
-8. As a registered user, I want to see a list of all the books I've added to the website for easy reference.
+9. As a ***bibliophile*** and a ***registered user***, I want to ***access a dedicated "Favourites" page***, so I can ***see all the books I've liked in one place***.
 
-9. As a bibliophile and a registered user, I want to browse and discover new books added by other users on the platform.
+10. As a ***bibliophile*** and a ***registered user***, I want to ***search for books on the website***, so that I can ***browse and discover new books added by all users on the website***.
 
-10. As a registered or new (unregistered) user, I want to be able to use a contact form to reach out to the website administrators with questions, feedback, or concerns.
+11. As a ***registered user***, I want to ***be able to use a contact form***, so I can ***reach out to the website administrators with questions, feedback, or concerns***.
 
+[Back to top ⇧](#table-of-contents)
 
 ## UX
 
@@ -240,6 +242,7 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 ### Testing User Stories
 ***
 1. As a ***new user***, I want to ***be able to register for an account on the "Books for Life" website***, so that I can ***log in with username or email, and password***.
+
 - **Acceptance Criteria**
 ***Registration Form:***
 - [x] There is a registration form accessible from the website's homepage.
@@ -306,8 +309,8 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 ***
 
 5. As a ***registered user***, I want to ***be able to update the the books I've added***, so I can ***correct the information of the record (title, author, image, descriptions)***.
-- **Acceptance Criteria**
 
+- **Acceptance Criteria**
 
 - [x] The user must be logged in as a registered user to access the book update feature.
 - [x] There should be a visible and accessible option or button to edit/update a book's information.
@@ -410,4 +413,19 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 Users should receive an error message if there are any issues with their submission (e.g., invalid email address, attachment too large) and should be prompted to correct the errors.
 - [x] The contact form should be responsive and visually appealing on different devices (e.g., desktop, tablet, mobile).
 - [x] The contact form should be accessible to users with disabilities, following WCAG guidelines.
+
+***
+
+[Back to top ⇧](#table-of-contents)
+
+
+### Manual Testing
+#### Common Elements Testing
+Manual testing was conducted on the following elements that appear on every page:
+
+
+## Automated Testing
+### Code Validation
+The [W3C Markup Validator](https://validator.w3.org/) service was used to validate the `HTML`, and [CSS Validation Service](https://jigsaw.w3.org/css-validator/) was used for `CSS` code. The [JSHint JavaScript Code Quality Tool](https://jshint.com/) was also used to validate the sites `JS` code.
+For Python code, the [CI PEP8 online validator](https://pep8ci.herokuapp.com/) was used to validate the code.
 
