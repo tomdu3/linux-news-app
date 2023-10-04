@@ -270,19 +270,21 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 - [Bootstrap 5](https://getbootstrap.com/)
     - The project uses **Bootstrap 5** to simplify the structure of the website and make the website responsive easily.
 - [Google Fonts](https://fonts.google.com/)
-    - The project uses **Google Fonts** to style the fonts of the website.
+    - The project uses **Google Fonts** to style the fonts of the website. The fonts used are "Montserrat Alternates", "Roboto Serif", and "Mooli".
 - [Font Awesome](https://fontawesome.com/)
     - The project uses **Font Awesome** to add icons to the website.
 
 #### Back-End
 - [Django](https://www.djangoproject.com/)
 - The project uses **Django** to create the backend of the website.
+- [pip3 (Python Package Installer)](https://pip.pypa.io/en/stable/) 
+    - The project uses **pip3** to install the necessary tools and libraries.
 - [PostgreSQL](https://www.postgresql.org/)
-    - The project uses **PostgreSQL** to create the database of the website.
+    - **PostgreSQL** to create the database of the website.
 - [ElephantSQL](https://www.elephantsql.com/)
-    - The project uses **ElephantSQL** to host the database of the website.
+    - **ElephantSQL** for hosting of the database of the website.
 - [Heroku](https://www.heroku.com/)
-    - The project uses **Heroku** to deploy the website.
+    - **Heroku** for the website deployment.
 - [Cloudinary](https://cloudinary.com/)
     - The project uses **Cloudinary** to store the images of the website.
 - [Summernote](https://summernote.org/)
@@ -298,6 +300,39 @@ Database design was made with [QuickDBD](https://www.quickdatabasediagrams.com/)
 
 - [EmailJS](https://www.emailjs.com/)
     - EmailJS JavaScript library was used to create a functional contact form.
+
+#### Other
+- [Git](https://git-scm.com/) for version control.
+- [GitHub](https://github.com/) for storing the repository online during development.
+- GitHub Projects was used throughout the project for tracking of things to do and bug fixing - [the project's board here](https://github.com/users/tomdu3/projects/4).
+- [Balsamiq](https://balsamiq.com/) to create the wireframes during the design process.
+- [QuickDBD](https://www.quickdatabasediagrams.com/) to create the database design.
+- [Am I Responsive](http://ami.responsivedesign.is/) to create the mockup image at the beginning of this file.
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse) to check the website for accessibility issues.
+- [W3C Markup Validation Service](https://validator.w3.org/) to check the HTML code.
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) to check the CSS code.
+- [JSHint](https://jshint.com/) to check the JavaScript code.
+- [CI Python Linter](https://pep8ci.herokuapp.com/) to check the Python code.
+- [Favicon.io](https://favicon.io/) to create the favicon.
+- [GitPod](https://gitpod.io/) as a cloud based IDE (only at the early stage of the development).
+- [Visual Studio Code](https://code.visualstudio.com/) as a local IDE.
+- [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) for testing and debugging.
+- [Google Chrome](https://www.google.com/chrome/) for testing and debugging.
+- [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/) for testing and debugging.
+- [Microsoft Edge](https://www.microsoft.com/en-us/edge) for testing and debugging.
+- [Canva Color Palette Generator](https://www.canva.com/colors/color-palette-generator/)
+	- Canva Color Palette Generator was used to make the initial colour palette.
+- [Webp Converter](https://developers.google.com/speed/webp)
+	 - Webp Converter was used to convert images to WEBP format on Linux.
+- [GIMP - GNU Image Manipulation Program](https://www.gimp.org/)
+    - GIMP was used to resize and crop images.
+
+- [Gnome-screenshot](https://help.gnome.org/users/gnome-screenshot/stable/)
+    - Gnome-screenshot was used to take screenshots of the website.
+- [Peek](https://github.com/phw/peek)
+    - Peek was used to record the website in action.
+
+[Back to top ⇧](#table-of-contents)
 
 ## Testing
 For Testing details go to a separated file [TESTING.md](TESTING.md)
