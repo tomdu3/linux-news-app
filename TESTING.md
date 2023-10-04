@@ -207,52 +207,68 @@ Users should receive an error message if there are any issues with their submiss
 Manual testing was conducted on the following elements that appear on every page:
 
 - Navbar
+
 ![Navbar Test](./docs/images/manual_testing/navbar.gif)
 
 - Footer
+
 ![Footer Test](./docs/images/manual_testing/footer.gif)
 
 - Favicon
+
 ![Favicon Test](./docs/images/manual_testing/favicon.png)
 
 #### Functionalities testing
 - Login
+
 ![Login Test](./docs/images/manual_testing/login.gif)
 
 - Register
+
 ![Register Test](./docs/images/manual_testing/registration.gif)
 
 - Logout
+
 ![Logout Test](./docs/images/manual_testing/logout.gif)
 
 - Profile Update
+
 ![Profile Update Test](./docs/images/manual_testing/profile_update.gif)
 
 - Profile Delete
+
 ![Profile Delete Test](./docs/images/manual_testing/profile_delete.gif)
 
 - Verify Profile Deletion (and all book records associated with the user)
+
 ![Verify Profile Deletion Test](./docs/images/manual_testing/delete_verify.gif)
 
 - Add Book
+
 ![Add Book Test](./docs/images/manual_testing/add_book.gif)
 
 - Edit Book
+
 ![Edit Book Test](./docs/images/manual_testing/edit_book.gif)
 
 - Delete Book
+
 ![Delete Book Test](./docs/images/manual_testing/delete_book.gif)
 
 - Find Book
+
 ![Find Book Test](./docs/images/manual_testing/find_book.gif)
 
 - Book Details
+
 ![Book Details Test](./docs/images/manual_testing/book_details.gif)
 
 - Favourites Page
+
 ![Favourites Page Test](./docs/images/manual_testing/favourites.gif)
 
 - Contact Page
+
 ![Contact Page Test](./docs/images/manual_testing/contact.gif)
 
 ## Automated Testing
@@ -350,42 +366,55 @@ The [Lighthouse](https://developers.google.com/web/tools/lighthouse) tool was us
 These are the results of the validation:
 
 - Homepage
+
 ![Homepage Lighthouse Validation](./docs/images/lighthouse/home_lighthouse.png)
 
 - Login Page
+
 ![Login Page Lighthouse Validation](./docs/images/lighthouse/login_lighthouse.png)
 
 - Register Page
+
 ![Register Page Lighthouse Validation](./docs/images/lighthouse/register_lighthouse.png)
 
 - Contact Page
+
 ![Contact Page Lighthouse Validation](./docs/images/lighthouse/contact_lighthouse.png)
 
 - Find Book Page
+
 ![Find Book Page Lighthouse Validation](./docs/images/lighthouse/search_lighthouse.png)
 
 - Add Book Page
+
 ![Add Book Page Lighthouse Validation](./docs/images/lighthouse/add_book_lighthouse.png)
 
 - User Page (My Books Page)
+
 ![User Page (My Books Page) Lighthouse Validation](./docs/images/lighthouse/user_page_lighthouse.png)
 
 - Book Details Page
+
 ![Book Details Page Lighthouse Validation](./docs/images/lighthouse/book_detail_lighthouse.png)
 
 - Edit Book Page (Update Book)
+
 ![Edit Book Page Lighthouse Validation](./docs/images/lighthouse/edit_book_lighthouse.png)
 
 - Delete Book Page
+
 ![Delete Book Page Lighthouse Validation](./docs/images/lighthouse/delete_book_lighthouse.png)
 
 - User Favourites Page
+
 ![User Favourites Page Lighthouse Validation](./docs/images/lighthouse/favourites_lighthouse.png)
 
 - User Profile Page
+
 ![User Profile Page Lighthouse Validation](./docs/images/lighthouse/user_profile_lighthouse.png)
 
 - Update Profile Page
+
 ![Update Profile Page Lighthouse Validation](./docs/images/lighthouse/update_profile_lighthouse.png)
 
 - 404 Page couldn't be tested with Lighthouse
