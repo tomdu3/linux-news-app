@@ -183,8 +183,13 @@ The user will be able to:
 - **Information Design:** The information will be presented in a way that is easy to understand and digest. The information will be presented in a way that is visually appealing and engaging.
 - **Interface Design:** The interface will be clean and simple. The interface will be responsive and will adapt to different screen sizes. The interface will be consistent across the website.
 
-<!-- TODO: Make a Diagram -->
 **Information Architecture and Navigation**
+<!-- TODO: Make a Diagram -->
+Unfortunately, there wasn't time to make the diagram that would reflect the final structure of the website. The diagram would be similar to the one below, but with updated pages and functionalities. That one is, unfortunatelly, done by hand and even more unfortunatelly, it's done by **my** hand.
+
+![Information Architecture and Navigation 1](./docs/images/diagram_1.jpg)
+
+![Information Architecture and Navigation 2](./docs/images/diagram_2.jpg)
 
 [Back to top ⇧](#table-of-contents)
 #### SKELETON
@@ -212,6 +217,7 @@ Monserrat Alternates is used for the logo and headings. Roboto Serif is used for
 
 
 ##### Imagery
+The images were created with DALL-E 2, a neural network that generates images from text descriptions. Other images were taken from unsplash. For details see [Credits](#credits).
 
 ##### Branding
 A logo is created that reflect the essence of "Books for Life." Nothing fancy, just a simple logo that is easy to remember and recognisable (B4L). The tool used is the online [favicon.io](https://favicon.io/) generator.

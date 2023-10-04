@@ -202,6 +202,7 @@ Users should receive an error message if there are any issues with their submiss
 Manual testing was conducted on the following elements that appear on every page:
 
 
+
 ## Automated Testing
 ### Code Validation
 
