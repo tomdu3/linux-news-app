@@ -19,15 +19,16 @@ class SignUpForm(UserCreationForm):
         help_text='',)
 
     class Meta:
-        model = get_user_model() 
+        model = get_user_model()
         fields = ('username', 'email', 'password1', 'password2', )
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if email and get_user_model().objects.filter(email=email).exists():
-            raise forms.ValidationError('This email is already in use. Please use a different email.')
+            raise forms.ValidationError(
+                'This email is already in use. Please use a different email.')
         return email
-    
+
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
 
