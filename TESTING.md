@@ -8,12 +8,12 @@ Return to [README.md](README.md)
 [Testing](#testing)
 [Table of Contents](#table-of-contents)
 + [Testing User Stories](#testing-user-stories)
-    + [Manual Testing](#manual-testing)
-    + [Automated Testing](#automated-testing) 
-        - [Code Validation](#code-validation)
-        - [Browser Validation](#browser-validation)
-        - [Lighthouse Validation](#lighthouse-validation)
-    + [User Testing](#user-testing)
++ [Manual Testing](#manual-testing)
++ [Automated Testing](#automated-testing) 
+    - [Code Validation](#code-validation)
+    - [Lighthouse Validation](#lighthouse-validation)
+    - [Browser Validation](#browser-validation)
++ [User Testing](#user-testing)
 
 [Back to top ⇧](#table-of-contents)
 
@@ -287,4 +287,59 @@ Because there are so many, the developer includes here only the results of the v
 
 - Settings.py File
 ![Settings.py Validation](./docs/images/python_validation/settings_py.png)
+
+[Back to top ⇧](#table-of-contents)
+
+
+### Lighthouse Validation
+The [Lighthouse](https://developers.google.com/web/tools/lighthouse) tool was used to measure the performance of the website.
+
+These are the results of the validation:
+
+- Homepage
+![Homepage Lighthouse Validation](./docs/images/lighthouse/home_lighthouse.png)
+
+- Login Page
+![Login Page Lighthouse Validation](./docs/images/lighthouse/login_lighthouse.png)
+
+- Register Page
+![Register Page Lighthouse Validation](./docs/images/lighthouse/register_lighthouse.png)
+
+- Contact Page
+![Contact Page Lighthouse Validation](./docs/images/lighthouse/contact_lighthouse.png)
+
+- Find Book Page
+![Find Book Page Lighthouse Validation](./docs/images/lighthouse/search_lighthouse.png)
+
+- Add Book Page
+![Add Book Page Lighthouse Validation](./docs/images/lighthouse/add_book_lighthouse.png)
+
+- User Page (My Books Page)
+![User Page (My Books Page) Lighthouse Validation](./docs/images/lighthouse/user_page_lighthouse.png)
+
+- Book Details Page
+![Book Details Page Lighthouse Validation](./docs/images/lighthouse/book_detail_lighthouse.png)
+
+- Edit Book Page (Update Book)
+![Edit Book Page Lighthouse Validation](./docs/images/lighthouse/edit_book_lighthouse.png)
+
+- Delete Book Page
+![Delete Book Page Lighthouse Validation](./docs/images/lighthouse/delete_book_lighthouse.png)
+
+- User Favourites Page
+![User Favourites Page Lighthouse Validation](./docs/images/lighthouse/favourites_lighthouse.png)
+
+- User Profile Page
+![User Profile Page Lighthouse Validation](./docs/images/lighthouse/user_profile_lighthouse.png)
+
+- Update Profile Page
+![Update Profile Page Lighthouse Validation](./docs/images/lighthouse/update_profile_lighthouse.png)
+
+- 404 Page couldn't be tested with Lighthouse
+
+[Back to top ⇧](#table-of-contents)
+
+
+
+
 
